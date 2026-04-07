@@ -22,6 +22,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { sampleProperties } from '@/lib/sample-data';
 import { getLocalizedField, formatPrice, getAreaLabel } from '@/lib/utils';
+import { ImageGallery } from '@/components/properties/ImageGallery';
 
 type Props = {
   params: Promise<{ locale: string; id: string }>;
@@ -64,7 +65,7 @@ export default async function PropertyDetailPage({ params }: Props) {
   const areaLabel = getAreaLabel(property.area_direction, locale);
 
   const lowestPrice =
-    property.price_shared ?? property.price_technician ?? property.price_engineer ?? 0;
+    property.price_shared ?? property.price_technician ?? property.price_engineer ?? property.price_driver ?? 0;
 
   const roomTypes = [
     {
@@ -87,6 +88,13 @@ export default async function PropertyDetailPage({ params }: Props) {
       price: property.price_engineer,
       label: t('engineerRoom'),
       icon: DoorOpen,
+    },
+    {
+      key: 'driver',
+      available: property.has_driver_rooms,
+      price: property.price_driver,
+      label: t('driverRoom'),
+      icon: Bus,
     },
   ].filter((rt) => rt.available);
 
@@ -133,25 +141,17 @@ export default async function PropertyDetailPage({ params }: Props) {
       </Link>
 
       {/* ============================
-          Image Gallery Placeholder
+          Image Gallery
           ============================ */}
-      <div className="mb-8">
-        {/* Hero image */}
-        <div className="flex h-64 items-center justify-center rounded-xl bg-gradient-to-br from-gray-200 to-gray-300 sm:h-80 lg:h-96">
-          <Building2 className="h-20 w-20 text-gray-400" />
+      {property.images && property.images.length > 0 ? (
+        <ImageGallery images={property.images} locale={locale} />
+      ) : (
+        <div className="mb-8">
+          <div className="flex h-64 items-center justify-center rounded-xl bg-gradient-to-br from-gray-200 to-gray-300 sm:h-80 lg:h-96">
+            <Building2 className="h-20 w-20 text-gray-400" />
+          </div>
         </div>
-        {/* Thumbnail row */}
-        <div className="mt-2 grid grid-cols-4 gap-2">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="flex h-16 items-center justify-center rounded-lg bg-gray-200 sm:h-20"
-            >
-              <Building2 className="h-6 w-6 text-gray-400" />
-            </div>
-          ))}
-        </div>
-      </div>
+      )}
 
       {/* ============================
           Title + Badges
@@ -397,7 +397,7 @@ export default async function PropertyDetailPage({ params }: Props) {
               </CardFooter>
             </Card>
 
-            {/* Map Placeholder */}
+            {/* Location Map */}
             <Card>
               <CardHeader>
                 <h2 className="text-lg font-semibold text-gray-900">
@@ -405,14 +405,34 @@ export default async function PropertyDetailPage({ params }: Props) {
                 </h2>
               </CardHeader>
               <CardContent>
-                <div className="flex h-48 flex-col items-center justify-center rounded-lg bg-gray-100">
-                  <MapPin className="h-10 w-10 text-gray-400" />
-                  <p className="mt-2 text-sm text-gray-500">
-                    {property.latitude && property.longitude
-                      ? `${property.latitude}, ${property.longitude}`
-                      : `${district}, ${areaLabel} ${property.city}`}
-                  </p>
-                </div>
+                {property.latitude && property.longitude ? (
+                  <div className="overflow-hidden rounded-lg">
+                    <iframe
+                      width="100%"
+                      height="250"
+                      style={{ border: 0 }}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=${property.latitude},${property.longitude}&zoom=16`}
+                    />
+                    <a
+                      href={`https://www.google.com/maps?q=${property.latitude},${property.longitude}&z=17`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 flex items-center gap-1.5 text-sm text-[#c41e3a] hover:underline"
+                    >
+                      <MapPin className="h-3.5 w-3.5" />
+                      {locale === 'ar' ? 'افتح في خرائط قوقل' : 'Open in Google Maps'}
+                    </a>
+                  </div>
+                ) : (
+                  <div className="flex h-48 flex-col items-center justify-center rounded-lg bg-gray-100">
+                    <MapPin className="h-10 w-10 text-gray-400" />
+                    <p className="mt-2 text-sm text-gray-500">
+                      {district}, {areaLabel} {property.city}
+                    </p>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </div>

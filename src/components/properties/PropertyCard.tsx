@@ -37,7 +37,10 @@ export function PropertyCard({ property, locale }: PropertyCardProps) {
     property.price_shared ??
     property.price_technician ??
     property.price_engineer ??
+    property.price_driver ??
     0;
+
+  const primaryImage = property.images?.find((img) => img.is_primary) ?? property.images?.[0];
 
   const serviceIcons = [
     { key: 'catering', has: property.has_catering, icon: UtensilsCrossed },
@@ -62,15 +65,19 @@ export function PropertyCard({ property, locale }: PropertyCardProps) {
   };
 
   return (
-    <Link href={`/${locale}/properties/${property.id}`}>
+    <Link href={`/${locale}/property/${property.id}`}>
       <Card hoverable className="overflow-hidden h-full flex flex-col">
-        {/* Placeholder image */}
+        {/* Property image */}
         <div
-          className={`relative h-48 ${bgColors[property.area_direction] || 'bg-gray-100'} flex items-center justify-center`}
+          className={`relative h-48 ${bgColors[property.area_direction] || 'bg-gray-100'} flex items-center justify-center overflow-hidden`}
         >
-          <Building2
-            className={`h-16 w-16 ${iconColors[property.area_direction] || 'text-gray-400'} opacity-60`}
-          />
+          {primaryImage ? (
+            <img src={primaryImage.url} alt={title} className="h-full w-full object-cover" />
+          ) : (
+            <Building2
+              className={`h-16 w-16 ${iconColors[property.area_direction] || 'text-gray-400'} opacity-60`}
+            />
+          )}
           {/* Badges overlay */}
           <div className="absolute top-3 start-3 flex flex-wrap gap-1.5">
             {property.verification_status === 'verified' && (

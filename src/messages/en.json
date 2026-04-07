@@ -104,6 +104,7 @@
     "sharedRoom": "Shared Room",
     "technicianRoom": "Technician Room",
     "engineerRoom": "Engineer Room",
+    "driverRoom": "Driver Room",
     "catering": "Catering",
     "cleaning": "Cleaning",
     "maintenance": "Maintenance",
@@ -195,7 +196,8 @@
   "roomTypes": {
     "shared": "Shared (Workers)",
     "technician": "Technicians (2/room)",
-    "engineer": "Engineers (Private)"
+    "engineer": "Engineers (Private)",
+    "driver": "Drivers"
   },
   "cities": {
     "riyadh": "Riyadh",

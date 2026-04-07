@@ -43,19 +43,11 @@ const statusBadgeMap: Record<string, 'verified' | 'pending' | 'unverified' | 'pl
 };
 
 const sampleActivity = [
-  { id: 1, text: 'New request from Al-Rashid Construction', textAr: 'طلب جديد من شركة الراشد للبناء', time: '2 min ago', timeAr: 'منذ دقيقتين', icon: 'request' },
-  { id: 2, text: 'Property verified: Saud Premium Workers Housing', textAr: 'تم توثيق العقار: سكن سعود المتميز للعمال', time: '15 min ago', timeAr: 'منذ 15 دقيقة', icon: 'verify' },
-  { id: 3, text: 'New provider registered: Al-Otaibi Housing Co.', textAr: 'مزود جديد مسجل: شركة العتيبي للإسكان', time: '1 hour ago', timeAr: 'منذ ساعة', icon: 'user' },
-  { id: 4, text: 'Booking confirmed: 150 workers at Al-Saud Residence', textAr: 'تم تأكيد الحجز: 150 عامل في سكن آل سعود', time: '3 hours ago', timeAr: 'منذ 3 ساعات', icon: 'booking' },
-  { id: 5, text: 'Request expired: Eastern Industrial Housing', textAr: 'انتهت صلاحية الطلب: سكن المنطقة الصناعية الشرقية', time: '5 hours ago', timeAr: 'منذ 5 ساعات', icon: 'expired' },
+  { id: 1, text: 'Property verified: Masakin Complex', textAr: 'تم توثيق العقار: مجمع مساكن', time: '15 min ago', timeAr: 'منذ 15 دقيقة', icon: 'verify' },
 ];
 
 const sampleUsers = [
-  { id: '1', name: 'Mohammed Al-Rashid', nameAr: 'محمد الراشد', email: 'mohammed@alrashid.com', role: 'company' as const, joined: '2025-11-01', active: true },
-  { id: '2', name: 'Abdullah Al-Saud', nameAr: 'عبدالله آل سعود', email: 'abdullah@saud-housing.com', role: 'provider' as const, joined: '2025-10-15', active: true },
-  { id: '3', name: 'Fahad Al-Dosari', nameAr: 'فهد الدوسري', email: 'fahad@dosari-camps.com', role: 'provider' as const, joined: '2025-12-01', active: true },
-  { id: '4', name: 'Sara Al-Qahtani', nameAr: 'سارة القحطاني', email: 'sara@sakan.sa', role: 'admin' as const, joined: '2025-09-01', active: true },
-  { id: '5', name: 'Omar Hassan', nameAr: 'عمر حسن', email: 'omar@hassan-eng.com', role: 'company' as const, joined: '2026-01-10', active: false },
+  { id: '1', name: 'Ahmad Alkasabi', nameAr: 'أحمد القصبي', email: 'aalkasabi@msakn.sa', role: 'admin' as const, joined: '2025-09-01', active: true },
 ];
 
 const roleBadgeMap: Record<string, 'verified' | 'pending' | 'platformManaged'> = {

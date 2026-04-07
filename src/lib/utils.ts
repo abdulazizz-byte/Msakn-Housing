@@ -27,9 +27,10 @@ export function getLocalizedField(obj: any, field: string, locale: string): stri
 
 export function getRoomTypeLabel(type: string, locale: string): string {
   const labels: Record<string, Record<string, string>> = {
-    shared: { en: 'Shared Workers', ar: 'عمال مشتركين' },
+    shared: { en: 'Shared Workers', ar: 'افراد مشتركين' },
     technician: { en: 'Technicians (2/room)', ar: 'فنيين (2/غرفة)' },
     engineer: { en: 'Engineers (Private)', ar: 'مهندسين (خاصة)' },
+    driver: { en: 'Drivers', ar: 'سائقين' },
   };
   return labels[type]?.[locale] || type;
 }

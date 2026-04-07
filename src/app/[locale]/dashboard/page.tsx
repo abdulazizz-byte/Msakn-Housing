@@ -31,35 +31,15 @@ const statusToBadge: Record<string, 'verified' | 'pending' | 'unverified' | 'pla
   rejected: 'unverified',
 };
 
-const sampleOffers = [
-  {
-    id: 'offer-1',
-    propertyName: 'Al-Saud Worker Residence - North Riyadh',
-    propertyNameAr: 'سكن آل سعود للعمال - شمال الرياض',
-    pricePerWorker: 800,
-    matchScore: 92,
-    status: 'pending' as const,
-    createdAt: '2026-03-15T00:00:00Z',
-  },
-  {
-    id: 'offer-2',
-    propertyName: 'Saud Premium Workers Housing',
-    propertyNameAr: 'سكن سعود المتميز للعمال',
-    pricePerWorker: 1400,
-    matchScore: 85,
-    status: 'pending' as const,
-    createdAt: '2026-03-18T00:00:00Z',
-  },
-  {
-    id: 'offer-3',
-    propertyName: 'Qahtani Executive Housing',
-    propertyNameAr: 'سكن القحطاني التنفيذي',
-    pricePerWorker: 2800,
-    matchScore: 78,
-    status: 'accepted' as const,
-    createdAt: '2026-04-02T00:00:00Z',
-  },
-];
+const sampleOffers: {
+  id: string;
+  propertyName: string;
+  propertyNameAr: string;
+  pricePerWorker: number;
+  matchScore: number;
+  status: 'pending' | 'accepted' | 'rejected';
+  createdAt: string;
+}[] = [];
 
 export default function DashboardPage() {
   const pathname = usePathname();

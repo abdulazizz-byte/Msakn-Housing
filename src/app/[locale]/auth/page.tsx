@@ -41,7 +41,7 @@ export default function AuthPage() {
             {locale === 'ar' ? 'سكن القوى العاملة' : 'Sakan Workforce'}
           </h1>
           <p className="text-gray-500 mt-1">
-            {locale === 'ar' ? 'منصة سكن العمال الأولى في المملكة' : "Saudi Arabia's Premier Worker Housing Platform"}
+            {locale === 'ar' ? 'منصة سكن الافراد الأولى في المملكة' : "Saudi Arabia's Premier Worker Housing Platform"}
           </p>
         </div>
 

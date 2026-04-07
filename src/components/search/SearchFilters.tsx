@@ -68,6 +68,7 @@ export function SearchFilters({ filters, onChange, onClear }: SearchFiltersProps
         <option value="shared">{tr('shared')}</option>
         <option value="technician">{tr('technician')}</option>
         <option value="engineer">{tr('engineer')}</option>
+        <option value="driver">{tr('driver')}</option>
       </Select>
 
       <Input

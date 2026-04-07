@@ -24,6 +24,8 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { PropertyCard } from '@/components/properties/PropertyCard';
+import { RegionSelector } from '@/components/home/RegionSelector';
+import { HomeMap } from '@/components/home/HomeMap';
 import { sampleProperties } from '@/lib/sample-data';
 
 type Props = {
@@ -92,15 +94,15 @@ export default async function HomePage({ params }: Props) {
                 <br />
                 <span className="text-[#1a1a1a]">
                   {locale === 'ar'
-                    ? 'سكن عمال متكامل'
+                    ? 'سكن افراد متكامل'
                     : 'Labor Accommodation'}
                 </span>
               </h1>
 
               <p className="mt-6 text-lg text-[#666] leading-relaxed sm:text-xl max-w-xl">
                 {locale === 'ar'
-                  ? 'الشركة الرائدة في تقديم حلول الإسكان المتكاملة للقوى العاملة في المملكة العربية السعودية'
-                  : 'The Leading Company in Providing Integrated Accommodation Solutions in Saudi Arabia'}
+                  ? 'حلول الإسكان المتكاملة للافراد في المملكة العربية السعودية'
+                  : 'Integrated Housing Solutions for Individuals in Saudi Arabia'}
               </p>
 
               {/* CTA buttons */}
@@ -139,7 +141,7 @@ export default async function HomePage({ params }: Props) {
             <div className="w-full">
               <div className="rounded-3xl bg-white p-8 lg:p-10 shadow-[0_8px_40px_rgba(0,0,0,0.06)]">
                 <h2 className="text-xl font-bold text-[#1a1a1a] mb-6">
-                  {locale === 'ar' ? 'ابحث عن سكن عمال' : 'Find Worker Housing'}
+                  {locale === 'ar' ? 'ابحث عن سكن افراد' : 'Find Worker Housing'}
                 </h2>
 
                 {/* Search input */}
@@ -184,6 +186,32 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* ══════════════════════════════════════
+          MAP — prominent map section
+          ══════════════════════════════════════ */}
+      <section className="bg-white py-12 lg:py-16">
+        <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16">
+          <div className="mb-8 flex items-end justify-between">
+            <div>
+              <span className="text-sm font-semibold tracking-widest text-[#c41e3a] uppercase">
+                {locale === 'ar' ? 'استكشف' : 'Explore'}
+              </span>
+              <h2 className="mt-3 text-3xl font-bold text-[#1a1a1a] sm:text-4xl">
+                {locale === 'ar' ? 'المساكن على الخريطة' : 'Properties on Map'}
+              </h2>
+              <p className="mt-2 text-[#666]">
+                {locale === 'ar'
+                  ? 'اضغط على أي علامة لمعرفة التفاصيل والأسعار'
+                  : 'Click any marker to see details and pricing'}
+              </p>
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-[0_4px_24px_rgba(0,0,0,0.06)]">
+            <HomeMap locale={locale} />
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
           STATS — clean row on white
           ══════════════════════════════════════ */}
       <section className="border-y border-[#ece5dc] bg-white">
@@ -210,9 +238,32 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       {/* ══════════════════════════════════════
-          SERVICES — what we offer
+          REGIONS — KSA coverage
           ══════════════════════════════════════ */}
       <section className="bg-white py-20 lg:py-28">
+        <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16">
+          <div className="max-w-2xl mb-12">
+            <span className="text-sm font-semibold tracking-widest text-[#c41e3a] uppercase">
+              {locale === 'ar' ? 'التغطية' : 'Coverage'}
+            </span>
+            <h2 className="mt-3 text-3xl font-bold text-[#1a1a1a] sm:text-4xl">
+              {locale === 'ar' ? 'مناطق المملكة' : 'Regions of Saudi Arabia'}
+            </h2>
+            <p className="mt-4 text-lg text-[#666]">
+              {locale === 'ar'
+                ? 'نخدم جميع الافراد في مناطق المملكة العربية السعودية'
+                : 'Serving all individuals across Saudi Arabia regions'}
+            </p>
+          </div>
+
+          <RegionSelector locale={locale} />
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          SERVICES — what we offer
+          ══════════════════════════════════════ */}
+      <section className="bg-[#faf8f5] py-20 lg:py-28">
         <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16">
           {/* Section header */}
           <div className="max-w-2xl mb-16">
@@ -232,12 +283,12 @@ export default async function HomePage({ params }: Props) {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {[
               { icon: Building2, title: locale === 'ar' ? 'سكن مفروش' : 'Furnished Housing', desc: locale === 'ar' ? 'وحدات سكنية مفروشة بالكامل وجاهزة للسكن الفوري' : 'Fully furnished units ready for immediate occupancy' },
-              { icon: UtensilsCrossed, title: locale === 'ar' ? 'خدمات التموين' : 'Catering Services', desc: locale === 'ar' ? 'وجبات يومية متكاملة تلبي احتياجات العمال الغذائية' : 'Complete daily meals meeting worker nutritional needs' },
-              { icon: Bus, title: locale === 'ar' ? 'خدمات النقل' : 'Transportation', desc: locale === 'ar' ? 'نقل العمال من وإلى مواقع العمل بأسطول حديث' : 'Worker transport to and from work sites with modern fleet' },
+              { icon: UtensilsCrossed, title: locale === 'ar' ? 'خدمات الإعاشة' : 'Catering Services', desc: locale === 'ar' ? 'وجبات يومية متكاملة تلبي احتياجات الافراد الغذائية' : 'Complete daily meals meeting worker nutritional needs' },
+              { icon: Bus, title: locale === 'ar' ? 'خدمات النقل' : 'Transportation', desc: locale === 'ar' ? 'نقل الافراد من وإلى مواقع العمل بأسطول حديث' : 'Worker transport to and from work sites with modern fleet' },
               { icon: Sparkles, title: locale === 'ar' ? 'النظافة والصيانة' : 'Cleaning & Maintenance', desc: locale === 'ar' ? 'خدمات نظافة وصيانة دورية لضمان بيئة صحية' : 'Regular cleaning and maintenance for a healthy environment' },
               { icon: Wrench, title: locale === 'ar' ? 'الصيانة الفنية' : 'Technical Maintenance', desc: locale === 'ar' ? 'فريق صيانة متخصص متاح على مدار الساعة' : 'Specialized maintenance team available 24/7' },
               { icon: ShieldCheck, title: locale === 'ar' ? 'الأمن والسلامة' : 'Security & Safety', desc: locale === 'ar' ? 'أنظمة أمنية متكاملة وحراسة على مدار الساعة' : 'Integrated security systems with 24/7 surveillance' },
-              { icon: Headphones, title: locale === 'ar' ? 'دعم العملاء' : 'Customer Support', desc: locale === 'ar' ? 'فريق دعم متخصص لخدمة الشركات والعمال' : 'Dedicated support team for companies and workers' },
+              { icon: Headphones, title: locale === 'ar' ? 'دعم العملاء' : 'Customer Support', desc: locale === 'ar' ? 'فريق دعم متخصص لخدمة الشركات والافراد' : 'Dedicated support team for companies and workers' },
               { icon: ClipboardList, title: locale === 'ar' ? 'إدارة العقود' : 'Contract Management', desc: locale === 'ar' ? 'إدارة احترافية للعقود والتراخيص والتصاريح' : 'Professional management of contracts, licenses and permits' },
             ].map((service) => (
               <div
@@ -412,7 +463,7 @@ export default async function HomePage({ params }: Props) {
           <div className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between">
             <div className="text-center lg:text-start">
               <h2 className="text-2xl font-bold text-white sm:text-3xl lg:text-4xl">
-                {locale === 'ar' ? 'هل تبحث عن سكن لعمالك؟' : 'Looking for worker housing?'}
+                {locale === 'ar' ? 'هل تبحث عن سكن لافرادك؟' : 'Looking for worker housing?'}
               </h2>
               <p className="mt-3 text-lg text-white/80">
                 {locale === 'ar'

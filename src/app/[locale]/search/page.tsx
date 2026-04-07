@@ -43,6 +43,7 @@ export default function SearchPage() {
         if (filters.room_type === 'shared') return p.has_shared_rooms;
         if (filters.room_type === 'technician') return p.has_technician_rooms;
         if (filters.room_type === 'engineer') return p.has_engineer_rooms;
+        if (filters.room_type === 'driver') return p.has_driver_rooms;
         return true;
       });
     }
@@ -51,7 +52,7 @@ export default function SearchPage() {
     if (filters.max_price) {
       const maxPrice = Number(filters.max_price);
       results = results.filter((p) => {
-        const lowestPrice = p.price_shared ?? p.price_technician ?? p.price_engineer ?? 0;
+        const lowestPrice = p.price_shared ?? p.price_technician ?? p.price_engineer ?? p.price_driver ?? 0;
         return lowestPrice <= maxPrice;
       });
     }
