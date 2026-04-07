@@ -1,0 +1,34 @@
+import { NextIntlClientProvider, useMessages } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+
+type Props = {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+};
+
+export function generateStaticParams() {
+  return [{ locale: 'ar' }, { locale: 'en' }];
+}
+
+export default async function LocaleLayout({ children, params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const isRTL = locale === 'ar';
+
+  // Import messages on server
+  const messages = (await import(`../../messages/${locale}.json`)).default;
+
+  return (
+    <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'} className="h-full antialiased">
+      <body className="min-h-full flex flex-col bg-[#faf8f5]">
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
