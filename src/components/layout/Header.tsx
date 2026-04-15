@@ -23,7 +23,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#ece5dc] bg-white/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-white/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 w-full items-center justify-between px-6 sm:px-8 lg:px-12 xl:px-16">
         {/* Logo */}
         <Link

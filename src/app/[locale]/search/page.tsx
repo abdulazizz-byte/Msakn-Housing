@@ -20,7 +20,6 @@ const defaultFilters: FilterState = {
   has_maintenance: false,
   has_transportation: false,
   verified_only: false,
-  platform_managed_only: false,
 };
 
 export default function SearchPage() {
@@ -77,7 +76,6 @@ export default function SearchPage() {
 
     // Quality filters
     if (filters.verified_only) results = results.filter((p) => p.verification_status === 'verified');
-    if (filters.platform_managed_only) results = results.filter((p) => p.is_platform_managed);
 
     // Sort
     results.sort((a, b) => {

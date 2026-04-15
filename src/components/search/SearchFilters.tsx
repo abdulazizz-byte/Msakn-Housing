@@ -13,7 +13,6 @@ import {
   Wrench,
   Bus,
   ShieldCheck,
-  Star,
 } from 'lucide-react';
 import type { AreaDirection, RoomType } from '@/types';
 
@@ -28,7 +27,6 @@ export interface FilterState {
   has_maintenance: boolean;
   has_transportation: boolean;
   verified_only: boolean;
-  platform_managed_only: boolean;
 }
 
 interface SearchFiltersProps {
@@ -83,7 +81,6 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
     filters.has_maintenance,
     filters.has_transportation,
     filters.verified_only,
-    filters.platform_managed_only,
   ].filter((v) => v !== '' && v !== false).length;
 
   return (
@@ -121,16 +118,6 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
           />
           <ShieldCheck className="h-4 w-4 text-[#c41e3a]" />
           <span className="font-medium text-gray-700">موثق من المنصة فقط</span>
-        </label>
-        <label className="flex cursor-pointer items-center gap-2 text-sm">
-          <input
-            type="checkbox"
-            checked={filters.platform_managed_only}
-            onChange={(e) => updateFilter('platform_managed_only', e.target.checked)}
-            className="h-4 w-4 rounded border-gray-300 text-[#c41e3a] focus:ring-[#c41e3a]"
-          />
-          <Star className="h-4 w-4 text-[#c41e3a]" />
-          <span className="font-medium text-gray-700">بإدارة المنصة فقط</span>
         </label>
       </div>
 

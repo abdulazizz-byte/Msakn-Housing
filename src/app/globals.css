@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme inline {
-  /* MSAKN Red/Crimson Primary */
+  /* MSAKN Crimson */
   --color-primary-50: #fef2f2;
   --color-primary-100: #fee2e2;
   --color-primary-200: #fecaca;
@@ -14,34 +14,33 @@
   --color-primary-800: #6d1023;
   --color-primary-900: #4c0c19;
 
-  /* Warm Cream/Beige Backgrounds */
-  --color-warm-50: #faf8f5;
-  --color-warm-100: #f5f0eb;
-  --color-warm-200: #ece5dc;
-  --color-warm-300: #ddd3c6;
-  --color-warm-400: #c4b5a3;
+  /* Neutrals — modern off-white/pearl */
+  --color-warm-50: #fafafa;
+  --color-warm-100: #f5f5f5;
+  --color-warm-200: #eaeaea;
+  --color-warm-300: #d4d4d4;
+  --color-warm-400: #a3a3a3;
 
-  /* Dark Charcoal for header/text */
+  /* Deep blacks */
   --color-dark-50: #f5f5f5;
   --color-dark-100: #e5e5e5;
   --color-dark-200: #cccccc;
   --color-dark-300: #999999;
   --color-dark-400: #666666;
   --color-dark-500: #404040;
-  --color-dark-600: #2d2d2d;
-  --color-dark-700: #1a1a1a;
-  --color-dark-800: #111111;
-  --color-dark-900: #080808;
+  --color-dark-600: #262626;
+  --color-dark-700: #171717;
+  --color-dark-800: #0a0a0a;
+  --color-dark-900: #030303;
 
-  /* Gold accent for verified/highlights */
-  --color-accent-400: #d4a853;
-  --color-accent-500: #c49a3c;
-  --color-accent-600: #a67f2e;
+  /* Complementary — soft teal for contrast */
+  --color-accent-400: #6ee7cf;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #0d9488;
 
   /* Typography */
   --font-sans: 'IBM Plex Sans Arabic', 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Playfair Display', 'IBM Plex Sans Arabic', Georgia, serif;
-  --font-mono: 'Inter', system-ui, sans-serif;
+  --font-display: 'Inter', 'IBM Plex Sans Arabic', system-ui, sans-serif;
 }
 
 * {
@@ -50,14 +49,13 @@
 }
 
 body {
-  background: #faf8f5;
-  color: #1a1a1a;
+  background: #fafafa;
+  color: #0a0a0a;
   font-family: var(--font-sans);
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 [dir="rtl"] {
-  text-align: right;
   font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
 }
 
@@ -65,68 +63,150 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #f5f0eb; }
-::-webkit-scrollbar-thumb { background: #ddd3c6; border-radius: 3px; }
+/* Scrollbar — minimal */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #c41e3a; }
 
-/* Verified badge pulse */
-.badge-verified {
-  animation: pulse-brand 2.5s infinite;
+/* ─── Display typography ─── */
+.display-xl {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
 }
-@keyframes pulse-brand {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 30, 58, 0.2); }
-  50% { box-shadow: 0 0 0 8px rgba(196, 30, 58, 0); }
-}
-
-/* Card hover */
-.property-card {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.property-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06);
+.display-lg {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
-/* Geometric background pattern — like msakn.sa */
-.geo-pattern {
-  background-image:
-    linear-gradient(30deg, rgba(196, 30, 58, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(196, 30, 58, 0.03) 87.5%, rgba(196, 30, 58, 0.03)),
-    linear-gradient(150deg, rgba(196, 30, 58, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(196, 30, 58, 0.03) 87.5%, rgba(196, 30, 58, 0.03)),
-    linear-gradient(30deg, rgba(196, 30, 58, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(196, 30, 58, 0.03) 87.5%, rgba(196, 30, 58, 0.03)),
-    linear-gradient(150deg, rgba(196, 30, 58, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(196, 30, 58, 0.03) 87.5%, rgba(196, 30, 58, 0.03));
-  background-size: 80px 140px;
-  background-position: 0 0, 0 0, 40px 70px, 40px 70px;
-}
-
-/* Geometric line pattern overlay */
-.geo-lines {
-  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 100 L50 20 L100 100 L150 20 L200 100' fill='none' stroke='rgba(196,30,58,0.06)' stroke-width='1'/%3E%3Cpath d='M0 180 L50 100 L100 180 L150 100 L200 180' fill='none' stroke='rgba(196,30,58,0.04)' stroke-width='1'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-}
-
-/* Gradient text — brand red */
+/* ─── Gradient text ─── */
 .gradient-text {
-  background: linear-gradient(135deg, #c41e3a 0%, #e5555a 50%, #c41e3a 100%);
+  background: linear-gradient(135deg, #c41e3a 0%, #e5555a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Map container */
+.gradient-text-subtle {
+  background: linear-gradient(180deg, #0a0a0a 0%, #404040 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glassmorphism ─── */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.glass-dark {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Animated orb background ─── */
+.orb-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: float 20s ease-in-out infinite;
+}
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #c41e3a 0%, transparent 70%);
+  top: -200px;
+  left: -200px;
+}
+.orb-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #e5555a 0%, transparent 70%);
+  bottom: -300px;
+  right: -200px;
+  animation-delay: -7s;
+}
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #14b8a6 0%, transparent 70%);
+  top: 40%;
+  left: 50%;
+  opacity: 0.25;
+  animation-delay: -14s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(50px, -30px) scale(1.05); }
+  66% { transform: translate(-30px, 40px) scale(0.95); }
+}
+
+/* ─── Noise texture overlay ─── */
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Grid pattern ─── */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(10, 10, 10, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 10, 10, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── Hover lift ─── */
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px -12px rgba(10, 10, 10, 0.15);
+}
+
+/* ─── Sliding reveal on scroll (pure CSS) ─── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ─── Smooth transitions ─── */
+a, button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Map container ─── */
 .map-container {
   width: 100%;
   height: 100%;
   min-height: 400px;
 }
 
-/* Smooth transitions */
-a, button {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Section spacing */
+/* ─── Section spacing ─── */
 .section-padding {
   padding: 5rem 1.5rem;
 }
@@ -135,8 +215,23 @@ a, button {
     padding: 7rem 3rem;
   }
 }
-@media (min-width: 1280px) {
-  .section-padding {
-    padding: 8rem 4rem;
-  }
+
+/* ─── Marquee / subtle shine ─── */
+@keyframes shine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shine {
+  background: linear-gradient(90deg, transparent 40%, rgba(255, 255, 255, 0.6) 50%, transparent 60%);
+  background-size: 200% 100%;
+  animation: shine 3s linear infinite;
+}
+
+/* ─── Badge pulse ─── */
+.badge-verified {
+  animation: pulse-brand 2.5s infinite;
+}
+@keyframes pulse-brand {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 30, 58, 0.25); }
+  50% { box-shadow: 0 0 0 10px rgba(196, 30, 58, 0); }
 }

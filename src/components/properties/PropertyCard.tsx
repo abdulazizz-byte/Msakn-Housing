@@ -6,12 +6,9 @@ import {
   Users,
   BedDouble,
   MapPin,
-  CheckCircle,
-  ArrowRight,
-  ArrowLeft,
+  ShieldCheck,
+  ArrowUpRight,
 } from 'lucide-react';
-import { Card, CardContent, CardFooter } from '@/components/ui/Card';
-import { Badge } from '@/components/ui/Badge';
 import type { Property } from '@/types';
 import { getAreaLabel, formatPrice } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
@@ -26,7 +23,6 @@ export function PropertyCard({ property, locale }: PropertyCardProps) {
   const tc = useTranslations('common');
 
   const isAr = locale === 'ar';
-  const ArrowIcon = isAr ? ArrowLeft : ArrowRight;
 
   const title = isAr && property.title_ar ? property.title_ar : property.title;
   const district = isAr && property.district_ar ? property.district_ar : property.district;
@@ -41,7 +37,6 @@ export function PropertyCard({ property, locale }: PropertyCardProps) {
 
   const primaryImage = property.images?.find((img) => img.is_primary) ?? property.images?.[0];
 
-  // Count enabled services
   const serviceCount = [
     property.has_catering,
     property.has_cleaning,
@@ -49,7 +44,6 @@ export function PropertyCard({ property, locale }: PropertyCardProps) {
     property.has_transportation,
   ].filter(Boolean).length;
 
-  // Available room types
   const roomTypes: string[] = [];
   if (property.has_shared_rooms) roomTypes.push(isAr ? 'مشترك' : 'Shared');
   if (property.has_technician_rooms) roomTypes.push(isAr ? 'فنيين' : 'Technicians');
@@ -57,116 +51,118 @@ export function PropertyCard({ property, locale }: PropertyCardProps) {
   if (property.has_driver_rooms) roomTypes.push(isAr ? 'سائقين' : 'Drivers');
 
   return (
-    <Link href={`/${locale}/property/${property.id}`} className="block h-full">
-      <Card hoverable className="h-full flex flex-col overflow-hidden transition-all hover:shadow-lg">
+    <Link
+      href={`/${locale}/property/${property.id}`}
+      className="group block h-full"
+    >
+      <article className="relative h-full overflow-hidden rounded-2xl border border-black/5 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-[#c41e3a]/20 hover:shadow-[0_20px_40px_-15px_rgba(10,10,10,0.15)]">
         {/* Image */}
-        <div className="relative h-52 bg-gray-100 overflow-hidden">
+        <div className="relative aspect-[4/3] overflow-hidden bg-[#f5f5f5]">
           {primaryImage ? (
-            <img src={primaryImage.url} alt={title} className="h-full w-full object-cover" />
+            <img
+              src={primaryImage.url}
+              alt={title}
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
           ) : (
             <div className="flex h-full items-center justify-center">
-              <Building2 className="h-16 w-16 text-gray-300" />
+              <Building2 className="h-20 w-20 text-[#d4d4d4]" />
             </div>
           )}
 
-          {/* Badges overlay */}
-          <div className="absolute top-3 start-3 flex flex-wrap gap-1.5">
-            {property.verification_status === 'verified' && (
-              <Badge status="verified" className="flex items-center gap-1 shadow-sm">
-                <CheckCircle className="h-3 w-3" />
-                {t('verificationBadge')}
-              </Badge>
-            )}
-            {property.is_platform_managed && (
-              <Badge status="platformManaged" className="shadow-sm">
-                {tc('platformManaged')}
-              </Badge>
-            )}
-          </div>
+          {/* Verified badge — glass */}
+          {property.verification_status === 'verified' && (
+            <div className="absolute top-4 start-4 inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-black/40 px-3 py-1 text-[11px] font-semibold text-white backdrop-blur-md">
+              <ShieldCheck className="h-3 w-3" />
+              {t('verificationBadge')}
+            </div>
+          )}
 
-          {/* Price tag overlay */}
-          <div className="absolute bottom-3 end-3 rounded-full bg-[#c41e3a] px-3 py-1.5 text-white shadow-lg">
+          {/* Price — sharp gradient tag */}
+          <div className="absolute bottom-4 end-4 rounded-full bg-[#0a0a0a] px-4 py-2 text-white shadow-xl ring-1 ring-white/10">
             <span className="text-base font-bold">
               {formatPrice(lowestPrice, isAr ? 'ar-SA' : 'en-SA')}
             </span>
-            <span className="text-[10px] opacity-90 ms-1">
-              / {tc('perMonth')}
+            <span className="ms-1 text-[10px] text-white/70">
+              /{tc('perMonth')}
             </span>
           </div>
+
+          {/* Subtle gradient overlay at bottom */}
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
         </div>
 
-        <CardContent className="flex-1 space-y-3 py-4">
-          {/* Title */}
-          <h3 className="font-bold text-gray-900 line-clamp-2 text-lg leading-snug">
-            {title}
-          </h3>
-
-          {/* Location */}
-          <div className="flex items-center gap-1.5 text-sm text-gray-600">
-            <MapPin className="h-4 w-4 text-[#c41e3a] shrink-0" />
-            <span className="font-medium">{district}</span>
-            <span className="text-gray-300">·</span>
-            <span>{areaLabel} {isAr ? 'الرياض' : 'Riyadh'}</span>
+        {/* Content */}
+        <div className="p-5">
+          {/* Title + arrow */}
+          <div className="mb-3 flex items-start justify-between gap-3">
+            <h3 className="line-clamp-2 text-lg font-bold tracking-tight text-[#0a0a0a] leading-snug">
+              {title}
+            </h3>
+            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black/5 bg-[#fafafa] transition-all group-hover:bg-[#c41e3a] group-hover:border-[#c41e3a]">
+              <ArrowUpRight className="h-4 w-4 text-[#525252] transition-colors group-hover:text-white" />
+            </div>
           </div>
 
-          {/* Key stats */}
-          <div className="grid grid-cols-2 gap-2 pt-1">
-            <div className="flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-2">
-              <Users className="h-4 w-4 text-[#c41e3a] shrink-0" />
-              <div className="min-w-0">
-                <p className="text-sm font-bold text-gray-900">
+          {/* Location */}
+          <div className="mb-4 flex items-center gap-1.5 text-sm text-[#737373]">
+            <MapPin className="h-3.5 w-3.5 text-[#c41e3a]" />
+            <span className="font-medium text-[#404040]">{district}</span>
+            <span className="text-[#d4d4d4]">·</span>
+            <span>{areaLabel}</span>
+          </div>
+
+          {/* Stats row — minimal dividers */}
+          <div className="mb-4 flex items-center gap-4 border-y border-black/5 py-3">
+            <div className="flex items-center gap-2">
+              <Users className="h-4 w-4 text-[#c41e3a]" />
+              <div>
+                <p className="text-sm font-bold tabular-nums text-[#0a0a0a]">
                   {property.available_capacity.toLocaleString()}
                 </p>
-                <p className="text-[10px] text-gray-500 leading-tight">
+                <p className="text-[10px] uppercase tracking-wide text-[#a3a3a3]">
                   {isAr ? 'متاح' : 'Available'}
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-2">
-              <BedDouble className="h-4 w-4 text-[#c41e3a] shrink-0" />
-              <div className="min-w-0">
-                <p className="text-sm font-bold text-gray-900">
+            <div className="h-8 w-px bg-black/5" />
+            <div className="flex items-center gap-2">
+              <BedDouble className="h-4 w-4 text-[#c41e3a]" />
+              <div>
+                <p className="text-sm font-bold tabular-nums text-[#0a0a0a]">
                   {property.total_rooms}
                 </p>
-                <p className="text-[10px] text-gray-500 leading-tight">
+                <p className="text-[10px] uppercase tracking-wide text-[#a3a3a3]">
                   {isAr ? 'غرفة' : 'Rooms'}
                 </p>
               </div>
             </div>
+            <div className="h-8 w-px bg-black/5" />
+            <div>
+              <p className="text-sm font-bold tabular-nums text-[#0a0a0a]">
+                {serviceCount}
+              </p>
+              <p className="text-[10px] uppercase tracking-wide text-[#a3a3a3]">
+                {isAr ? 'خدمات' : 'Services'}
+              </p>
+            </div>
           </div>
 
-          {/* Room types */}
+          {/* Room type pills */}
           {roomTypes.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 pt-1">
+            <div className="flex flex-wrap gap-1.5">
               {roomTypes.map((type) => (
                 <span
                   key={type}
-                  className="rounded-full border border-gray-200 bg-white px-2.5 py-0.5 text-xs text-gray-700"
+                  className="rounded-full bg-[#fafafa] px-2.5 py-0.5 text-[11px] font-medium text-[#525252]"
                 >
                   {type}
                 </span>
               ))}
             </div>
           )}
-        </CardContent>
-
-        <CardFooter className="border-t border-gray-100 bg-gray-50/50 py-3">
-          <div className="flex w-full items-center justify-between">
-            <div className="flex items-center gap-1.5 text-xs text-gray-600">
-              <CheckCircle className="h-3.5 w-3.5 text-[#c41e3a]" />
-              <span className="font-medium">
-                {serviceCount > 0
-                  ? (isAr ? `${serviceCount} خدمات متوفرة` : `${serviceCount} services included`)
-                  : (isAr ? 'بدون خدمات' : 'No services')}
-              </span>
-            </div>
-            <span className="flex items-center gap-1 text-xs font-semibold text-[#c41e3a]">
-              {isAr ? 'التفاصيل' : 'Details'}
-              <ArrowIcon className="h-3.5 w-3.5" />
-            </span>
-          </div>
-        </CardFooter>
-      </Card>
+        </div>
+      </article>
     </Link>
   );
 }

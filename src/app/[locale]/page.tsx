@@ -2,12 +2,12 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import {
   CheckCircle,
-  Building2,
-  Briefcase,
-  ArrowRight,
-  ArrowLeft,
+  ArrowUpRight,
+  Sparkles,
+  Trees,
+  Users2,
+  Home,
 } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -20,109 +20,186 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations('home');
   const tn = await getTranslations('nav');
 
-  const isRTL = locale === 'ar';
-  const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
+  const isAr = locale === 'ar';
 
   return (
-    <section className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-[#f5f0eb] pt-8 pb-12 lg:pt-10 lg:pb-16">
-      {/* Decorative geometric patterns */}
-      <div className="absolute inset-0 geo-lines opacity-60" />
-      <svg className="absolute top-12 start-8 w-64 h-64 opacity-[0.04]" viewBox="0 0 200 200" fill="none">
-        <path d="M20 180 L100 20 L180 180" stroke="#c41e3a" strokeWidth="1.5" />
-        <path d="M50 180 L100 60 L150 180" stroke="#c41e3a" strokeWidth="1" />
-      </svg>
-      <svg className="absolute bottom-8 end-12 w-48 h-48 opacity-[0.04]" viewBox="0 0 200 200" fill="none">
-        <rect x="30" y="30" width="140" height="140" stroke="#c41e3a" strokeWidth="1.5" />
-        <rect x="60" y="60" width="80" height="80" stroke="#c41e3a" strokeWidth="1" />
-      </svg>
+    <main className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-[#fafafa]">
+      {/* Animated orb background */}
+      <div className="orb-bg">
+        <div className="orb orb-1" />
+        <div className="orb orb-2" />
+        <div className="orb orb-3" />
+      </div>
+      <div className="noise" />
 
-      <div className="relative w-full px-6 sm:px-8 lg:px-12 xl:px-16">
-        {/* Brand + headline */}
-        <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-10">
+      <div className="relative z-10 w-full px-6 py-12 sm:px-8 lg:px-16 xl:px-24 lg:py-16">
+        {/* Hero: logo + bold headline */}
+        <div className="mx-auto max-w-6xl text-center mb-12 lg:mb-16 animate-fade-up">
           <img
             src="/Logo.avif"
             alt="Msakn"
-            className="mx-auto mb-4 h-20 w-20 sm:h-24 sm:w-24"
+            className="mx-auto mb-8 h-16 w-16 sm:h-20 sm:w-20"
           />
-          <h1 className="text-3xl font-bold text-[#1a1a1a] sm:text-4xl lg:text-5xl leading-[1.1]">
-            {isRTL ? 'حل يناسب الجميع' : 'A Solution for Everyone'}
+
+          {/* Micro tag */}
+          <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-[#c41e3a]/20 bg-[#c41e3a]/5 px-4 py-1.5 text-xs font-medium text-[#c41e3a] backdrop-blur-sm">
+            <Sparkles className="h-3 w-3" />
+            {isAr ? 'مجمعات سكنية متكاملة الخدمات' : 'All-Inclusive Housing Compounds'}
+          </div>
+
+          <h1 className="display-xl mb-6">
+            {isAr ? (
+              <>
+                <span className="gradient-text-subtle">حل سكني</span>
+                <br />
+                <span className="gradient-text">يناسب الجميع</span>
+              </>
+            ) : (
+              <>
+                <span className="gradient-text-subtle">A Solution</span>
+                <br />
+                <span className="gradient-text">for Everyone</span>
+              </>
+            )}
           </h1>
-          <p className="mt-4 text-base text-[#666] sm:text-lg max-w-2xl mx-auto">
-            {isRTL
+
+          <p className="mx-auto max-w-2xl text-lg text-[#525252] sm:text-xl">
+            {isAr
               ? 'من فرد يبحث عن سكن لسائقه إلى شركة بعشرات الآلاف من الموظفين'
               : 'From an individual seeking housing for their driver to a company with tens of thousands of employees'}
           </p>
+
+          {/* Compound amenity highlights */}
+          <div className="mx-auto mt-10 flex flex-wrap items-center justify-center gap-3 text-sm">
+            {[
+              { icon: Trees, label: isAr ? 'حدائق ومساحات خضراء' : 'Parks & green spaces' },
+              { icon: Users2, label: isAr ? 'مناطق ترفيهية' : 'Play areas' },
+              { icon: Home, label: isAr ? 'وحدات مفروشة' : 'Furnished units' },
+            ].map(({ icon: Icon, label }) => (
+              <span
+                key={label}
+                className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white/60 px-4 py-2 text-[#404040] backdrop-blur-sm"
+              >
+                <Icon className="h-4 w-4 text-[#c41e3a]" />
+                {label}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* Two beneficiary cards */}
-        <div className="grid gap-8 lg:grid-cols-2 max-w-[1400px] mx-auto">
+        {/* Two glassmorphic beneficiary cards */}
+        <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-2">
           {/* I'm Looking for Housing */}
           <Link
             href={`/${locale}/search`}
-            className="group rounded-3xl bg-white p-10 lg:p-14 xl:p-16 min-h-[480px] lg:min-h-[560px] shadow-[0_4px_24px_rgba(0,0,0,0.04)] transition-all hover:shadow-[0_12px_48px_rgba(196,30,58,0.15)] hover:-translate-y-1 flex flex-col"
+            className="group relative overflow-hidden rounded-3xl border border-black/5 bg-white/70 p-8 backdrop-blur-xl transition-all hover:border-[#c41e3a]/20 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(196,30,58,0.2)] sm:p-10 lg:p-12"
           >
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#fef2f2] group-hover:bg-[#c41e3a] transition-colors">
-              <Briefcase className="h-8 w-8 text-[#c41e3a] group-hover:text-white transition-colors" />
-            </div>
-            <h3 className="mt-8 text-3xl font-bold text-[#1a1a1a] lg:text-4xl xl:text-5xl">
-              {t('forCompanies')}
-            </h3>
-            <p className="mt-5 text-[#666] text-lg lg:text-xl leading-relaxed">
-              {t('forCompaniesDesc')}
-            </p>
-            <ul className="mt-8 space-y-4 flex-1">
-              {(isRTL
-                ? ['من فرد واحد إلى 60,000+ موظف', 'بحث متقدم بالموقع والسعة', 'نظام مطابقة ذكي وعروض فورية']
-                : ['From 1 person to 60,000+ employees', 'Advanced search by location & capacity', 'Smart matching with instant offers']
-              ).map((item) => (
-                <li key={item} className="flex items-center gap-3 text-base text-[#666]">
-                  <CheckCircle className="h-5 w-5 shrink-0 text-[#c41e3a]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10 inline-flex">
-              <Button size="lg" className="bg-[#c41e3a] hover:bg-[#a91b32] text-white border-0 px-8 py-4 text-base pointer-events-none">
+            {/* Corner accent */}
+            <div className="absolute top-0 end-0 h-40 w-40 -translate-y-1/2 translate-x-1/2 rounded-full bg-gradient-to-br from-[#c41e3a]/20 to-transparent blur-3xl transition-opacity group-hover:opacity-80" />
+
+            <div className="relative">
+              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#c41e3a] text-white shadow-lg shadow-[#c41e3a]/30">
+                <Users2 className="h-7 w-7" />
+              </div>
+
+              <h2 className="display-lg mb-4 text-[#0a0a0a]">
+                {isAr ? 'أبحث عن سكن' : "I'm Looking"}
+              </h2>
+
+              <p className="mb-8 text-lg leading-relaxed text-[#525252]">
+                {t('forCompaniesDesc')}
+              </p>
+
+              <ul className="mb-10 space-y-3">
+                {(isAr
+                  ? ['من فرد واحد إلى 60,000+ موظف', 'بحث متقدم بالموقع والسعة', 'نظام مطابقة ذكي وعروض فورية']
+                  : ['From 1 person to 60,000+ employees', 'Advanced search by location & capacity', 'Smart matching with instant offers']
+                ).map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm text-[#525252]">
+                    <CheckCircle className="h-4 w-4 shrink-0 text-[#c41e3a]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex items-center gap-2 text-base font-semibold text-[#c41e3a] transition-transform group-hover:gap-3">
                 {t('browseListings')}
-                <ArrowIcon className="h-5 w-5 ms-2" />
-              </Button>
+                <ArrowUpRight className="h-5 w-5" />
+              </div>
             </div>
           </Link>
 
           {/* I Have Property to Rent */}
           <Link
             href={`/${locale}/properties/new`}
-            className="group rounded-3xl bg-[#1a1a1a] p-10 lg:p-14 xl:p-16 min-h-[480px] lg:min-h-[560px] text-white transition-all hover:shadow-[0_12px_48px_rgba(0,0,0,0.3)] hover:-translate-y-1 flex flex-col"
+            className="group relative overflow-hidden rounded-3xl bg-[#0a0a0a] p-8 text-white transition-all hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] sm:p-10 lg:p-12"
           >
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 group-hover:bg-[#c41e3a] transition-colors">
-              <Building2 className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="mt-8 text-3xl font-bold lg:text-4xl xl:text-5xl">
-              {t('forProviders')}
-            </h3>
-            <p className="mt-5 text-gray-400 text-lg lg:text-xl leading-relaxed">
-              {t('forProvidersDesc')}
-            </p>
-            <ul className="mt-8 space-y-4 flex-1">
-              {(isRTL
-                ? ['اعرض غرفة واحدة أو مجمعاً كاملاً', 'استقبل طلبات مباشرة من جميع الأحجام', 'إدارة الحجوزات والعقود']
-                : ['List a single room or an entire complex', 'Receive direct requests of all sizes', 'Manage bookings & contracts']
-              ).map((item) => (
-                <li key={item} className="flex items-center gap-3 text-base text-gray-400">
-                  <CheckCircle className="h-5 w-5 shrink-0 text-[#c41e3a]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10 inline-flex">
-              <Button size="lg" className="!bg-white !text-[#1a1a1a] hover:!bg-gray-100 border-0 px-8 py-4 text-base pointer-events-none">
+            {/* Corner accent orb */}
+            <div className="absolute top-0 end-0 h-48 w-48 -translate-y-1/2 translate-x-1/2 rounded-full bg-[#c41e3a] blur-3xl opacity-40 transition-opacity group-hover:opacity-60" />
+            <div className="absolute bottom-0 start-0 h-32 w-32 translate-y-1/2 -translate-x-1/2 rounded-full bg-[#14b8a6] blur-3xl opacity-20" />
+
+            {/* Subtle grid pattern */}
+            <div
+              className="absolute inset-0 opacity-[0.03]"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+                backgroundSize: '40px 40px',
+              }}
+            />
+
+            <div className="relative">
+              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+                <Home className="h-7 w-7 text-white" />
+              </div>
+
+              <h2 className="display-lg mb-4 text-white">
+                {isAr ? 'لدي عقار' : 'I Have Property'}
+              </h2>
+
+              <p className="mb-8 text-lg leading-relaxed text-white/70">
+                {t('forProvidersDesc')}
+              </p>
+
+              <ul className="mb-10 space-y-3">
+                {(isAr
+                  ? ['اعرض غرفة واحدة أو مجمعاً كاملاً', 'استقبل طلبات مباشرة من جميع الأحجام', 'إدارة الحجوزات والعقود']
+                  : ['List a single room or an entire complex', 'Receive direct requests of all sizes', 'Manage bookings & contracts']
+                ).map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm text-white/70">
+                    <CheckCircle className="h-4 w-4 shrink-0 text-[#14b8a6]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex items-center gap-2 text-base font-semibold text-white transition-transform group-hover:gap-3">
                 {tn('addProperty')}
-                <ArrowIcon className="h-5 w-5 ms-2" />
-              </Button>
+                <ArrowUpRight className="h-5 w-5" />
+              </div>
             </div>
           </Link>
         </div>
+
+        {/* Stats strip */}
+        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-black/5 bg-black/5 lg:grid-cols-4">
+          {[
+            { value: '3,500', label: isAr ? 'سرير' : 'Beds' },
+            { value: '592', label: isAr ? 'غرفة' : 'Rooms' },
+            { value: '20,640', label: isAr ? 'م² مساحة' : 'm² Area' },
+            { value: '24', label: isAr ? 'مرفق متكامل' : 'Facilities' },
+          ].map((stat) => (
+            <div key={stat.label} className="bg-white/80 p-6 text-center backdrop-blur-sm">
+              <p className="text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-xs uppercase tracking-wider text-[#737373]">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
+    </main>
   );
 }
