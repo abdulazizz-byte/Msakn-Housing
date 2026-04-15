@@ -4,18 +4,31 @@ import { useTranslations } from 'next-intl';
 import { Select } from '@/components/ui/Select';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
-import { Users, Search, Filter } from 'lucide-react';
+import {
+  Users,
+  Search,
+  Filter,
+  UtensilsCrossed,
+  Sparkles,
+  Wrench,
+  Bus,
+  ShieldCheck,
+  Star,
+} from 'lucide-react';
 import type { AreaDirection, RoomType } from '@/types';
 
 export interface FilterState {
   area_direction: AreaDirection | '';
   room_type: RoomType | '';
+  min_price: string;
   max_price: string;
   min_capacity: string;
   has_catering: boolean;
   has_cleaning: boolean;
   has_maintenance: boolean;
   has_transportation: boolean;
+  verified_only: boolean;
+  platform_managed_only: boolean;
 }
 
 interface SearchFiltersProps {
@@ -24,6 +37,20 @@ interface SearchFiltersProps {
   onClear: () => void;
   resultsCount?: number;
 }
+
+const PRICE_PRESETS = [
+  { label: 'أقل من 600', labelEn: 'Under 600', value: '600' },
+  { label: 'أقل من 1000', labelEn: 'Under 1000', value: '1000' },
+  { label: 'أقل من 1500', labelEn: 'Under 1500', value: '1500' },
+  { label: 'أقل من 2500', labelEn: 'Under 2500', value: '2500' },
+];
+
+const CAPACITY_PRESETS = [
+  { label: '1-10', value: '1' },
+  { label: '50+', value: '50' },
+  { label: '100+', value: '100' },
+  { label: '500+', value: '500' },
+];
 
 export function SearchFilters({ filters, onChange, onClear, resultsCount }: SearchFiltersProps) {
   const t = useTranslations('search');
@@ -36,23 +63,27 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
     onChange({ ...filters, [key]: value });
   };
 
-  const services: { key: keyof FilterState; label: string }[] = [
-    { key: 'has_catering', label: tp('catering') },
-    { key: 'has_cleaning', label: tp('cleaning') },
-    { key: 'has_maintenance', label: tp('maintenance') },
-    { key: 'has_transportation', label: tp('transportation') },
+  const isAr = typeof document !== 'undefined' && document.documentElement.lang === 'ar';
+
+  const services = [
+    { key: 'has_catering' as const, label: tp('catering'), icon: UtensilsCrossed },
+    { key: 'has_cleaning' as const, label: tp('cleaning'), icon: Sparkles },
+    { key: 'has_maintenance' as const, label: tp('maintenance'), icon: Wrench },
+    { key: 'has_transportation' as const, label: tp('transportation'), icon: Bus },
   ];
 
-  // Count active filters
   const activeCount = [
     filters.area_direction,
     filters.room_type,
+    filters.min_price,
     filters.max_price,
     filters.min_capacity,
     filters.has_catering,
     filters.has_cleaning,
     filters.has_maintenance,
     filters.has_transportation,
+    filters.verified_only,
+    filters.platform_managed_only,
   ].filter((v) => v !== '' && v !== false).length;
 
   return (
@@ -79,6 +110,31 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
         )}
       </div>
 
+      {/* Quality filters */}
+      <div className="space-y-2 rounded-lg border border-[#fef2f2] bg-[#fef2f2]/30 p-3">
+        <label className="flex cursor-pointer items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={filters.verified_only}
+            onChange={(e) => updateFilter('verified_only', e.target.checked)}
+            className="h-4 w-4 rounded border-gray-300 text-[#c41e3a] focus:ring-[#c41e3a]"
+          />
+          <ShieldCheck className="h-4 w-4 text-[#c41e3a]" />
+          <span className="font-medium text-gray-700">موثق من المنصة فقط</span>
+        </label>
+        <label className="flex cursor-pointer items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={filters.platform_managed_only}
+            onChange={(e) => updateFilter('platform_managed_only', e.target.checked)}
+            className="h-4 w-4 rounded border-gray-300 text-[#c41e3a] focus:ring-[#c41e3a]"
+          />
+          <Star className="h-4 w-4 text-[#c41e3a]" />
+          <span className="font-medium text-gray-700">بإدارة المنصة فقط</span>
+        </label>
+      </div>
+
+      {/* Area */}
       <Select
         label={t('area')}
         value={filters.area_direction}
@@ -92,6 +148,7 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
         <option value="central">{ta('central')}</option>
       </Select>
 
+      {/* Room type */}
       <Select
         label={t('roomType')}
         value={filters.room_type}
@@ -104,46 +161,104 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
         <option value="driver">{tr('driver')}</option>
       </Select>
 
-      <Input
-        label={t('maxPrice')}
-        type="number"
-        placeholder="0"
-        icon={<span className="text-xs font-semibold">ر.س</span>}
-        value={filters.max_price}
-        onChange={(e) => updateFilter('max_price', e.target.value)}
-        min={0}
-      />
-
-      <Input
-        label={t('minCapacity')}
-        type="number"
-        placeholder="0"
-        icon={<Users className="h-4 w-4" />}
-        value={filters.min_capacity}
-        onChange={(e) => updateFilter('min_capacity', e.target.value)}
-        min={0}
-      />
-
+      {/* Price range */}
       <div>
-        <span className="mb-2 block text-sm font-medium text-gray-700">
-          {t('services')}
-        </span>
-        <div className="space-y-2">
-          {services.map(({ key, label }) => (
-            <label key={key} className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={filters[key] as boolean}
-                onChange={(e) => updateFilter(key, e.target.checked as FilterState[typeof key])}
-                className="h-4 w-4 rounded border-gray-300 text-red-600 focus:ring-red-500"
-              />
-              {label}
-            </label>
+        <label className="mb-1.5 block text-sm font-medium text-gray-700">
+          نطاق السعر (ر.س / شهرياً)
+        </label>
+        <div className="grid grid-cols-2 gap-2">
+          <Input
+            type="number"
+            placeholder="من"
+            value={filters.min_price}
+            onChange={(e) => updateFilter('min_price', e.target.value)}
+            min={0}
+          />
+          <Input
+            type="number"
+            placeholder="إلى"
+            value={filters.max_price}
+            onChange={(e) => updateFilter('max_price', e.target.value)}
+            min={0}
+          />
+        </div>
+        <div className="mt-2 flex flex-wrap gap-1.5">
+          {PRICE_PRESETS.map((preset) => (
+            <button
+              key={preset.value}
+              type="button"
+              onClick={() => updateFilter('max_price', preset.value)}
+              className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+                filters.max_price === preset.value
+                  ? 'border-[#c41e3a] bg-[#c41e3a] text-white'
+                  : 'border-gray-200 bg-white text-gray-600 hover:border-[#c41e3a] hover:text-[#c41e3a]'
+              }`}
+            >
+              {isAr ? preset.label : preset.labelEn}
+            </button>
           ))}
         </div>
       </div>
 
-      {/* Apply / Search button with result count */}
+      {/* Capacity */}
+      <div>
+        <label className="mb-1.5 block text-sm font-medium text-gray-700">
+          {t('minCapacity')}
+        </label>
+        <Input
+          type="number"
+          placeholder="0"
+          icon={<Users className="h-4 w-4" />}
+          value={filters.min_capacity}
+          onChange={(e) => updateFilter('min_capacity', e.target.value)}
+          min={0}
+        />
+        <div className="mt-2 flex flex-wrap gap-1.5">
+          {CAPACITY_PRESETS.map((preset) => (
+            <button
+              key={preset.value}
+              type="button"
+              onClick={() => updateFilter('min_capacity', preset.value)}
+              className={`rounded-full border px-3 py-1 text-xs transition-colors ${
+                filters.min_capacity === preset.value
+                  ? 'border-[#c41e3a] bg-[#c41e3a] text-white'
+                  : 'border-gray-200 bg-white text-gray-600 hover:border-[#c41e3a] hover:text-[#c41e3a]'
+              }`}
+            >
+              {preset.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Services as visual tiles */}
+      <div>
+        <span className="mb-2 block text-sm font-medium text-gray-700">
+          {t('services')}
+        </span>
+        <div className="grid grid-cols-2 gap-2">
+          {services.map(({ key, label, icon: Icon }) => {
+            const active = filters[key] as boolean;
+            return (
+              <button
+                key={key}
+                type="button"
+                onClick={() => updateFilter(key, !active)}
+                className={`flex items-center gap-2 rounded-lg border p-2.5 text-sm transition-colors ${
+                  active
+                    ? 'border-[#c41e3a] bg-[#fef2f2] text-[#c41e3a] font-medium'
+                    : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                <Icon className={`h-4 w-4 shrink-0 ${active ? 'text-[#c41e3a]' : 'text-gray-400'}`} />
+                <span className="truncate">{label}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Search button with result count */}
       <Button
         type="button"
         className="w-full bg-[#c41e3a] hover:bg-[#a91b32] text-white border-0"

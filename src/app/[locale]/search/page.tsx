@@ -12,12 +12,15 @@ import type { Property } from '@/types';
 const defaultFilters: FilterState = {
   area_direction: '',
   room_type: '',
+  min_price: '',
   max_price: '',
   min_capacity: '',
   has_catering: false,
   has_cleaning: false,
   has_maintenance: false,
   has_transportation: false,
+  verified_only: false,
+  platform_managed_only: false,
 };
 
 export default function SearchPage() {
@@ -48,13 +51,16 @@ export default function SearchPage() {
       });
     }
 
-    // Max price
+    // Price range
+    const getLowestPrice = (p: typeof results[number]) =>
+      p.price_shared ?? p.price_technician ?? p.price_engineer ?? p.price_driver ?? 0;
+    if (filters.min_price) {
+      const minPrice = Number(filters.min_price);
+      results = results.filter((p) => getLowestPrice(p) >= minPrice);
+    }
     if (filters.max_price) {
       const maxPrice = Number(filters.max_price);
-      results = results.filter((p) => {
-        const lowestPrice = p.price_shared ?? p.price_technician ?? p.price_engineer ?? p.price_driver ?? 0;
-        return lowestPrice <= maxPrice;
-      });
+      results = results.filter((p) => getLowestPrice(p) <= maxPrice);
     }
 
     // Min capacity
@@ -68,6 +74,10 @@ export default function SearchPage() {
     if (filters.has_cleaning) results = results.filter((p) => p.has_cleaning);
     if (filters.has_maintenance) results = results.filter((p) => p.has_maintenance);
     if (filters.has_transportation) results = results.filter((p) => p.has_transportation);
+
+    // Quality filters
+    if (filters.verified_only) results = results.filter((p) => p.verification_status === 'verified');
+    if (filters.platform_managed_only) results = results.filter((p) => p.is_platform_managed);
 
     // Sort
     results.sort((a, b) => {
