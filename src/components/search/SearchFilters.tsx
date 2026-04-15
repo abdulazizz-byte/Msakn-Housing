@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Select } from '@/components/ui/Select';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
-import { DollarSign, Users } from 'lucide-react';
+import { Users } from 'lucide-react';
 import type { AreaDirection, RoomType } from '@/types';
 
 export interface FilterState {
@@ -75,7 +75,7 @@ export function SearchFilters({ filters, onChange, onClear }: SearchFiltersProps
         label={t('maxPrice')}
         type="number"
         placeholder="0"
-        icon={<DollarSign className="h-4 w-4" />}
+        icon={<span className="text-xs font-semibold">ر.س</span>}
         value={filters.max_price}
         onChange={(e) => updateFilter('max_price', e.target.value)}
         min={0}
