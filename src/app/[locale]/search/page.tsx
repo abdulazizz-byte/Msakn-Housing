@@ -119,6 +119,7 @@ export default function SearchPage() {
             filters={filters}
             onChange={setFilters}
             onClear={() => setFilters(defaultFilters)}
+            resultsCount={filteredProperties.length}
           />
           <SearchResults
             properties={filteredProperties}
