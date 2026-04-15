@@ -106,16 +106,20 @@ export default function SearchPage() {
       </h1>
 
       <div className="flex flex-col gap-6 lg:flex-row">
-        {/* Left column: Filters + Results */}
+        {/* Left column: Map (hidden on mobile) */}
+        <div className="hidden lg:block lg:w-1/2 lg:shrink-0">
+          <div className="sticky top-24 h-[calc(100vh-8rem)]">
+            <PropertyMap markers={mapMarkers} />
+          </div>
+        </div>
+
+        {/* Right column: Filters + Results */}
         <div className="flex-1 min-w-0 space-y-6">
-          {/* Filters */}
           <SearchFilters
             filters={filters}
             onChange={setFilters}
             onClear={() => setFilters(defaultFilters)}
           />
-
-          {/* Results */}
           <SearchResults
             properties={filteredProperties}
             locale={locale}
@@ -124,13 +128,6 @@ export default function SearchPage() {
             sortBy={sortBy}
             onSortChange={setSortBy}
           />
-        </div>
-
-        {/* Right column: Map (hidden on mobile, shown on lg+) */}
-        <div className="hidden lg:block lg:w-[480px] xl:w-[560px] 2xl:w-[640px] lg:shrink-0">
-          <div className="sticky top-24">
-            <PropertyMap markers={mapMarkers} />
-          </div>
         </div>
       </div>
     </div>

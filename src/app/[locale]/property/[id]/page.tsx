@@ -23,6 +23,7 @@ import { Button } from '@/components/ui/Button';
 import { sampleProperties } from '@/lib/sample-data';
 import { getLocalizedField, formatPrice, getAreaLabel } from '@/lib/utils';
 import { ImageGallery } from '@/components/properties/ImageGallery';
+import { AmenitiesList } from '@/components/properties/AmenitiesList';
 
 type Props = {
   params: Promise<{ locale: string; id: string }>;
@@ -325,6 +326,160 @@ export default async function PropertyDetailPage({ params }: Props) {
                     </div>
                   </div>
                 ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Amenities — 24 facilities */}
+          <Card>
+            <CardHeader>
+              <h2 className="text-lg font-semibold text-gray-900">
+                {locale === 'ar' ? 'مرافق وخدمات مميزة' : 'Exceptional Facilities & Services'}
+              </h2>
+              <p className="mt-1 text-sm text-gray-500">
+                {locale === 'ar' ? '24 مرفق متكامل' : '24 integrated facilities'}
+              </p>
+            </CardHeader>
+            <CardContent>
+              <AmenitiesList locale={locale} />
+            </CardContent>
+          </Card>
+
+          {/* Complex Specifications */}
+          <Card>
+            <CardHeader>
+              <h2 className="text-lg font-semibold text-gray-900">
+                {locale === 'ar' ? 'مواصفات المجمع السكني' : 'Complex Specifications'}
+              </h2>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <div className="rounded-lg bg-[#1a1a1a] p-4 text-center text-white">
+                  <p className="text-3xl font-bold text-[#c41e3a]">20,640</p>
+                  <p className="mt-1 text-xs text-gray-300">
+                    {locale === 'ar' ? 'متر مربع' : 'Square Meters'}
+                  </p>
+                  <p className="text-[10px] text-gray-400">
+                    {locale === 'ar' ? 'المساحة الإجمالية' : 'Total Area'}
+                  </p>
+                </div>
+                <div className="rounded-lg bg-[#1a1a1a] p-4 text-center text-white">
+                  <p className="text-3xl font-bold text-[#c41e3a]">20</p>
+                  <p className="mt-1 text-xs text-gray-300">
+                    {locale === 'ar' ? 'دورين' : '2 Floors'}
+                  </p>
+                  <p className="text-[10px] text-gray-400">
+                    {locale === 'ar' ? 'عدد المباني' : 'Buildings'}
+                  </p>
+                </div>
+                <div className="rounded-lg bg-[#1a1a1a] p-4 text-center text-white">
+                  <p className="text-3xl font-bold text-[#c41e3a]">592</p>
+                  <p className="mt-1 text-xs text-gray-300">
+                    {locale === 'ar' ? '24 م² للغرفة' : '24 m² per room'}
+                  </p>
+                  <p className="text-[10px] text-gray-400">
+                    {locale === 'ar' ? 'عدد الغرف' : 'Rooms'}
+                  </p>
+                </div>
+                <div className="rounded-lg bg-[#1a1a1a] p-4 text-center text-white">
+                  <p className="text-3xl font-bold text-[#c41e3a]">3,500</p>
+                  <p className="mt-1 text-xs text-gray-300">
+                    {locale === 'ar' ? 'سرير' : 'Beds'}
+                  </p>
+                  <p className="text-[10px] text-gray-400">
+                    {locale === 'ar' ? 'عدد الأسرة' : 'Capacity'}
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Sustainability */}
+          <Card>
+            <CardHeader>
+              <h2 className="text-lg font-semibold text-gray-900">
+                {locale === 'ar' ? 'الاستدامة' : 'Sustainability'}
+              </h2>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {(locale === 'ar'
+                  ? [
+                      'تشجير المساحات الخارجية',
+                      'أنظمة معالجة وتكرير المياه',
+                      'أنظمة طاقة شمسية متواكبة مع أحدث الاشتراطات البيئية',
+                      'الاعتماد على موارد ذاتية (ماء، كهرباء، زراعة)',
+                    ]
+                  : [
+                      'Landscaping of outdoor spaces',
+                      'Water treatment and recycling systems',
+                      'Solar energy systems compliant with latest regulations',
+                      'Self-sufficient resources (water, electricity, agriculture)',
+                    ]
+                ).map((item, i) => (
+                  <div key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                    <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#c41e3a]" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Security & Safety */}
+          <Card>
+            <CardHeader>
+              <h2 className="text-lg font-semibold text-gray-900">
+                {locale === 'ar' ? 'الأمن والسلامة' : 'Security & Safety'}
+              </h2>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="flex gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#fef2f2]">
+                    <ShieldCheck className="h-5 w-5 text-[#c41e3a]" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">
+                      {locale === 'ar' ? 'تصميم آمن' : 'Safe Design'}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      {locale === 'ar'
+                        ? 'يتناسب مع اشتراطات الدفاع المدني وأنظمة السلامة الحديثة'
+                        : 'Compliant with civil defense requirements and modern safety systems'}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#fef2f2]">
+                    <ShieldCheck className="h-5 w-5 text-[#c41e3a]" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">
+                      {locale === 'ar' ? 'نظام كشف الحريق' : 'Fire Detection System'}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      {locale === 'ar'
+                        ? 'نظام إنذار صوتي وشبكة كشف الدخان وأنظمة رش آلي'
+                        : 'Audio alarm, smoke detection network, and automatic sprinkler systems'}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#fef2f2]">
+                    <ShieldCheck className="h-5 w-5 text-[#c41e3a]" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-gray-900">
+                      {locale === 'ar' ? 'كاميرات مراقبة' : 'Surveillance Cameras'}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      {locale === 'ar'
+                        ? 'تغطية لكامل الموقع مع غرفة تحكم وشركة أمن متخصصة'
+                        : 'Full site coverage with control room and dedicated security company'}
+                    </p>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>

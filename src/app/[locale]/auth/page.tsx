@@ -34,8 +34,8 @@ export default function AuthPage() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-2xl mb-4">
-            <Building2 className="w-8 h-8 text-[#c41e3a]" />
+          <div className="inline-flex items-center justify-center w-20 h-20 mb-4">
+            <img src="/Logo.avif" alt="Msakn" className="w-full h-full object-contain" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900">
             {locale === 'ar' ? 'سكن القوى العاملة' : 'Sakan Workforce'}

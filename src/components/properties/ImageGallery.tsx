@@ -32,36 +32,21 @@ export function ImageGallery({ images, locale }: ImageGalleryProps) {
 
   return (
     <>
-      <div className="mb-8">
-        {/* Hero image */}
-        <div
-          className="overflow-hidden rounded-xl cursor-pointer sm:h-80 lg:h-96"
-          onClick={() => openLightbox(0)}
-        >
-          <img
-            src={images[0].url}
-            alt={getAlt(images[0])}
-            className="h-64 w-full object-cover sm:h-80 lg:h-96 hover:scale-105 transition-transform duration-300"
-          />
-        </div>
-        {/* Thumbnail row */}
-        {images.length > 1 && (
-          <div className="mt-2 grid grid-cols-4 gap-2">
-            {images.slice(1, 5).map((img, i) => (
-              <div
-                key={img.id}
-                className="overflow-hidden rounded-lg cursor-pointer"
-                onClick={() => openLightbox(i + 1)}
-              >
-                <img
-                  src={img.url}
-                  alt={getAlt(img)}
-                  className="h-16 w-full object-cover sm:h-20 hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-            ))}
-          </div>
-        )}
+      <div className="mb-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+        {images.map((img, i) => (
+          <button
+            key={img.id}
+            type="button"
+            onClick={() => openLightbox(i)}
+            className="group relative aspect-square overflow-hidden rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#c41e3a] focus:ring-offset-2"
+          >
+            <img
+              src={img.url}
+              alt={getAlt(img)}
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </button>
+        ))}
       </div>
 
       {/* Lightbox */}

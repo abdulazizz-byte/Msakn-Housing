@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { Building2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function Footer() {
@@ -27,7 +26,7 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
           {/* Brand */}
           <div className="flex items-center gap-2 text-white">
-            <Building2 className="h-5 w-5" />
+            <img src="/Logo.avif" alt="Msakn" className="h-7 w-7 rounded bg-white/5 p-0.5" />
             <span className="text-sm font-semibold">
               {t('common.appName')}
             </span>

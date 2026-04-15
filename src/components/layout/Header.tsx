@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { Menu, X, Globe, Building2 } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export default function Header() {
@@ -12,32 +12,27 @@ export default function Header() {
   const pathname = usePathname();
   const t = useTranslations();
 
-  // Derive locale from the first path segment
   const locale = pathname.startsWith('/en') ? 'en' : 'ar';
-  const isRTL = locale === 'ar';
   const alternateLocale = locale === 'ar' ? 'en' : 'ar';
-
-  // Build the alternate-locale path by swapping the first segment
   const switchLocalePath = pathname.replace(/^\/(ar|en)/, `/${alternateLocale}`);
 
   const navLinks = [
     { href: `/${locale}`, label: t('nav.home') },
     { href: `/${locale}/search`, label: t('nav.search') },
-    { href: `/${locale}/requests/new`, label: t('nav.submitRequest') },
-    { href: `/${locale}/dashboard`, label: t('nav.dashboard') },
+    { href: `/${locale}/properties/new`, label: t('nav.addProperty') },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#2d2d2d] bg-[#1a1a1a] backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-[#ece5dc] bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full items-center justify-between px-6 sm:px-8 lg:px-12 xl:px-16">
         {/* Logo */}
         <Link
           href={`/${locale}`}
-          className="flex items-center gap-2 text-white transition-colors hover:text-white/80"
+          className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
         >
-          <Building2 className="h-7 w-7" />
-          <span className="text-lg font-bold tracking-tight">
-            {t('common.appName')}
+          <img src="/Logo.avif" alt="Msakn" className="h-10 w-10" />
+          <span className="text-lg font-bold tracking-tight text-[#1a1a1a]">
+            {locale === 'ar' ? 'مساكن' : 'MSAKN'}
           </span>
         </Link>
 
@@ -56,8 +51,8 @@ export default function Header() {
                 className={cn(
                   'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                   isActive
-                    ? 'bg-white/10 text-white'
-                    : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                    ? 'bg-[#fef2f2] text-[#c41e3a]'
+                    : 'text-[#666] hover:bg-[#faf8f5] hover:text-[#1a1a1a]'
                 )}
               >
                 {link.label}
@@ -68,20 +63,18 @@ export default function Header() {
 
         {/* Right-side actions */}
         <div className="flex items-center gap-2">
-          {/* Language toggle */}
           <Link
             href={switchLocalePath}
-            className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10 hover:text-white"
+            className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-[#666] transition-colors hover:bg-[#faf8f5] hover:text-[#1a1a1a]"
             title={t('common.language')}
           >
             <Globe className="h-4 w-4" />
             <span className="hidden sm:inline">{t('common.language')}</span>
           </Link>
 
-          {/* Mobile menu button */}
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-lg p-2 text-gray-300 transition-colors hover:bg-white/10 hover:text-white md:hidden"
+            className="inline-flex items-center justify-center rounded-lg p-2 text-[#666] transition-colors hover:bg-[#faf8f5] hover:text-[#1a1a1a] md:hidden"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle menu"
@@ -97,7 +90,7 @@ export default function Header() {
 
       {/* Mobile navigation */}
       {mobileMenuOpen && (
-        <nav className="border-t border-[#2d2d2d] bg-[#1a1a1a] px-4 pb-4 pt-2 md:hidden">
+        <nav className="border-t border-[#ece5dc] bg-white px-4 pb-4 pt-2 md:hidden">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => {
               const isActive =
@@ -113,8 +106,8 @@ export default function Header() {
                   className={cn(
                     'rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                     isActive
-                      ? 'bg-white/10 text-white'
-                      : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                      ? 'bg-[#fef2f2] text-[#c41e3a]'
+                      : 'text-[#666] hover:bg-[#faf8f5] hover:text-[#1a1a1a]'
                   )}
                 >
                   {link.label}
