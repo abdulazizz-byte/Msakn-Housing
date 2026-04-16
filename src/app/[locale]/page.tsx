@@ -15,6 +15,7 @@ import {
   Wallet,
 } from 'lucide-react';
 import { LookingForHousingCard } from '@/components/home/LookingForHousingCard';
+import { WorkerCategories } from '@/components/home/WorkerCategories';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import { sampleProperties } from '@/lib/sample-data';
 
@@ -245,6 +246,11 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════
+          WORKER CATEGORIES — who we serve
+          ══════════════════════════════════════ */}
+      <WorkerCategories locale={locale} />
 
       {/* ══════════════════════════════════════
           FEATURED PROPERTIES
