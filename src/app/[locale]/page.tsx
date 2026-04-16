@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { LookingForHousingCard } from '@/components/home/LookingForHousingCard';
 import { WorkerCategories } from '@/components/home/WorkerCategories';
+import { BeforeAfterSection } from '@/components/home/BeforeAfterSection';
 import { PropertyCard } from '@/components/properties/PropertyCard';
 import { sampleProperties } from '@/lib/sample-data';
 
@@ -246,6 +247,11 @@ export default async function HomePage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════
+          BEFORE / AFTER — experience the difference
+          ══════════════════════════════════════ */}
+      <BeforeAfterSection locale={locale} />
 
       {/* ══════════════════════════════════════
           WORKER CATEGORIES — who we serve
