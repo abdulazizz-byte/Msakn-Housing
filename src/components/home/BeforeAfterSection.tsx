@@ -7,11 +7,8 @@ interface Props {
   locale: string;
 }
 
-// Traditional/damaged labor dormitory — worker standing in cluttered room
-const BAD_IMG = '/damaged-room.jpg';
-// Clean, modern bunk-bed room (the Msakn standard)
-const GOOD_IMG =
-  'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1600&q=85&auto=format&fit=crop';
+const BAD_IMG = '/bad%20room.png';
+const GOOD_IMG = '/good%20room.png';
 
 export function BeforeAfterSection({ locale }: Props) {
   const isAr = locale === 'ar';
