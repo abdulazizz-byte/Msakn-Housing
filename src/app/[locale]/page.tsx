@@ -13,6 +13,8 @@ import {
   Shield,
   Headphones,
   Wallet,
+  Wrench,
+  TrendingUp,
 } from 'lucide-react';
 import { LookingForHousingCard } from '@/components/home/LookingForHousingCard';
 import { WorkerCategories } from '@/components/home/WorkerCategories';
@@ -162,6 +164,39 @@ export default async function HomePage({ params }: Props) {
             </div>
           </Link>
         </div>
+
+        {/* Operate My Unit teaser — new service ribbon */}
+        <Link
+          href={`/${locale}/operate`}
+          className="group mx-auto mt-5 flex max-w-7xl items-center justify-between gap-4 rounded-2xl border border-[#c41e3a]/15 bg-gradient-to-r from-[#fef2f2] via-white to-[#fef2f2] p-4 transition-all hover:border-[#c41e3a]/30 hover:shadow-lg sm:p-5"
+        >
+          <div className="flex items-center gap-3 sm:gap-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#c41e3a] text-white shadow-md shadow-[#c41e3a]/20 sm:h-12 sm:w-12">
+              <Wrench className="h-5 w-5 sm:h-6 sm:w-6" />
+            </div>
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1 rounded-full bg-[#c41e3a] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
+                  <Sparkles className="h-2.5 w-2.5" />
+                  {isAr ? 'جديد' : 'New'}
+                </span>
+                <h3 className="text-sm font-bold text-[#0a0a0a] sm:text-base">
+                  {isAr ? 'شغّل عقارك معنا' : 'Let Us Operate Your Property'}
+                </h3>
+              </div>
+              <p className="mt-0.5 text-xs text-[#525252] sm:text-sm">
+                {isAr
+                  ? 'نحن ندير التشغيل والصيانة والأمن — أنت تجني الدخل فقط'
+                  : 'We run operations, maintenance, and security — you just collect income'}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#c41e3a] transition-transform group-hover:gap-3 sm:text-sm">
+            <TrendingUp className="hidden h-4 w-4 sm:block" />
+            <span className="hidden sm:inline">{isAr ? 'عرض الباقات' : 'View tiers'}</span>
+            <ArrowUpRight className="h-4 w-4" />
+          </div>
+        </Link>
 
         {/* Stats strip */}
         <div className="mx-auto mt-8 grid max-w-7xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-black/5 bg-black/5 lg:grid-cols-4">

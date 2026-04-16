@@ -15,6 +15,10 @@ import {
   Users as UsersIcon,
   BedDouble,
   ClipboardCheck,
+  UtensilsCrossed,
+  Bus,
+  Sparkles,
+  Wrench,
 } from 'lucide-react';
 
 interface RequestWizardProps {
@@ -25,6 +29,7 @@ interface RequestWizardProps {
 
 type UserType = 'individual' | 'company' | null;
 type RoomType = 'shared' | 'technician' | 'engineer' | 'driver' | '';
+type AddonKey = 'catering' | 'transport' | 'cleaning' | 'maintenance';
 
 interface WizardState {
   userType: UserType;
@@ -33,6 +38,7 @@ interface WizardState {
   areaDirection: string;
   workerCount: string;
   roomType: RoomType;
+  addons: AddonKey[];
   fullName: string;
   phone: string;
   email: string;
@@ -45,6 +51,7 @@ const initialState: WizardState = {
   areaDirection: '',
   workerCount: '',
   roomType: '',
+  addons: [],
   fullName: '',
   phone: '',
   email: '',
@@ -80,6 +87,20 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
   const update = <K extends keyof WizardState>(key: K, value: WizardState[K]) => {
     setState((s) => ({ ...s, [key]: value }));
   };
+
+  const toggleAddon = (key: AddonKey) => {
+    setState((s) => ({
+      ...s,
+      addons: s.addons.includes(key) ? s.addons.filter((k) => k !== key) : [...s.addons, key],
+    }));
+  };
+
+  const addons: { key: AddonKey; ar: string; en: string; icon: typeof User; descAr: string; descEn: string }[] = [
+    { key: 'catering', ar: 'إعاشة', en: 'Catering', icon: UtensilsCrossed, descAr: '٣ وجبات يومياً', descEn: '3 meals/day' },
+    { key: 'transport', ar: 'نقل', en: 'Transport', icon: Bus, descAr: 'ذهاب وإياب للعمل', descEn: 'Daily commute' },
+    { key: 'cleaning', ar: 'نظافة', en: 'Cleaning', icon: Sparkles, descAr: 'تنظيف دوري', descEn: 'Periodic cleaning' },
+    { key: 'maintenance', ar: 'صيانة', en: 'Maintenance', icon: Wrench, descAr: 'دعم على مدار الساعة', descEn: '24/7 support' },
+  ];
 
   const steps = [
     { n: 1, labelAr: 'الاحتياجات', labelEn: 'Needs' },
@@ -202,10 +223,10 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
             <SuccessStep isAr={isAr} />
           ) : (
             <>
-              {step === 1 && <Step1Needs state={state} update={update} isAr={isAr} rooms={rooms} />}
+              {step === 1 && <Step1Needs state={state} update={update} toggleAddon={toggleAddon} isAr={isAr} rooms={rooms} addons={addons} />}
               {step === 2 && <Step2Location state={state} update={update} isAr={isAr} areas={areas} />}
               {step === 3 && <Step3Contact state={state} update={update} isAr={isAr} />}
-              {step === 4 && <Step4Review state={state} isAr={isAr} areas={areas} rooms={rooms} />}
+              {step === 4 && <Step4Review state={state} isAr={isAr} areas={areas} rooms={rooms} addons={addons} />}
             </>
           )}
         </div>
@@ -246,13 +267,17 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
 function Step1Needs({
   state,
   update,
+  toggleAddon,
   isAr,
   rooms,
+  addons,
 }: {
   state: WizardState;
   update: <K extends keyof WizardState>(k: K, v: WizardState[K]) => void;
+  toggleAddon: (key: AddonKey) => void;
   isAr: boolean;
   rooms: { key: RoomType; ar: string; en: string }[];
+  addons: { key: AddonKey; ar: string; en: string; icon: typeof User; descAr: string; descEn: string }[];
 }) {
   return (
     <div className="space-y-6">
@@ -328,6 +353,53 @@ function Step1Needs({
               {isAr ? r.ar : r.en}
             </button>
           ))}
+        </div>
+      </div>
+
+      {/* Add-ons */}
+      <div>
+        <div className="mb-2 flex items-baseline justify-between">
+          <label className="block text-sm font-medium text-[#404040]">
+            {isAr ? 'خدمات إضافية' : 'Add-on Services'}
+          </label>
+          <span className="text-[11px] text-[#a3a3a3]">
+            {isAr ? 'اختياري — حدد ما تحتاج' : 'Optional — pick what you need'}
+          </span>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {addons.map((a) => {
+            const active = state.addons.includes(a.key);
+            const Icon = a.icon;
+            return (
+              <button
+                key={a.key}
+                type="button"
+                onClick={() => toggleAddon(a.key)}
+                className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 text-start transition-all ${
+                  active
+                    ? 'border-[#c41e3a] bg-[#fef2f2]'
+                    : 'border-black/5 bg-white hover:border-black/10'
+                }`}
+              >
+                <div
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors ${
+                    active ? 'bg-[#c41e3a] text-white' : 'bg-[#f5f5f5] text-[#737373]'
+                  }`}
+                >
+                  <Icon className="h-4 w-4" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className={`text-sm font-semibold leading-tight ${active ? 'text-[#c41e3a]' : 'text-[#0a0a0a]'}`}>
+                    {isAr ? a.ar : a.en}
+                  </p>
+                  <p className="text-[11px] text-[#737373] truncate">
+                    {isAr ? a.descAr : a.descEn}
+                  </p>
+                </div>
+                {active && <Check className="h-4 w-4 shrink-0 text-[#c41e3a]" />}
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -457,19 +529,26 @@ function Step4Review({
   isAr,
   areas,
   rooms,
+  addons,
 }: {
   state: WizardState;
   isAr: boolean;
   areas: { key: string; ar: string; en: string }[];
   rooms: { key: RoomType; ar: string; en: string }[];
+  addons: { key: AddonKey; ar: string; en: string; icon: typeof User; descAr: string; descEn: string }[];
 }) {
   const areaLabel = areas.find((a) => a.key === state.areaDirection);
   const roomLabel = rooms.find((r) => r.key === state.roomType);
+  const selectedAddons = addons.filter((a) => state.addons.includes(a.key));
+  const addonsValue = selectedAddons.length
+    ? selectedAddons.map((a) => (isAr ? a.ar : a.en)).join(isAr ? '، ' : ', ')
+    : isAr ? 'لا يوجد' : 'None';
 
   const rows = [
     { label: isAr ? 'النوع' : 'Type', value: state.userType === 'individual' ? (isAr ? 'فرد' : 'Individual') : (isAr ? `شركة — ${state.companyName || '—'}` : `Company — ${state.companyName || '—'}`) },
     { label: isAr ? 'عدد الأفراد' : 'Count', value: state.workerCount },
     { label: isAr ? 'نوع الغرفة' : 'Room', value: roomLabel ? (isAr ? roomLabel.ar : roomLabel.en) : '—' },
+    { label: isAr ? 'خدمات إضافية' : 'Add-ons', value: addonsValue },
     { label: isAr ? 'الموقع' : 'Location', value: `${isAr ? 'الرياض' : 'Riyadh'} — ${areaLabel ? (isAr ? areaLabel.ar : areaLabel.en) : '—'}` },
     { label: isAr ? 'الاسم' : 'Name', value: state.fullName },
     { label: isAr ? 'الجوال' : 'Phone', value: state.phone },

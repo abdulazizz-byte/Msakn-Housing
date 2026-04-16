@@ -19,6 +19,7 @@ export default function Header() {
   const navLinks = [
     { href: `/${locale}`, label: t('nav.home') },
     { href: `/${locale}/search`, label: t('nav.search') },
+    { href: `/${locale}/operate`, label: locale === 'ar' ? 'شغّل عقارك' : 'Operate My Unit' },
     { href: `/${locale}/properties/new`, label: t('nav.addProperty') },
   ];
 
