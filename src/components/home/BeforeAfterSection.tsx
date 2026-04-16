@@ -7,9 +7,8 @@ interface Props {
   locale: string;
 }
 
-// Traditional/run-down labor dormitory — worn, crowded
-const BAD_IMG =
-  'https://images.unsplash.com/photo-1585637071663-799845ad5212?w=1600&q=85&auto=format&fit=crop';
+// Traditional/damaged labor dormitory — worker standing in cluttered room
+const BAD_IMG = '/damaged-room.jpg';
 // Clean, modern bunk-bed room (the Msakn standard)
 const GOOD_IMG =
   'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=1600&q=85&auto=format&fit=crop';
