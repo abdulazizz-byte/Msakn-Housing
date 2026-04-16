@@ -7,8 +7,16 @@ import {
   Trees,
   Users2,
   Home,
+  Search,
+  ClipboardCheck,
+  KeyRound,
+  Shield,
+  Headphones,
+  Wallet,
 } from 'lucide-react';
 import { LookingForHousingCard } from '@/components/home/LookingForHousingCard';
+import { PropertyCard } from '@/components/properties/PropertyCard';
+import { sampleProperties } from '@/lib/sample-data';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -172,6 +180,213 @@ export default async function HomePage({ params }: Props) {
           ))}
         </div>
       </div>
+
+      {/* ══════════════════════════════════════
+          HOW IT WORKS — 3-step process
+          ══════════════════════════════════════ */}
+      <section className="relative z-10 border-t border-black/5 bg-white py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#c41e3a]">
+              {isAr ? 'كيف تعمل المنصة' : 'How It Works'}
+            </span>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
+              {isAr ? 'ثلاث خطوات بسيطة' : 'Three Simple Steps'}
+            </h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                icon: Search,
+                titleAr: 'اكتشف واختر',
+                titleEn: 'Explore & Select',
+                descAr: 'تصفح الوحدات المتاحة واختر ما يناسب احتياجات فريقك من حيث الموقع والسعة والخدمات',
+                descEn: 'Browse available units and select what fits your team needs by location, capacity, and services',
+                step: '01',
+              },
+              {
+                icon: ClipboardCheck,
+                titleAr: 'خصص طلبك',
+                titleEn: 'Customize',
+                descAr: 'حدد مدة الإقامة، عدد الأسرّة، والخدمات الإضافية المطلوبة لفريقك',
+                descEn: 'Set your duration, number of beds, and additional services needed',
+                step: '02',
+              },
+              {
+                icon: KeyRound,
+                titleAr: 'احجز بأمان',
+                titleEn: 'Confirm & Book',
+                descAr: 'أكد الحجز بعد مراجعة التفاصيل وادفع عبر وسائل الدفع الآمنة',
+                descEn: 'Confirm after reviewing details and pay securely through trusted methods',
+                step: '03',
+              },
+            ].map(({ icon: Icon, titleAr, titleEn, descAr, descEn, step }) => (
+              <div
+                key={step}
+                className="group relative overflow-hidden rounded-3xl border border-black/5 bg-[#fafafa] p-8 transition-all hover:border-[#c41e3a]/20 hover:bg-white hover:shadow-xl"
+              >
+                <div className="mb-4 flex items-start justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#c41e3a] text-white shadow-lg shadow-[#c41e3a]/30">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <span className="text-4xl font-black text-[#c41e3a]/10">
+                    {step}
+                  </span>
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-[#0a0a0a]">
+                  {isAr ? titleAr : titleEn}
+                </h3>
+                <p className="text-sm leading-relaxed text-[#525252]">
+                  {isAr ? descAr : descEn}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          FEATURED PROPERTIES
+          ══════════════════════════════════════ */}
+      <section className="relative z-10 bg-[#fafafa] py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 flex items-end justify-between">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#c41e3a]">
+                {isAr ? 'عقارات مميزة' : 'Featured Properties'}
+              </span>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
+                {isAr ? 'مساكن جاهزة للسكن' : 'Move-in Ready Units'}
+              </h2>
+            </div>
+            <Link
+              href={`/${locale}/search`}
+              className="hidden items-center gap-1 text-sm font-semibold text-[#c41e3a] transition-transform hover:gap-2 sm:inline-flex"
+            >
+              {isAr ? 'عرض الكل' : 'View all'}
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {sampleProperties.slice(0, 4).map((property) => (
+              <PropertyCard key={property.id} property={property} locale={locale} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          WHY MSAKN — Trust pillars
+          ══════════════════════════════════════ */}
+      <section className="relative z-10 border-y border-black/5 bg-white py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#c41e3a]">
+              {isAr ? 'لماذا مساكن' : 'Why Msakn'}
+            </span>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
+              {isAr ? 'ثقة الآلاف من الشركات' : 'Trusted by Thousands'}
+            </h2>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                icon: Shield,
+                titleAr: 'موثق رسمياً',
+                titleEn: 'Fully Licensed',
+                descAr: 'جميع العقارات موثقة من الأمانة والدفاع المدني',
+                descEn: 'All properties verified by municipality and civil defense',
+              },
+              {
+                icon: Headphones,
+                titleAr: 'دعم على مدار الساعة',
+                titleEn: '24/7 Support',
+                descAr: 'فريق دعم متخصص متاح دائماً لخدمتك',
+                descEn: 'Dedicated support team always available',
+              },
+              {
+                icon: Wallet,
+                titleAr: 'دفع آمن',
+                titleEn: 'Secure Payment',
+                descAr: 'مدى، فيزا، ماستركارد، ساداد، تحويل بنكي',
+                descEn: 'Mada, Visa, Mastercard, Sadad, Bank Transfer',
+              },
+              {
+                icon: Sparkles,
+                titleAr: 'خدمات متكاملة',
+                titleEn: 'All-Inclusive',
+                descAr: 'إعاشة، نظافة، صيانة، نقل — كل شيء في مكان واحد',
+                descEn: 'Catering, cleaning, maintenance, transport — all in one',
+              },
+            ].map(({ icon: Icon, titleAr, titleEn, descAr, descEn }) => (
+              <div key={titleEn} className="text-center">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fef2f2]">
+                  <Icon className="h-7 w-7 text-[#c41e3a]" />
+                </div>
+                <h3 className="mb-1.5 text-base font-bold text-[#0a0a0a]">
+                  {isAr ? titleAr : titleEn}
+                </h3>
+                <p className="text-sm text-[#737373]">
+                  {isAr ? descAr : descEn}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Payment methods visual strip */}
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-3 border-t border-black/5 pt-8">
+            <span className="text-xs font-medium uppercase tracking-wider text-[#a3a3a3]">
+              {isAr ? 'نقبل' : 'We accept'}
+            </span>
+            {['Mada', 'Visa', 'Mastercard', 'Sadad', 'Bank Transfer'].map((method) => (
+              <span
+                key={method}
+                className="rounded-full border border-black/10 bg-white px-3.5 py-1.5 text-xs font-semibold text-[#404040]"
+              >
+                {method}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          FINAL CTA
+          ══════════════════════════════════════ */}
+      <section className="relative z-10 overflow-hidden bg-[#0a0a0a] py-16 lg:py-24">
+        <div className="absolute top-0 end-0 h-96 w-96 -translate-y-1/3 translate-x-1/3 rounded-full bg-[#c41e3a] opacity-20 blur-3xl" />
+        <div className="absolute bottom-0 start-0 h-96 w-96 translate-y-1/3 -translate-x-1/3 rounded-full bg-[#14b8a6] opacity-10 blur-3xl" />
+
+        <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            {isAr ? 'جاهز تبدأ رحلتك معنا؟' : 'Ready to get started?'}
+          </h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-white/70">
+            {isAr
+              ? 'سواء كنت تبحث عن سكن أو لديك عقار للتأجير، مساكن هي وجهتك الأولى'
+              : 'Whether you need housing or have a property to rent, Msakn is your first destination'}
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href={`/${locale}/search`}
+              className="inline-flex items-center gap-2 rounded-full bg-[#c41e3a] px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-[#c41e3a]/30 transition-all hover:bg-[#a91b32] hover:shadow-2xl"
+            >
+              {isAr ? 'تصفح المساكن' : 'Browse Units'}
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+            <Link
+              href={`/${locale}/properties/new`}
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10"
+            >
+              {isAr ? 'سجّل عقارك' : 'List Your Property'}
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
