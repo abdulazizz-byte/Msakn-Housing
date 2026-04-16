@@ -7,8 +7,8 @@ interface Props {
   locale: string;
 }
 
-const BAD_IMG = '/bad%20room.png';
-const GOOD_IMG = '/good%20room.png';
+const BAD_IMG = '/bad-room.webp';
+const GOOD_IMG = '/good-room.webp';
 
 export function BeforeAfterSection({ locale }: Props) {
   const isAr = locale === 'ar';
