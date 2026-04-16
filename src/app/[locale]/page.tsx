@@ -63,8 +63,8 @@ export default async function HomePage({ params }: Props) {
 
           <p className="mx-auto max-w-2xl text-sm text-[#525252] sm:text-base lg:text-lg">
             {isAr
-              ? 'من فرد يبحث عن سكن لسائقه إلى شركة بعشرات الآلاف من الموظفين'
-              : 'From an individual seeking housing for their driver to a company with tens of thousands of employees'}
+              ? 'حلول إسكان مرنة تناسب جميع الاحتياجات والأحجام'
+              : 'Flexible housing solutions for every need and every size'}
           </p>
 
           {/* Compound amenity highlights */}
@@ -110,8 +110,8 @@ export default async function HomePage({ params }: Props) {
 
               <ul className="mb-6 space-y-2">
                 {(isAr
-                  ? ['من فرد واحد إلى 60,000+ موظف', 'بحث متقدم بالموقع والسعة', 'نظام مطابقة ذكي وعروض فورية']
-                  : ['From 1 person to 60,000+ employees', 'Advanced search by location & capacity', 'Smart matching with instant offers']
+                  ? ['مرونة كاملة لجميع الأحجام', 'بحث متقدم بالموقع والسعة', 'نظام مطابقة ذكي وعروض فورية']
+                  : ['Flexible solutions for all sizes', 'Advanced search by location & capacity', 'Smart matching with instant offers']
                 ).map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm text-[#525252]">
                     <CheckCircle className="h-4 w-4 shrink-0 text-[#c41e3a]" />
