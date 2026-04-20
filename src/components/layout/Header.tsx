@@ -24,7 +24,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#F15A29] shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#58595B] shadow-sm">
       <div className="mx-auto flex h-16 w-full items-center justify-between px-6 sm:px-8 lg:px-12 xl:px-16">
         {/* Logo lockup — white on red */}
         <Link
@@ -32,9 +32,9 @@ export default function Header() {
           className="flex items-center transition-opacity hover:opacity-90"
         >
           <img
-            src="/logo-white.webp"
+            src="/logo-mono.webp"
             alt="Msakn"
-            className="h-10 w-auto object-contain"
+            className="h-12 w-auto object-contain"
           />
         </Link>
 
@@ -53,7 +53,7 @@ export default function Header() {
                 className={cn(
                   'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                   isActive
-                    ? 'bg-white text-[#F15A29]'
+                    ? 'bg-white text-[#58595B]'
                     : 'text-white/85 hover:bg-white/10 hover:text-white'
                 )}
               >
@@ -92,7 +92,7 @@ export default function Header() {
 
       {/* Mobile navigation */}
       {mobileMenuOpen && (
-        <nav className="border-t border-white/10 bg-[#F15A29] px-4 pb-4 pt-2 md:hidden">
+        <nav className="border-t border-white/10 bg-[#58595B] px-4 pb-4 pt-2 md:hidden">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => {
               const isActive =
@@ -108,7 +108,7 @@ export default function Header() {
                   className={cn(
                     'rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                     isActive
-                      ? 'bg-white text-[#F15A29]'
+                      ? 'bg-white text-[#58595B]'
                       : 'text-white/85 hover:bg-white/10 hover:text-white'
                   )}
                 >
