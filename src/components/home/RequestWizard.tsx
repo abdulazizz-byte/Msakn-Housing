@@ -16,8 +16,7 @@ import {
   BedDouble,
   ClipboardCheck,
   UtensilsCrossed,
-  Bus,
-  Sparkles,
+  Home,
   Wrench,
 } from 'lucide-react';
 
@@ -29,7 +28,7 @@ interface RequestWizardProps {
 
 type UserType = 'individual' | 'company' | null;
 type RoomType = 'shared' | 'technician' | 'engineer' | 'driver' | '';
-type AddonKey = 'catering' | 'transport' | 'cleaning' | 'maintenance';
+type ServicePackageKey = 'housing-only' | 'housing-operated' | 'housing-operated-catered' | '';
 
 interface WizardState {
   userType: UserType;
@@ -38,7 +37,7 @@ interface WizardState {
   areaDirection: string;
   workerCount: string;
   roomType: RoomType;
-  addons: AddonKey[];
+  servicePackage: ServicePackageKey;
   fullName: string;
   phone: string;
   email: string;
@@ -51,7 +50,7 @@ const initialState: WizardState = {
   areaDirection: '',
   workerCount: '',
   roomType: '',
-  addons: [],
+  servicePackage: '',
   fullName: '',
   phone: '',
   email: '',
@@ -88,18 +87,38 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
     setState((s) => ({ ...s, [key]: value }));
   };
 
-  const toggleAddon = (key: AddonKey) => {
-    setState((s) => ({
-      ...s,
-      addons: s.addons.includes(key) ? s.addons.filter((k) => k !== key) : [...s.addons, key],
-    }));
-  };
-
-  const addons: { key: AddonKey; ar: string; en: string; icon: typeof User; descAr: string; descEn: string }[] = [
-    { key: 'catering', ar: 'إعاشة', en: 'Catering', icon: UtensilsCrossed, descAr: '٣ وجبات يومياً', descEn: '3 meals/day' },
-    { key: 'transport', ar: 'نقل', en: 'Transport', icon: Bus, descAr: 'ذهاب وإياب للعمل', descEn: 'Daily commute' },
-    { key: 'cleaning', ar: 'نظافة', en: 'Cleaning', icon: Sparkles, descAr: 'تنظيف دوري', descEn: 'Periodic cleaning' },
-    { key: 'maintenance', ar: 'صيانة', en: 'Maintenance', icon: Wrench, descAr: 'دعم على مدار الساعة', descEn: '24/7 support' },
+  const packages: {
+    key: ServicePackageKey;
+    ar: string;
+    en: string;
+    icon: typeof User;
+    descAr: string;
+    descEn: string;
+  }[] = [
+    {
+      key: 'housing-only',
+      ar: 'سكن بدون تشغيل',
+      en: 'Housing Only',
+      icon: Home,
+      descAr: 'الوحدة فقط — أنت تتولى التشغيل',
+      descEn: 'Unit only — you handle operations',
+    },
+    {
+      key: 'housing-operated',
+      ar: 'سكن مع تشغيل',
+      en: 'Housing + Operations',
+      icon: Wrench,
+      descAr: 'يشمل النظافة، المياه، والصيانة',
+      descEn: 'Includes cleaning, water, and maintenance',
+    },
+    {
+      key: 'housing-operated-catered',
+      ar: 'سكن مع تشغيل وإعاشة',
+      en: 'Housing + Operations + Catering',
+      icon: UtensilsCrossed,
+      descAr: 'الباقة الكاملة — تشغيل + ٣ وجبات يومياً',
+      descEn: 'Full package — operations + 3 meals/day',
+    },
   ];
 
   const steps = [
@@ -110,7 +129,7 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
   ];
 
   const canProceed = () => {
-    if (step === 1) return state.userType !== null && state.workerCount && state.roomType;
+    if (step === 1) return state.userType !== null && state.workerCount && state.roomType && state.servicePackage;
     if (step === 2) return state.areaDirection;
     if (step === 3) return state.fullName && state.phone;
     return true;
@@ -223,10 +242,10 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
             <SuccessStep isAr={isAr} />
           ) : (
             <>
-              {step === 1 && <Step1Needs state={state} update={update} toggleAddon={toggleAddon} isAr={isAr} rooms={rooms} addons={addons} />}
+              {step === 1 && <Step1Needs state={state} update={update} isAr={isAr} rooms={rooms} packages={packages} />}
               {step === 2 && <Step2Location state={state} update={update} isAr={isAr} areas={areas} />}
               {step === 3 && <Step3Contact state={state} update={update} isAr={isAr} />}
-              {step === 4 && <Step4Review state={state} isAr={isAr} areas={areas} rooms={rooms} addons={addons} />}
+              {step === 4 && <Step4Review state={state} isAr={isAr} areas={areas} rooms={rooms} packages={packages} />}
             </>
           )}
         </div>
@@ -267,17 +286,15 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
 function Step1Needs({
   state,
   update,
-  toggleAddon,
   isAr,
   rooms,
-  addons,
+  packages,
 }: {
   state: WizardState;
   update: <K extends keyof WizardState>(k: K, v: WizardState[K]) => void;
-  toggleAddon: (key: AddonKey) => void;
   isAr: boolean;
   rooms: { key: RoomType; ar: string; en: string }[];
-  addons: { key: AddonKey; ar: string; en: string; icon: typeof User; descAr: string; descEn: string }[];
+  packages: { key: ServicePackageKey; ar: string; en: string; icon: typeof User; descAr: string; descEn: string }[];
 }) {
   return (
     <div className="space-y-6">
@@ -356,33 +373,28 @@ function Step1Needs({
         </div>
       </div>
 
-      {/* Add-ons */}
+      {/* Service package — required */}
       <div>
-        <div className="mb-2 flex items-baseline justify-between">
-          <label className="block text-sm font-medium text-[#404040]">
-            {isAr ? 'خدمات إضافية' : 'Add-on Services'}
-          </label>
-          <span className="text-[11px] text-[#a3a3a3]">
-            {isAr ? 'اختياري — حدد ما تحتاج' : 'Optional — pick what you need'}
-          </span>
-        </div>
-        <div className="grid grid-cols-2 gap-2">
-          {addons.map((a) => {
-            const active = state.addons.includes(a.key);
-            const Icon = a.icon;
+        <label className="mb-2 block text-sm font-medium text-[#404040]">
+          {isAr ? 'باقة الخدمة' : 'Service Package'}
+        </label>
+        <div className="space-y-2">
+          {packages.map((p) => {
+            const active = state.servicePackage === p.key;
+            const Icon = p.icon;
             return (
               <button
-                key={a.key}
+                key={p.key}
                 type="button"
-                onClick={() => toggleAddon(a.key)}
-                className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 text-start transition-all ${
+                onClick={() => update('servicePackage', p.key)}
+                className={`flex w-full items-center gap-3 rounded-xl border px-3 py-3 text-start transition-all ${
                   active
                     ? 'border-[#c41e3a] bg-[#fef2f2]'
                     : 'border-black/5 bg-white hover:border-black/10'
                 }`}
               >
                 <div
-                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-colors ${
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors ${
                     active ? 'bg-[#c41e3a] text-white' : 'bg-[#f5f5f5] text-[#737373]'
                   }`}
                 >
@@ -390,13 +402,19 @@ function Step1Needs({
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className={`text-sm font-semibold leading-tight ${active ? 'text-[#c41e3a]' : 'text-[#0a0a0a]'}`}>
-                    {isAr ? a.ar : a.en}
+                    {isAr ? p.ar : p.en}
                   </p>
-                  <p className="text-[11px] text-[#737373] truncate">
-                    {isAr ? a.descAr : a.descEn}
+                  <p className="mt-0.5 text-[11px] text-[#737373]">
+                    {isAr ? p.descAr : p.descEn}
                   </p>
                 </div>
-                {active && <Check className="h-4 w-4 shrink-0 text-[#c41e3a]" />}
+                <div
+                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all ${
+                    active ? 'border-[#c41e3a] bg-[#c41e3a]' : 'border-[#d4d4d4] bg-white'
+                  }`}
+                >
+                  {active && <Check className="h-3 w-3 text-white" />}
+                </div>
               </button>
             );
           })}
@@ -529,26 +547,24 @@ function Step4Review({
   isAr,
   areas,
   rooms,
-  addons,
+  packages,
 }: {
   state: WizardState;
   isAr: boolean;
   areas: { key: string; ar: string; en: string }[];
   rooms: { key: RoomType; ar: string; en: string }[];
-  addons: { key: AddonKey; ar: string; en: string; icon: typeof User; descAr: string; descEn: string }[];
+  packages: { key: ServicePackageKey; ar: string; en: string; icon: typeof User; descAr: string; descEn: string }[];
 }) {
   const areaLabel = areas.find((a) => a.key === state.areaDirection);
   const roomLabel = rooms.find((r) => r.key === state.roomType);
-  const selectedAddons = addons.filter((a) => state.addons.includes(a.key));
-  const addonsValue = selectedAddons.length
-    ? selectedAddons.map((a) => (isAr ? a.ar : a.en)).join(isAr ? '، ' : ', ')
-    : isAr ? 'لا يوجد' : 'None';
+  const packageLabel = packages.find((p) => p.key === state.servicePackage);
+  const packageValue = packageLabel ? (isAr ? packageLabel.ar : packageLabel.en) : '—';
 
   const rows = [
     { label: isAr ? 'النوع' : 'Type', value: state.userType === 'individual' ? (isAr ? 'فرد' : 'Individual') : (isAr ? `شركة — ${state.companyName || '—'}` : `Company — ${state.companyName || '—'}`) },
     { label: isAr ? 'عدد الأفراد' : 'Count', value: state.workerCount },
     { label: isAr ? 'نوع الغرفة' : 'Room', value: roomLabel ? (isAr ? roomLabel.ar : roomLabel.en) : '—' },
-    { label: isAr ? 'خدمات إضافية' : 'Add-ons', value: addonsValue },
+    { label: isAr ? 'باقة الخدمة' : 'Service Package', value: packageValue },
     { label: isAr ? 'الموقع' : 'Location', value: `${isAr ? 'الرياض' : 'Riyadh'} — ${areaLabel ? (isAr ? areaLabel.ar : areaLabel.en) : '—'}` },
     { label: isAr ? 'الاسم' : 'Name', value: state.fullName },
     { label: isAr ? 'الجوال' : 'Phone', value: state.phone },
