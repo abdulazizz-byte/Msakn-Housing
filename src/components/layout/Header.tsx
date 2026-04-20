@@ -24,19 +24,18 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-white/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#DC4149] shadow-sm">
       <div className="mx-auto flex h-16 w-full items-center justify-between px-6 sm:px-8 lg:px-12 xl:px-16">
-        {/* Logo */}
+        {/* Logo lockup — white on red */}
         <Link
           href={`/${locale}`}
-          className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
+          className="flex items-center transition-opacity hover:opacity-90"
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F15A29] shadow-md shadow-[#F15A29]/20">
-            <img src="/logo-white.webp" alt="Msakn" className="h-7 w-7 object-contain" />
-          </span>
-          <span className="text-lg font-bold tracking-tight text-[#1a1a1a]">
-            {locale === 'ar' ? 'مساكن' : 'MSAKN'}
-          </span>
+          <img
+            src="/logo-white.webp"
+            alt="Msakn"
+            className="h-9 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop navigation */}
@@ -54,8 +53,8 @@ export default function Header() {
                 className={cn(
                   'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                   isActive
-                    ? 'bg-[#FEF0E8] text-[#F15A29]'
-                    : 'text-[#666] hover:bg-[#faf8f5] hover:text-[#1a1a1a]'
+                    ? 'bg-white text-[#DC4149]'
+                    : 'text-white/85 hover:bg-white/10 hover:text-white'
                 )}
               >
                 {link.label}
@@ -68,7 +67,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <Link
             href={switchLocalePath}
-            className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-[#666] transition-colors hover:bg-[#faf8f5] hover:text-[#1a1a1a]"
+            className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white"
             title={t('common.language')}
           >
             <Globe className="h-4 w-4" />
@@ -77,7 +76,7 @@ export default function Header() {
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-lg p-2 text-[#666] transition-colors hover:bg-[#faf8f5] hover:text-[#1a1a1a] md:hidden"
+            className="inline-flex items-center justify-center rounded-lg p-2 text-white/85 transition-colors hover:bg-white/10 hover:text-white md:hidden"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle menu"
@@ -93,7 +92,7 @@ export default function Header() {
 
       {/* Mobile navigation */}
       {mobileMenuOpen && (
-        <nav className="border-t border-[#ece5dc] bg-white px-4 pb-4 pt-2 md:hidden">
+        <nav className="border-t border-white/10 bg-[#DC4149] px-4 pb-4 pt-2 md:hidden">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => {
               const isActive =
@@ -109,8 +108,8 @@ export default function Header() {
                   className={cn(
                     'rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                     isActive
-                      ? 'bg-[#FEF0E8] text-[#F15A29]'
-                      : 'text-[#666] hover:bg-[#faf8f5] hover:text-[#1a1a1a]'
+                      ? 'bg-white text-[#DC4149]'
+                      : 'text-white/85 hover:bg-white/10 hover:text-white'
                   )}
                 >
                   {link.label}
