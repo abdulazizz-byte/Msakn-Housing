@@ -12,13 +12,8 @@ import type { Property } from '@/types';
 const defaultFilters: FilterState = {
   area_direction: '',
   room_type: '',
-  min_price: '',
-  max_price: '',
+  service_package: '',
   min_capacity: '',
-  has_catering: false,
-  has_cleaning: false,
-  has_maintenance: false,
-  has_transportation: false,
   verified_only: false,
 };
 
@@ -50,29 +45,18 @@ export default function SearchPage() {
       });
     }
 
-    // Price range
-    const getLowestPrice = (p: typeof results[number]) =>
-      p.price_shared ?? p.price_technician ?? p.price_engineer ?? p.price_driver ?? 0;
-    if (filters.min_price) {
-      const minPrice = Number(filters.min_price);
-      results = results.filter((p) => getLowestPrice(p) >= minPrice);
-    }
-    if (filters.max_price) {
-      const maxPrice = Number(filters.max_price);
-      results = results.filter((p) => getLowestPrice(p) <= maxPrice);
-    }
-
     // Min capacity
     if (filters.min_capacity) {
       const minCap = Number(filters.min_capacity);
       results = results.filter((p) => p.available_capacity >= minCap);
     }
 
-    // Services
-    if (filters.has_catering) results = results.filter((p) => p.has_catering);
-    if (filters.has_cleaning) results = results.filter((p) => p.has_cleaning);
-    if (filters.has_maintenance) results = results.filter((p) => p.has_maintenance);
-    if (filters.has_transportation) results = results.filter((p) => p.has_transportation);
+    // Service package — maps to service-flag combinations
+    if (filters.service_package === 'housing-operated') {
+      results = results.filter((p) => p.has_cleaning && p.has_maintenance);
+    } else if (filters.service_package === 'housing-operated-catered') {
+      results = results.filter((p) => p.has_cleaning && p.has_maintenance && p.has_catering);
+    }
 
     // Quality filters
     if (filters.verified_only) results = results.filter((p) => p.verification_status === 'verified');
