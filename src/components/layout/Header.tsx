@@ -32,9 +32,9 @@ export default function Header() {
           className="flex items-center transition-opacity hover:opacity-90"
         >
           <img
-            src="/logo-light.webp"
+            src="/logo-white.webp"
             alt="Msakn"
-            className="h-9 w-auto object-contain"
+            className="h-10 w-auto object-contain"
           />
         </Link>
 
