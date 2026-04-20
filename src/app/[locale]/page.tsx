@@ -48,11 +48,13 @@ export default async function HomePage({ params }: Props) {
       <div className="relative z-10 w-full px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
         {/* Hero: logo + bold headline */}
         <div className="mx-auto max-w-7xl text-center mb-6 lg:mb-8 animate-fade-up">
-          <img
-            src="/logo-mark.webp"
-            alt="Msakn"
-            className="mx-auto mb-3 h-12 w-12 sm:h-14 sm:w-14"
-          />
+          <span className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F15A29] shadow-lg shadow-[#F15A29]/30 sm:h-14 sm:w-14">
+            <img
+              src="/logo-white.webp"
+              alt="Msakn"
+              className="h-8 w-8 object-contain sm:h-9 sm:w-9"
+            />
+          </span>
 
           {/* Micro tag */}
           <div className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-[#F15A29]/20 bg-[#F15A29]/5 px-3 py-1 text-[11px] font-medium text-[#F15A29] backdrop-blur-sm">

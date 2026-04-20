@@ -31,7 +31,9 @@ export default function Header() {
           href={`/${locale}`}
           className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
         >
-          <img src="/logo-mark.webp" alt="Msakn" className="h-10 w-10" />
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F15A29] shadow-md shadow-[#F15A29]/20">
+            <img src="/logo-white.webp" alt="Msakn" className="h-7 w-7 object-contain" />
+          </span>
           <span className="text-lg font-bold tracking-tight text-[#1a1a1a]">
             {locale === 'ar' ? 'مساكن' : 'MSAKN'}
           </span>
