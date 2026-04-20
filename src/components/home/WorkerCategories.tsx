@@ -1,57 +1,59 @@
-import { Users2 } from 'lucide-react';
+import { Layers3 } from 'lucide-react';
 
 interface Props {
   locale: string;
 }
 
-const CATEGORIES = [
+const SHARED_CATEGORIES = [
+  { ar: 'عمال البناء', en: 'Construction' },
+  { ar: 'المهندسين', en: 'Engineers' },
+  { ar: 'الفنيين', en: 'Technicians' },
+  { ar: 'السائقين', en: 'Drivers' },
+  { ar: 'الطهاة والإعاشة', en: 'Catering' },
+  { ar: 'الضيافة والنظافة', en: 'Hospitality' },
+  { ar: 'الأمن والحراسة', en: 'Security' },
+  { ar: 'الصيانة', en: 'Maintenance' },
+];
+
+const TIERS: {
+  key: 'shared' | 'comfortable' | 'premium';
+  ar: string;
+  en: string;
+  descAr: string;
+  descEn: string;
+  priceAr: string;
+  priceEn: string;
+  img: string;
+}[] = [
   {
-    key: 'construction',
-    ar: 'عمال البناء',
-    en: 'Construction',
-    img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80&auto=format&fit=crop',
+    key: 'shared',
+    ar: 'مشترك',
+    en: 'Shared',
+    descAr: 'غرف جماعية بأسرّة طابقية لجميع فئات العمالة',
+    descEn: 'Shared bunk-bed rooms for every workforce category',
+    priceAr: 'يبدأ من ٥٠٠ ر.س / شهر',
+    priceEn: 'From 500 SAR / month',
+    img: '/Msakn%20pics/beds.jpg',
   },
   {
-    key: 'engineers',
-    ar: 'المهندسين',
-    en: 'Engineers',
-    img: 'https://images.unsplash.com/photo-1581092446327-9b52bd1570c2?w=800&q=80&auto=format&fit=crop',
+    key: 'comfortable',
+    ar: 'مريح',
+    en: 'Comfortable',
+    descAr: 'ستديو خاص أو غرفة مفردة لمن يفضّل الخصوصية',
+    descEn: 'Private studio or single room — for those who prefer privacy',
+    priceAr: 'يبدأ من ١٢٠٠ ر.س / شهر',
+    priceEn: 'From 1,200 SAR / month',
+    img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=85&auto=format&fit=crop',
   },
   {
-    key: 'technicians',
-    ar: 'الفنيين',
-    en: 'Technicians',
-    img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80&auto=format&fit=crop',
-  },
-  {
-    key: 'drivers',
-    ar: 'السائقين',
-    en: 'Drivers',
-    img: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80&auto=format&fit=crop',
-  },
-  {
-    key: 'catering',
-    ar: 'الطهاة والإعاشة',
-    en: 'Catering Staff',
-    img: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format&fit=crop',
-  },
-  {
-    key: 'hospitality',
-    ar: 'الضيافة والنظافة',
-    en: 'Hospitality',
-    img: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80&auto=format&fit=crop',
-  },
-  {
-    key: 'security',
-    ar: 'الأمن والحراسة',
-    en: 'Security',
-    img: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&q=80&auto=format&fit=crop',
-  },
-  {
-    key: 'maintenance',
-    ar: 'الصيانة',
-    en: 'Maintenance',
-    img: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80&auto=format&fit=crop',
+    key: 'premium',
+    ar: 'فخم',
+    en: 'Premium',
+    descAr: 'وحدات راقية مع تشطيبات وخدمات حصرية',
+    descEn: 'High-end units with premium finishes and exclusive services',
+    priceAr: 'يبدأ من ٢٥٠٠ ر.س / شهر',
+    priceEn: 'From 2,500 SAR / month',
+    img: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1200&q=85&auto=format&fit=crop',
   },
 ];
 
@@ -76,39 +78,74 @@ export function WorkerCategories({ locale }: Props) {
             </p>
           </div>
           <div className="hidden items-center gap-2 text-sm text-[#737373] sm:flex">
-            <Users2 className="h-4 w-4 text-[#F15A29]" />
+            <Layers3 className="h-4 w-4 text-[#F15A29]" />
             <span>{isAr ? '٣ مستويات' : '3 Tiers'}</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:gap-4">
-          {CATEGORIES.map((cat) => (
-            <div
-              key={cat.key}
-              className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-[#0a0a0a] cursor-pointer"
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {TIERS.map((tier) => (
+            <article
+              key={tier.key}
+              className="group relative flex flex-col overflow-hidden rounded-3xl border border-black/5 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-2xl"
             >
-              <img
-                src={cat.img}
-                alt={isAr ? cat.ar : cat.en}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover opacity-75 transition-all duration-500 group-hover:scale-110 group-hover:opacity-90"
-              />
-              {/* Dark gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              {/* Image */}
+              <div className="relative aspect-[5/4] overflow-hidden bg-[#0a0a0a]">
+                <img
+                  src={tier.img}
+                  alt={isAr ? tier.ar : tier.en}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
-              {/* Content */}
-              <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                <h3 className="text-lg font-bold text-white drop-shadow-lg sm:text-xl">
-                  {isAr ? cat.ar : cat.en}
-                </h3>
-                <div className="mt-2 inline-flex h-8 items-center gap-1 rounded-full border border-white/20 bg-white/10 px-3 text-xs font-medium text-white backdrop-blur-sm transition-all group-hover:bg-[#F15A29] group-hover:border-[#F15A29]">
-                  {isAr ? 'احجز الآن' : 'Book Now'}
+                {/* Tier badge */}
+                <div className="absolute top-4 start-4 inline-flex items-center gap-1.5 rounded-full bg-[#F15A29] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg shadow-[#F15A29]/30">
+                  {isAr ? tier.ar : tier.en}
+                </div>
+
+                {/* Title overlay */}
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <h3 className="text-2xl font-bold tracking-tight text-white drop-shadow-lg">
+                    {isAr ? tier.ar : tier.en}
+                  </h3>
+                  <p className="mt-1 text-xs font-semibold text-white/90">
+                    {isAr ? tier.priceAr : tier.priceEn}
+                  </p>
                 </div>
               </div>
 
-              {/* Corner accent on hover */}
-              <div className="absolute top-3 end-3 h-2 w-2 rounded-full bg-[#F15A29] opacity-0 shadow-lg shadow-[#F15A29]/50 transition-opacity group-hover:opacity-100" />
-            </div>
+              {/* Body */}
+              <div className="flex flex-1 flex-col gap-4 p-5">
+                <p className="text-sm leading-relaxed text-[#525252]">
+                  {isAr ? tier.descAr : tier.descEn}
+                </p>
+
+                {/* Categories list (only for shared tier) */}
+                {tier.key === 'shared' && (
+                  <div>
+                    <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-[#a3a3a3]">
+                      {isAr ? 'يناسب جميع الفئات' : 'For all categories'}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {SHARED_CATEGORIES.map((cat) => (
+                        <span
+                          key={cat.en}
+                          className="rounded-full border border-black/5 bg-[#fafafa] px-2.5 py-1 text-[11px] font-medium text-[#525252]"
+                        >
+                          {isAr ? cat.ar : cat.en}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="mt-auto inline-flex items-center justify-between rounded-2xl bg-[#FEF0E8] px-4 py-3 text-sm font-semibold text-[#F15A29] transition-colors group-hover:bg-[#F15A29] group-hover:text-white">
+                  <span>{isAr ? 'احجز الآن' : 'Book Now'}</span>
+                  <span className="text-base">{isAr ? '←' : '→'}</span>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       </div>
