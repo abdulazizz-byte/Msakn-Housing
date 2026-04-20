@@ -49,7 +49,7 @@ export default async function HomePage({ params }: Props) {
         {/* Hero: logo + bold headline */}
         <div className="mx-auto max-w-7xl text-center mb-6 lg:mb-8 animate-fade-up">
           <img
-            src="/Logo.avif"
+            src="/logo-mark.webp"
             alt="Msakn"
             className="mx-auto mb-3 h-12 w-12 sm:h-14 sm:w-14"
           />

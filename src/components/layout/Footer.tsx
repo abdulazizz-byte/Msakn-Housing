@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
           {/* Brand */}
           <div className="flex items-center gap-2">
-            <img src="/Logo.avif" alt="Msakn" className="h-10 w-10" />
+            <img src="/logo-mark.webp" alt="Msakn" className="h-10 w-10" />
             <div>
               <span className="block text-sm font-semibold text-[#1a1a1a]">
                 {isAr ? 'مساكن' : 'MSAKN'}

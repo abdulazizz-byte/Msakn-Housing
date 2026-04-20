@@ -31,7 +31,7 @@ export default function Header() {
           href={`/${locale}`}
           className="flex items-center gap-2.5 transition-opacity hover:opacity-80"
         >
-          <img src="/Logo.avif" alt="Msakn" className="h-10 w-10" />
+          <img src="/logo-mark.webp" alt="Msakn" className="h-10 w-10" />
           <span className="text-lg font-bold tracking-tight text-[#1a1a1a]">
             {locale === 'ar' ? 'مساكن' : 'MSAKN'}
           </span>

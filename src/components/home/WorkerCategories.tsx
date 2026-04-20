@@ -29,7 +29,7 @@ const TIERS: {
     en: 'Shared',
     descAr: 'غرف جماعية بأسرّة طابقية لجميع فئات العمالة',
     descEn: 'Shared bunk-bed rooms for every workforce category',
-    img: '/Msakn%20pics/beds.jpg',
+    img: '/tier-shared.webp',
   },
   {
     key: 'comfortable',
@@ -37,7 +37,7 @@ const TIERS: {
     en: 'Comfortable',
     descAr: 'ستديو خاص أو غرفة مفردة لمن يفضّل الخصوصية',
     descEn: 'Private studio or single room — for those who prefer privacy',
-    img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=85&auto=format&fit=crop',
+    img: '/tier-comfortable.webp',
   },
   {
     key: 'premium',
@@ -45,7 +45,7 @@ const TIERS: {
     en: 'Premium',
     descAr: 'وحدات راقية مع تشطيبات وخدمات حصرية',
     descEn: 'High-end units with premium finishes and exclusive services',
-    img: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1200&q=85&auto=format&fit=crop',
+    img: '/tier-luxury.webp',
   },
 ];
 
