@@ -64,20 +64,20 @@ export function WorkerCategories({ locale }: Props) {
         <div className="mb-10 flex items-end justify-between">
           <div>
             <span className="text-xs font-semibold uppercase tracking-widest text-[#F15A29]">
-              {isAr ? 'من نخدم' : 'Who We Serve'}
+              {isAr ? 'خيارات السكن' : 'Housing Options'}
             </span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
-              {isAr ? 'نوفر سكن لجميع فئات العمالة' : 'Housing for Every Workforce'}
+              {isAr ? 'سكن مرن يناسب احتياجات الأفراد' : 'Flexible Housing for Every Individual'}
             </h2>
             <p className="mt-2 max-w-xl text-base text-[#525252]">
               {isAr
-                ? 'من العمالة الإنشائية إلى المتخصصين والمهندسين — سكن يناسب كل احتياج'
-                : 'From construction crews to specialists and engineers — housing that fits every need'}
+                ? 'من الغرفة المشتركة إلى الستديو الخاص — وصولاً إلى الخيارات الفخمة'
+                : 'From shared rooms to private studios — all the way to premium options'}
             </p>
           </div>
           <div className="hidden items-center gap-2 text-sm text-[#737373] sm:flex">
             <Users2 className="h-4 w-4 text-[#F15A29]" />
-            <span>8 {isAr ? 'فئات' : 'Categories'}</span>
+            <span>{isAr ? '٣ مستويات' : '3 Tiers'}</span>
           </div>
         </div>
 
