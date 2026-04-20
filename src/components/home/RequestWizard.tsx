@@ -116,8 +116,8 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
       ar: 'سكن مع تشغيل وإعاشة',
       en: 'Housing + Operations + Catering',
       icon: UtensilsCrossed,
-      descAr: 'الباقة الكاملة — تشغيل + ٣ وجبات يومياً',
-      descEn: 'Full package — operations + 3 meals/day',
+      descAr: 'الباقة الكاملة — تشغيل + خدمة إعاشة',
+      descEn: 'Full package — operations + catering service',
     },
   ];
 
