@@ -38,7 +38,7 @@ export function ImageGallery({ images, locale }: ImageGalleryProps) {
             key={img.id}
             type="button"
             onClick={() => openLightbox(i)}
-            className="group relative aspect-square overflow-hidden rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#c41e3a] focus:ring-offset-2"
+            className="group relative aspect-square overflow-hidden rounded-xl bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#F15A29] focus:ring-offset-2"
           >
             <img
               src={img.url}

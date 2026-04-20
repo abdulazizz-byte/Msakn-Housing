@@ -77,7 +77,7 @@ export default function AuthPage() {
                       onClick={() => setRole('company')}
                       className={`p-3 rounded-lg border-2 text-center transition-colors ${
                         role === 'company'
-                          ? 'border-[#c41e3a] bg-[#fef2f2] text-[#a91b32]'
+                          ? 'border-[#F15A29] bg-[#FEF0E8] text-[#D94C1E]'
                           : 'border-gray-200 text-gray-600 hover:border-gray-300'
                       }`}
                     >
@@ -91,7 +91,7 @@ export default function AuthPage() {
                       onClick={() => setRole('provider')}
                       className={`p-3 rounded-lg border-2 text-center transition-colors ${
                         role === 'provider'
-                          ? 'border-[#c41e3a] bg-[#fef2f2] text-[#a91b32]'
+                          ? 'border-[#F15A29] bg-[#FEF0E8] text-[#D94C1E]'
                           : 'border-gray-200 text-gray-600 hover:border-gray-300'
                       }`}
                     >
@@ -152,7 +152,7 @@ export default function AuthPage() {
             {mode === 'login' && (
               <p className="text-center text-sm text-gray-500 mt-4">
                 {locale === 'ar' ? 'نسيت كلمة المرور؟' : 'Forgot your password?'}
-                <button className="text-[#c41e3a] font-medium ms-1 hover:underline">
+                <button className="text-[#F15A29] font-medium ms-1 hover:underline">
                   {locale === 'ar' ? 'إعادة تعيين' : 'Reset'}
                 </button>
               </p>

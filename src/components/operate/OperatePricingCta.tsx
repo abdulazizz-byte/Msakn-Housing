@@ -16,8 +16,8 @@ export function OperatePricingCta({ locale, tier, popular }: Props) {
       href={`/${locale}/properties/new?plan=${encodeURIComponent(tier)}`}
       className={`mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all ${
         popular
-          ? 'bg-[#c41e3a] text-white shadow-lg shadow-[#c41e3a]/30 hover:bg-[#a91b32]'
-          : 'border border-black/10 bg-white text-[#0a0a0a] hover:border-[#c41e3a]/30 hover:text-[#c41e3a]'
+          ? 'bg-[#F15A29] text-white shadow-lg shadow-[#F15A29]/30 hover:bg-[#D94C1E]'
+          : 'border border-black/10 bg-white text-[#0a0a0a] hover:border-[#F15A29]/30 hover:text-[#F15A29]'
       }`}
     >
       {isAr ? 'اختر هذه الباقة' : 'Choose this tier'}

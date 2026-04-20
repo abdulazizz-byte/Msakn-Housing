@@ -55,7 +55,7 @@ export function BeforeAfterSection({ locale }: Props) {
     <section className="relative z-10 overflow-hidden bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-[#c41e3a]">
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-[#F15A29]">
             <Sparkles className="h-3.5 w-3.5" />
             {isAr ? 'اختبر الفرق' : 'Experience the Difference'}
           </span>
@@ -103,7 +103,7 @@ export function BeforeAfterSection({ locale }: Props) {
           <div className="pointer-events-none absolute top-4 start-4 rounded-full border border-white/20 bg-black/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-md">
             {isAr ? 'قبل' : 'Before'}
           </div>
-          <div className="pointer-events-none absolute top-4 end-4 rounded-full bg-[#c41e3a] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white shadow-lg shadow-[#c41e3a]/40">
+          <div className="pointer-events-none absolute top-4 end-4 rounded-full bg-[#F15A29] px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white shadow-lg shadow-[#F15A29]/40">
             {isAr ? 'مع مساكن' : 'With Msakn'}
           </div>
 
@@ -115,7 +115,7 @@ export function BeforeAfterSection({ locale }: Props) {
 
           {/* Handle */}
           <div
-            className="pointer-events-none absolute top-1/2 z-10 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-[#c41e3a] shadow-xl shadow-[#c41e3a]/40 transition-transform group-hover:scale-110"
+            className="pointer-events-none absolute top-1/2 z-10 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-[#F15A29] shadow-xl shadow-[#F15A29]/40 transition-transform group-hover:scale-110"
             style={{ left: `${pos}%` }}
           >
             <ArrowLeftRight className="h-5 w-5 text-white" />

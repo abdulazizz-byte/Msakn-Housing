@@ -74,7 +74,7 @@ export default function DashboardPage() {
       <div className="mb-8 grid gap-4 sm:grid-cols-3">
         <Card>
           <CardContent className="flex items-center gap-4 py-5">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-red-100 text-[#c41e3a]">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-red-100 text-[#F15A29]">
               <ClipboardList className="h-6 w-6" />
             </div>
             <div>
@@ -96,7 +96,7 @@ export default function DashboardPage() {
         </Card>
         <Card>
           <CardContent className="flex items-center gap-4 py-5">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-red-100 text-[#c41e3a]">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-red-100 text-[#F15A29]">
               <BookOpen className="h-6 w-6" />
             </div>
             <div>
@@ -165,7 +165,7 @@ export default function DashboardPage() {
                       <Star className="h-4 w-4 text-yellow-500" />
                       <div className="h-2 w-full max-w-xs overflow-hidden rounded-full bg-gray-200">
                         <div
-                          className="h-full rounded-full bg-[#c41e3a] transition-all"
+                          className="h-full rounded-full bg-[#F15A29] transition-all"
                           style={{ width: `${offer.matchScore}%` }}
                         />
                       </div>

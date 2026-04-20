@@ -91,10 +91,10 @@ export function AmenitiesList({ locale, general = false }: AmenitiesListProps) {
         return (
           <div
             key={i}
-            className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-3 transition-colors hover:border-[#c41e3a]/30 hover:bg-[#fef2f2]"
+            className="flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-3 transition-colors hover:border-[#F15A29]/30 hover:bg-[#FEF0E8]"
           >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#fef2f2]">
-              <Icon className="h-5 w-5 text-[#c41e3a]" />
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#FEF0E8]">
+              <Icon className="h-5 w-5 text-[#F15A29]" />
             </div>
             <span className="text-sm font-medium text-gray-700">
               {isAr ? amenity.labelAr : amenity.labelEn}

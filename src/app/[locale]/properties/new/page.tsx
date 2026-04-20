@@ -110,8 +110,8 @@ export default function NewPropertyPage() {
       <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16 py-16 max-w-3xl mx-auto">
         <Card>
           <CardContent className="flex flex-col items-center gap-4 py-16 text-center">
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#fef2f2]">
-              <CheckCircle className="h-10 w-10 text-[#c41e3a]" />
+            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#FEF0E8]">
+              <CheckCircle className="h-10 w-10 text-[#F15A29]" />
             </div>
             <h2 className="text-2xl font-bold text-gray-900">
               {isAr ? 'تم استلام طلبك بنجاح!' : 'Your request was received!'}
@@ -121,10 +121,10 @@ export default function NewPropertyPage() {
                 ? 'سيتم التواصل معك خلال 48 ساعة لإرسال فريق من الشركة لزيارة العقار وتأكيد المواصفات.'
                 : 'We will contact you within 48 hours to send a company team to visit the property and verify the specifications.'}
             </p>
-            <div className="mt-4 flex items-start gap-3 rounded-lg border border-[#c41e3a]/20 bg-[#fef2f2] p-4 text-start">
-              <Info className="mt-0.5 h-5 w-5 shrink-0 text-[#c41e3a]" />
+            <div className="mt-4 flex items-start gap-3 rounded-lg border border-[#F15A29]/20 bg-[#FEF0E8] p-4 text-start">
+              <Info className="mt-0.5 h-5 w-5 shrink-0 text-[#F15A29]" />
               <div className="text-sm text-[#666]">
-                <p className="font-medium text-[#c41e3a]">
+                <p className="font-medium text-[#F15A29]">
                   {isAr ? 'الخطوة التالية' : 'Next Step'}
                 </p>
                 <p className="mt-1">
@@ -161,10 +161,10 @@ export default function NewPropertyPage() {
       </div>
 
       {/* Verification notice */}
-      <div className="mb-6 flex items-start gap-3 rounded-xl border border-[#c41e3a]/20 bg-[#fef2f2] p-4">
-        <Info className="mt-0.5 h-5 w-5 shrink-0 text-[#c41e3a]" />
+      <div className="mb-6 flex items-start gap-3 rounded-xl border border-[#F15A29]/20 bg-[#FEF0E8] p-4">
+        <Info className="mt-0.5 h-5 w-5 shrink-0 text-[#F15A29]" />
         <div className="text-sm">
-          <p className="font-semibold text-[#c41e3a]">
+          <p className="font-semibold text-[#F15A29]">
             {isAr ? 'عملية التحقق' : 'Verification Process'}
           </p>
           <p className="mt-1 text-[#666]">
@@ -180,7 +180,7 @@ export default function NewPropertyPage() {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <User className="h-5 w-5 text-[#c41e3a]" />
+              <User className="h-5 w-5 text-[#F15A29]" />
               <h2 className="text-lg font-semibold text-gray-900">
                 {isAr ? 'بيانات المالك' : 'Owner Information'}
               </h2>
@@ -213,7 +213,7 @@ export default function NewPropertyPage() {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <Building2 className="h-5 w-5 text-[#c41e3a]" />
+              <Building2 className="h-5 w-5 text-[#F15A29]" />
               <h2 className="text-lg font-semibold text-gray-900">
                 {isAr ? 'بيانات العقار' : 'Property Details'}
               </h2>
@@ -301,7 +301,7 @@ export default function NewPropertyPage() {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <FileSignature className="h-5 w-5 text-[#c41e3a]" />
+              <FileSignature className="h-5 w-5 text-[#F15A29]" />
               <h2 className="text-lg font-semibold text-gray-900">
                 {isAr ? 'نوع العقد' : 'Contract Type'}
               </h2>
@@ -310,14 +310,14 @@ export default function NewPropertyPage() {
           <CardContent>
             <div className="mb-4 grid grid-cols-2 gap-3">
               <label className={`flex cursor-pointer items-center gap-3 rounded-lg border-2 p-4 transition-colors ${
-                contractType === 'ownership' ? 'border-[#c41e3a] bg-[#fef2f2]' : 'border-gray-200 hover:border-gray-300'
+                contractType === 'ownership' ? 'border-[#F15A29] bg-[#FEF0E8]' : 'border-gray-200 hover:border-gray-300'
               }`}>
                 <input
                   type="radio"
                   name="contractType"
                   checked={contractType === 'ownership'}
                   onChange={() => setContractType('ownership')}
-                  className="h-4 w-4 text-[#c41e3a] focus:ring-[#c41e3a]"
+                  className="h-4 w-4 text-[#F15A29] focus:ring-[#F15A29]"
                 />
                 <div>
                   <p className="font-medium text-gray-900">
@@ -329,14 +329,14 @@ export default function NewPropertyPage() {
                 </div>
               </label>
               <label className={`flex cursor-pointer items-center gap-3 rounded-lg border-2 p-4 transition-colors ${
-                contractType === 'rental' ? 'border-[#c41e3a] bg-[#fef2f2]' : 'border-gray-200 hover:border-gray-300'
+                contractType === 'rental' ? 'border-[#F15A29] bg-[#FEF0E8]' : 'border-gray-200 hover:border-gray-300'
               }`}>
                 <input
                   type="radio"
                   name="contractType"
                   checked={contractType === 'rental'}
                   onChange={() => setContractType('rental')}
-                  className="h-4 w-4 text-[#c41e3a] focus:ring-[#c41e3a]"
+                  className="h-4 w-4 text-[#F15A29] focus:ring-[#F15A29]"
                 />
                 <div>
                   <p className="font-medium text-gray-900">
@@ -362,7 +362,7 @@ export default function NewPropertyPage() {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <FileText className="h-5 w-5 text-[#c41e3a]" />
+              <FileText className="h-5 w-5 text-[#F15A29]" />
               <h2 className="text-lg font-semibold text-gray-900">
                 {isAr ? 'التراخيص' : 'Licenses'}
               </h2>
@@ -372,7 +372,7 @@ export default function NewPropertyPage() {
             {/* Group Individual Housing License */}
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <Building2 className="h-4 w-4 text-[#c41e3a]" />
+                <Building2 className="h-4 w-4 text-[#F15A29]" />
                 <h3 className="font-medium text-gray-900">
                   {isAr ? 'ترخيص سكن أفراد جماعي' : 'Group Individual Housing License'}
                 </h3>
@@ -394,7 +394,7 @@ export default function NewPropertyPage() {
             {/* Civil Defense License */}
             <div className="space-y-3 border-t pt-6">
               <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4 text-[#c41e3a]" />
+                <Shield className="h-4 w-4 text-[#F15A29]" />
                 <h3 className="font-medium text-gray-900">
                   {isAr ? 'ترخيص الدفاع المدني' : 'Civil Defense License'}
                 </h3>
@@ -416,7 +416,7 @@ export default function NewPropertyPage() {
             {/* Building Permit */}
             <div className="space-y-3 border-t pt-6">
               <div className="flex items-center gap-2">
-                <Construction className="h-4 w-4 text-[#c41e3a]" />
+                <Construction className="h-4 w-4 text-[#F15A29]" />
                 <h3 className="font-medium text-gray-900">
                   {isAr ? 'رخصة البناء' : 'Building Permit'}
                 </h3>
@@ -441,7 +441,7 @@ export default function NewPropertyPage() {
         <Card>
           <CardHeader>
             <div className="flex items-center gap-2">
-              <ClipboardList className="h-5 w-5 text-[#c41e3a]" />
+              <ClipboardList className="h-5 w-5 text-[#F15A29]" />
               <div>
                 <h2 className="text-lg font-semibold text-gray-900">
                   {isAr ? 'الخدمات المتوفرة' : 'Available Services'}
@@ -461,7 +461,7 @@ export default function NewPropertyPage() {
                     key={svc.key}
                     className={`flex cursor-pointer items-center gap-2 rounded-lg border p-3 text-sm transition-colors ${
                       isSelected
-                        ? 'border-[#c41e3a] bg-[#fef2f2] text-[#c41e3a] font-medium'
+                        ? 'border-[#F15A29] bg-[#FEF0E8] text-[#F15A29] font-medium'
                         : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
                     }`}
                   >
@@ -469,7 +469,7 @@ export default function NewPropertyPage() {
                       type="checkbox"
                       checked={isSelected}
                       onChange={() => toggleService(svc.key)}
-                      className="h-4 w-4 rounded border-gray-300 text-[#c41e3a] focus:ring-[#c41e3a]"
+                      className="h-4 w-4 rounded border-gray-300 text-[#F15A29] focus:ring-[#F15A29]"
                     />
                     <span>{isAr ? svc.labelAr : svc.labelEn}</span>
                   </label>
@@ -494,7 +494,7 @@ export default function NewPropertyPage() {
               placeholder={isAr
                 ? 'أي معلومات إضافية تود مشاركتها عن العقار...'
                 : 'Any additional information about the property...'}
-              className="block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 transition-colors focus:border-[#c41e3a] focus:outline-none focus:ring-2 focus:ring-[#c41e3a]/20"
+              className="block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 transition-colors focus:border-[#F15A29] focus:outline-none focus:ring-2 focus:ring-[#F15A29]/20"
             />
           </CardContent>
         </Card>
@@ -504,7 +504,7 @@ export default function NewPropertyPage() {
           <Button type="button" variant="outline">
             {isAr ? 'إلغاء' : 'Cancel'}
           </Button>
-          <Button type="submit" size="lg" className="bg-[#c41e3a] hover:bg-[#a91b32]">
+          <Button type="submit" size="lg" className="bg-[#F15A29] hover:bg-[#D94C1E]">
             {isAr ? 'إرسال طلب إضافة العقار' : 'Submit Property Request'}
           </Button>
         </div>
@@ -530,13 +530,13 @@ function FileUpload({
         {label}
       </span>
       <div className={`flex items-center gap-3 rounded-lg border-2 border-dashed p-4 transition-colors ${
-        file ? 'border-[#c41e3a] bg-[#fef2f2]' : 'border-gray-300 bg-gray-50 hover:border-gray-400'
+        file ? 'border-[#F15A29] bg-[#FEF0E8]' : 'border-gray-300 bg-gray-50 hover:border-gray-400'
       }`}>
-        <Upload className={`h-5 w-5 shrink-0 ${file ? 'text-[#c41e3a]' : 'text-gray-400'}`} />
+        <Upload className={`h-5 w-5 shrink-0 ${file ? 'text-[#F15A29]' : 'text-gray-400'}`} />
         <div className="min-w-0 flex-1">
           {file ? (
             <>
-              <p className="truncate text-sm font-medium text-[#c41e3a]">{file.name}</p>
+              <p className="truncate text-sm font-medium text-[#F15A29]">{file.name}</p>
               <p className="text-xs text-gray-500">
                 {(file.size / 1024).toFixed(1)} KB
               </p>

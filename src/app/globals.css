@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme inline {
   /* MSAKN Crimson */
-  --color-primary-50: #fef2f2;
+  --color-primary-50: #FEF0E8;
   --color-primary-100: #fee2e2;
   --color-primary-200: #fecaca;
   --color-primary-300: #f9a8a8;
   --color-primary-400: #e5555a;
-  --color-primary-500: #c41e3a;
-  --color-primary-600: #a91b32;
+  --color-primary-500: #F15A29;
+  --color-primary-600: #D94C1E;
   --color-primary-700: #8b1429;
   --color-primary-800: #6d1023;
   --color-primary-900: #4c0c19;
@@ -35,12 +35,12 @@
 
   /* Complementary — soft teal for contrast */
   --color-accent-400: #6ee7cf;
-  --color-accent-500: #14b8a6;
-  --color-accent-600: #0d9488;
+  --color-accent-500: #91D5FA;
+  --color-accent-600: #5FB6E6;
 
-  /* Typography */
-  --font-sans: 'IBM Plex Sans Arabic', 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Inter', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  /* Typography — MSAKN brand fonts */
+  --font-sans: 'Readex Pro', 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-display: 'Montserrat', 'Readex Pro', system-ui, sans-serif;
 }
 
 * {
@@ -56,18 +56,18 @@ body {
 }
 
 [dir="rtl"] {
-  font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  font-family: 'Readex Pro', system-ui, sans-serif;
 }
 
 [dir="ltr"] {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Montserrat', system-ui, sans-serif;
 }
 
 /* Scrollbar — minimal */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #c41e3a; }
+::-webkit-scrollbar-thumb:hover { background: #F15A29; }
 
 /* ─── Display typography ─── */
 .display-xl {
@@ -85,7 +85,7 @@ body {
 
 /* ─── Gradient text ─── */
 .gradient-text {
-  background: linear-gradient(135deg, #c41e3a 0%, #e5555a 100%);
+  background: linear-gradient(135deg, #F15A29 0%, #e5555a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -130,7 +130,7 @@ body {
 .orb-1 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, #c41e3a 0%, transparent 70%);
+  background: radial-gradient(circle, #F15A29 0%, transparent 70%);
   top: -200px;
   left: -200px;
 }
@@ -145,7 +145,7 @@ body {
 .orb-3 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, #14b8a6 0%, transparent 70%);
+  background: radial-gradient(circle, #91D5FA 0%, transparent 70%);
   top: 40%;
   left: 50%;
   opacity: 0.25;
@@ -232,6 +232,6 @@ a, button {
   animation: pulse-brand 2.5s infinite;
 }
 @keyframes pulse-brand {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 30, 58, 0.25); }
-  50% { box-shadow: 0 0 0 10px rgba(196, 30, 58, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(241, 90, 41, 0.25); }
+  50% { box-shadow: 0 0 0 10px rgba(241, 90, 41, 0); }
 }

@@ -88,10 +88,10 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
       {/* Header with active count */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Filter className="h-4 w-4 text-[#c41e3a]" />
+          <Filter className="h-4 w-4 text-[#F15A29]" />
           <h2 className="text-lg font-semibold text-gray-900">{t('filters')}</h2>
           {activeCount > 0 && (
-            <span className="inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#c41e3a] px-1.5 text-[11px] font-bold text-white">
+            <span className="inline-flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#F15A29] px-1.5 text-[11px] font-bold text-white">
               {activeCount}
             </span>
           )}
@@ -100,7 +100,7 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
           <button
             type="button"
             onClick={onClear}
-            className="text-xs font-medium text-[#c41e3a] hover:underline"
+            className="text-xs font-medium text-[#F15A29] hover:underline"
           >
             {t('clearFilters')}
           </button>
@@ -108,15 +108,15 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
       </div>
 
       {/* Quality filters */}
-      <div className="space-y-2 rounded-lg border border-[#fef2f2] bg-[#fef2f2]/30 p-3">
+      <div className="space-y-2 rounded-lg border border-[#FEF0E8] bg-[#FEF0E8]/30 p-3">
         <label className="flex cursor-pointer items-center gap-2 text-sm">
           <input
             type="checkbox"
             checked={filters.verified_only}
             onChange={(e) => updateFilter('verified_only', e.target.checked)}
-            className="h-4 w-4 rounded border-gray-300 text-[#c41e3a] focus:ring-[#c41e3a]"
+            className="h-4 w-4 rounded border-gray-300 text-[#F15A29] focus:ring-[#F15A29]"
           />
-          <ShieldCheck className="h-4 w-4 text-[#c41e3a]" />
+          <ShieldCheck className="h-4 w-4 text-[#F15A29]" />
           <span className="font-medium text-gray-700">موثق من المنصة فقط</span>
         </label>
       </div>
@@ -177,8 +177,8 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
               onClick={() => updateFilter('max_price', preset.value)}
               className={`rounded-full border px-3 py-1 text-xs transition-colors ${
                 filters.max_price === preset.value
-                  ? 'border-[#c41e3a] bg-[#c41e3a] text-white'
-                  : 'border-gray-200 bg-white text-gray-600 hover:border-[#c41e3a] hover:text-[#c41e3a]'
+                  ? 'border-[#F15A29] bg-[#F15A29] text-white'
+                  : 'border-gray-200 bg-white text-gray-600 hover:border-[#F15A29] hover:text-[#F15A29]'
               }`}
             >
               {isAr ? preset.label : preset.labelEn}
@@ -208,8 +208,8 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
               onClick={() => updateFilter('min_capacity', preset.value)}
               className={`rounded-full border px-3 py-1 text-xs transition-colors ${
                 filters.min_capacity === preset.value
-                  ? 'border-[#c41e3a] bg-[#c41e3a] text-white'
-                  : 'border-gray-200 bg-white text-gray-600 hover:border-[#c41e3a] hover:text-[#c41e3a]'
+                  ? 'border-[#F15A29] bg-[#F15A29] text-white'
+                  : 'border-gray-200 bg-white text-gray-600 hover:border-[#F15A29] hover:text-[#F15A29]'
               }`}
             >
               {preset.label}
@@ -233,11 +233,11 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
                 onClick={() => updateFilter(key, !active)}
                 className={`flex items-center gap-2 rounded-lg border p-2.5 text-sm transition-colors ${
                   active
-                    ? 'border-[#c41e3a] bg-[#fef2f2] text-[#c41e3a] font-medium'
+                    ? 'border-[#F15A29] bg-[#FEF0E8] text-[#F15A29] font-medium'
                     : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300'
                 }`}
               >
-                <Icon className={`h-4 w-4 shrink-0 ${active ? 'text-[#c41e3a]' : 'text-gray-400'}`} />
+                <Icon className={`h-4 w-4 shrink-0 ${active ? 'text-[#F15A29]' : 'text-gray-400'}`} />
                 <span className="truncate">{label}</span>
               </button>
             );
@@ -248,7 +248,7 @@ export function SearchFilters({ filters, onChange, onClear, resultsCount }: Sear
       {/* Search button with result count */}
       <Button
         type="button"
-        className="w-full bg-[#c41e3a] hover:bg-[#a91b32] text-white border-0"
+        className="w-full bg-[#F15A29] hover:bg-[#D94C1E] text-white border-0"
         size="lg"
       >
         <Search className="h-4 w-4 me-2" />

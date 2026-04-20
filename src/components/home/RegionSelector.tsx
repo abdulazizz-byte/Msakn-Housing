@@ -52,11 +52,11 @@ export function RegionSelector({ locale }: RegionSelectorProps) {
             onClick={() => handleClick(key, region)}
             className={`flex items-center gap-2 rounded-xl border px-4 py-3 text-sm transition-colors ${
               region.available
-                ? 'border-[#c41e3a]/30 bg-[#fef2f2] text-[#c41e3a] font-medium hover:bg-[#fce4e4]'
+                ? 'border-[#F15A29]/30 bg-[#FEF0E8] text-[#F15A29] font-medium hover:bg-[#fce4e4]'
                 : 'border-[#ece5dc] bg-[#faf8f5] text-[#999] hover:border-[#ccc]'
             }`}
           >
-            <MapPin className={`h-4 w-4 shrink-0 ${region.available ? 'text-[#c41e3a]' : 'text-[#ccc]'}`} />
+            <MapPin className={`h-4 w-4 shrink-0 ${region.available ? 'text-[#F15A29]' : 'text-[#ccc]'}`} />
             {isAr ? region.ar : region.en}
             {!region.available && (
               <span className="ms-auto text-[10px] bg-gray-200 text-gray-500 px-1.5 py-0.5 rounded-full">
@@ -70,7 +70,7 @@ export function RegionSelector({ locale }: RegionSelectorProps) {
       {/* Toast notification */}
       {toast && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 rounded-xl bg-[#1a1a1a] px-5 py-3 text-sm text-white shadow-lg animate-in fade-in slide-in-from-bottom-4">
-          <MapPin className="h-4 w-4 text-[#c41e3a] shrink-0" />
+          <MapPin className="h-4 w-4 text-[#F15A29] shrink-0" />
           {toast}
           <button onClick={() => setToast(null)} className="ms-2 text-gray-400 hover:text-white">
             <X className="h-3.5 w-3.5" />

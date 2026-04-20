@@ -55,7 +55,7 @@ export default async function HomePage({ params }: Props) {
           />
 
           {/* Micro tag */}
-          <div className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-[#c41e3a]/20 bg-[#c41e3a]/5 px-3 py-1 text-[11px] font-medium text-[#c41e3a] backdrop-blur-sm">
+          <div className="mx-auto mb-3 inline-flex items-center gap-2 rounded-full border border-[#F15A29]/20 bg-[#F15A29]/5 px-3 py-1 text-[11px] font-medium text-[#F15A29] backdrop-blur-sm">
             <Sparkles className="h-3 w-3" />
             {isAr ? 'مجمعات سكنية متكاملة الخدمات' : 'All-Inclusive Housing Compounds'}
           </div>
@@ -91,7 +91,7 @@ export default async function HomePage({ params }: Props) {
                 key={label}
                 className="inline-flex items-center gap-1.5 rounded-full border border-black/5 bg-white/60 px-3 py-1 text-[#404040] backdrop-blur-sm"
               >
-                <Icon className="h-3.5 w-3.5 text-[#c41e3a]" />
+                <Icon className="h-3.5 w-3.5 text-[#F15A29]" />
                 {label}
               </span>
             ))}
@@ -119,8 +119,8 @@ export default async function HomePage({ params }: Props) {
             className="group relative overflow-hidden rounded-3xl bg-[#0a0a0a] p-6 text-white transition-all hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] sm:p-8 lg:p-10"
           >
             {/* Corner accent orb */}
-            <div className="absolute top-0 end-0 h-48 w-48 -translate-y-1/2 translate-x-1/2 rounded-full bg-[#c41e3a] blur-3xl opacity-40 transition-opacity group-hover:opacity-60" />
-            <div className="absolute bottom-0 start-0 h-32 w-32 translate-y-1/2 -translate-x-1/2 rounded-full bg-[#14b8a6] blur-3xl opacity-20" />
+            <div className="absolute top-0 end-0 h-48 w-48 -translate-y-1/2 translate-x-1/2 rounded-full bg-[#F15A29] blur-3xl opacity-40 transition-opacity group-hover:opacity-60" />
+            <div className="absolute bottom-0 start-0 h-32 w-32 translate-y-1/2 -translate-x-1/2 rounded-full bg-[#91D5FA] blur-3xl opacity-20" />
 
             {/* Subtle grid pattern */}
             <div
@@ -151,7 +151,7 @@ export default async function HomePage({ params }: Props) {
                   : ['List a single room or an entire complex', 'Receive direct requests of all sizes', 'Manage bookings & contracts']
                 ).map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm text-white/70">
-                    <CheckCircle className="h-4 w-4 shrink-0 text-[#14b8a6]" />
+                    <CheckCircle className="h-4 w-4 shrink-0 text-[#91D5FA]" />
                     {item}
                   </li>
                 ))}
@@ -168,15 +168,15 @@ export default async function HomePage({ params }: Props) {
         {/* Operate My Unit teaser — new service ribbon */}
         <Link
           href={`/${locale}/operate`}
-          className="group mx-auto mt-5 flex max-w-7xl items-center justify-between gap-4 rounded-2xl border border-[#c41e3a]/15 bg-gradient-to-r from-[#fef2f2] via-white to-[#fef2f2] p-4 transition-all hover:border-[#c41e3a]/30 hover:shadow-lg sm:p-5"
+          className="group mx-auto mt-5 flex max-w-7xl items-center justify-between gap-4 rounded-2xl border border-[#F15A29]/15 bg-gradient-to-r from-[#FEF0E8] via-white to-[#FEF0E8] p-4 transition-all hover:border-[#F15A29]/30 hover:shadow-lg sm:p-5"
         >
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#c41e3a] text-white shadow-md shadow-[#c41e3a]/20 sm:h-12 sm:w-12">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#F15A29] text-white shadow-md shadow-[#F15A29]/20 sm:h-12 sm:w-12">
               <Wrench className="h-5 w-5 sm:h-6 sm:w-6" />
             </div>
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1 rounded-full bg-[#c41e3a] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
+                <span className="inline-flex items-center gap-1 rounded-full bg-[#F15A29] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">
                   <Sparkles className="h-2.5 w-2.5" />
                   {isAr ? 'جديد' : 'New'}
                 </span>
@@ -191,7 +191,7 @@ export default async function HomePage({ params }: Props) {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs font-semibold text-[#c41e3a] transition-transform group-hover:gap-3 sm:text-sm">
+          <div className="flex items-center gap-2 text-xs font-semibold text-[#F15A29] transition-transform group-hover:gap-3 sm:text-sm">
             <TrendingUp className="hidden h-4 w-4 sm:block" />
             <span className="hidden sm:inline">{isAr ? 'عرض الباقات' : 'View tiers'}</span>
             <ArrowUpRight className="h-4 w-4" />
@@ -224,7 +224,7 @@ export default async function HomePage({ params }: Props) {
       <section className="relative z-10 border-t border-black/5 bg-white py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#c41e3a]">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#F15A29]">
               {isAr ? 'كيف تعمل المنصة' : 'How It Works'}
             </span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
@@ -261,13 +261,13 @@ export default async function HomePage({ params }: Props) {
             ].map(({ icon: Icon, titleAr, titleEn, descAr, descEn, step }) => (
               <div
                 key={step}
-                className="group relative overflow-hidden rounded-3xl border border-black/5 bg-[#fafafa] p-8 transition-all hover:border-[#c41e3a]/20 hover:bg-white hover:shadow-xl"
+                className="group relative overflow-hidden rounded-3xl border border-black/5 bg-[#fafafa] p-8 transition-all hover:border-[#F15A29]/20 hover:bg-white hover:shadow-xl"
               >
                 <div className="mb-4 flex items-start justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#c41e3a] text-white shadow-lg shadow-[#c41e3a]/30">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F15A29] text-white shadow-lg shadow-[#F15A29]/30">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <span className="text-4xl font-black text-[#c41e3a]/10">
+                  <span className="text-4xl font-black text-[#F15A29]/10">
                     {step}
                   </span>
                 </div>
@@ -300,7 +300,7 @@ export default async function HomePage({ params }: Props) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 flex items-end justify-between">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#c41e3a]">
+              <span className="text-xs font-semibold uppercase tracking-widest text-[#F15A29]">
                 {isAr ? 'عقارات مميزة' : 'Featured Properties'}
               </span>
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
@@ -309,7 +309,7 @@ export default async function HomePage({ params }: Props) {
             </div>
             <Link
               href={`/${locale}/search`}
-              className="hidden items-center gap-1 text-sm font-semibold text-[#c41e3a] transition-transform hover:gap-2 sm:inline-flex"
+              className="hidden items-center gap-1 text-sm font-semibold text-[#F15A29] transition-transform hover:gap-2 sm:inline-flex"
             >
               {isAr ? 'عرض الكل' : 'View all'}
               <ArrowUpRight className="h-4 w-4" />
@@ -330,7 +330,7 @@ export default async function HomePage({ params }: Props) {
       <section className="relative z-10 border-y border-black/5 bg-white py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#c41e3a]">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#F15A29]">
               {isAr ? 'لماذا مساكن' : 'Why Msakn'}
             </span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
@@ -370,8 +370,8 @@ export default async function HomePage({ params }: Props) {
               },
             ].map(({ icon: Icon, titleAr, titleEn, descAr, descEn }) => (
               <div key={titleEn} className="text-center">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fef2f2]">
-                  <Icon className="h-7 w-7 text-[#c41e3a]" />
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FEF0E8]">
+                  <Icon className="h-7 w-7 text-[#F15A29]" />
                 </div>
                 <h3 className="mb-1.5 text-base font-bold text-[#0a0a0a]">
                   {isAr ? titleAr : titleEn}
@@ -404,8 +404,8 @@ export default async function HomePage({ params }: Props) {
           FINAL CTA
           ══════════════════════════════════════ */}
       <section className="relative z-10 overflow-hidden bg-[#0a0a0a] py-16 lg:py-24">
-        <div className="absolute top-0 end-0 h-96 w-96 -translate-y-1/3 translate-x-1/3 rounded-full bg-[#c41e3a] opacity-20 blur-3xl" />
-        <div className="absolute bottom-0 start-0 h-96 w-96 translate-y-1/3 -translate-x-1/3 rounded-full bg-[#14b8a6] opacity-10 blur-3xl" />
+        <div className="absolute top-0 end-0 h-96 w-96 -translate-y-1/3 translate-x-1/3 rounded-full bg-[#F15A29] opacity-20 blur-3xl" />
+        <div className="absolute bottom-0 start-0 h-96 w-96 translate-y-1/3 -translate-x-1/3 rounded-full bg-[#91D5FA] opacity-10 blur-3xl" />
 
         <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
@@ -419,7 +419,7 @@ export default async function HomePage({ params }: Props) {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               href={`/${locale}/search`}
-              className="inline-flex items-center gap-2 rounded-full bg-[#c41e3a] px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-[#c41e3a]/30 transition-all hover:bg-[#a91b32] hover:shadow-2xl"
+              className="inline-flex items-center gap-2 rounded-full bg-[#F15A29] px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-[#F15A29]/30 transition-all hover:bg-[#D94C1E] hover:shadow-2xl"
             >
               {isAr ? 'تصفح المساكن' : 'Browse Units'}
               <ArrowUpRight className="h-4 w-4" />

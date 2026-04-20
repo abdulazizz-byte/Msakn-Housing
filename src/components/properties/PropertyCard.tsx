@@ -55,7 +55,7 @@ export function PropertyCard({ property, locale }: PropertyCardProps) {
       href={`/${locale}/property/${property.id}`}
       className="group block h-full"
     >
-      <article className="relative h-full overflow-hidden rounded-2xl border border-black/5 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-[#c41e3a]/20 hover:shadow-[0_20px_40px_-15px_rgba(10,10,10,0.15)]">
+      <article className="relative h-full overflow-hidden rounded-2xl border border-black/5 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-[#F15A29]/20 hover:shadow-[0_20px_40px_-15px_rgba(10,10,10,0.15)]">
         {/* Image */}
         <div className="relative aspect-[4/3] overflow-hidden bg-[#f5f5f5]">
           {primaryImage ? (
@@ -99,14 +99,14 @@ export function PropertyCard({ property, locale }: PropertyCardProps) {
             <h3 className="line-clamp-2 text-lg font-bold tracking-tight text-[#0a0a0a] leading-snug">
               {title}
             </h3>
-            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black/5 bg-[#fafafa] transition-all group-hover:bg-[#c41e3a] group-hover:border-[#c41e3a]">
+            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black/5 bg-[#fafafa] transition-all group-hover:bg-[#F15A29] group-hover:border-[#F15A29]">
               <ArrowUpRight className="h-4 w-4 text-[#525252] transition-colors group-hover:text-white" />
             </div>
           </div>
 
           {/* Location */}
           <div className="mb-4 flex items-center gap-1.5 text-sm text-[#737373]">
-            <MapPin className="h-3.5 w-3.5 text-[#c41e3a]" />
+            <MapPin className="h-3.5 w-3.5 text-[#F15A29]" />
             <span className="font-medium text-[#404040]">{district}</span>
             <span className="text-[#d4d4d4]">·</span>
             <span>{areaLabel}</span>
@@ -115,7 +115,7 @@ export function PropertyCard({ property, locale }: PropertyCardProps) {
           {/* Stats row — minimal dividers */}
           <div className="mb-4 flex items-center gap-4 border-y border-black/5 py-3">
             <div className="flex items-center gap-2">
-              <Users className="h-4 w-4 text-[#c41e3a]" />
+              <Users className="h-4 w-4 text-[#F15A29]" />
               <div>
                 <p className="text-sm font-bold tabular-nums text-[#0a0a0a]">
                   {property.available_capacity.toLocaleString()}
@@ -127,7 +127,7 @@ export function PropertyCard({ property, locale }: PropertyCardProps) {
             </div>
             <div className="h-8 w-px bg-black/5" />
             <div className="flex items-center gap-2">
-              <BedDouble className="h-4 w-4 text-[#c41e3a]" />
+              <BedDouble className="h-4 w-4 text-[#F15A29]" />
               <div>
                 <p className="text-sm font-bold tabular-nums text-[#0a0a0a]">
                   {property.total_rooms}

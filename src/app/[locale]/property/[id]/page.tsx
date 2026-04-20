@@ -51,7 +51,7 @@ export default async function PropertyDetailPage({ params }: Props) {
         </h1>
         <Link
           href={`/${locale}/search`}
-          className="mt-6 inline-flex items-center gap-2 text-[#c41e3a] hover:text-[#a91b32]"
+          className="mt-6 inline-flex items-center gap-2 text-[#F15A29] hover:text-[#D94C1E]"
         >
           <BackArrow className="h-4 w-4" />
           {tc('back')}
@@ -135,7 +135,7 @@ export default async function PropertyDetailPage({ params }: Props) {
       {/* Back link */}
       <Link
         href={`/${locale}/search`}
-        className="mb-4 inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-[#c41e3a]"
+        className="mb-4 inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-[#F15A29]"
       >
         <BackArrow className="h-4 w-4" />
         {tc('back')}
@@ -210,7 +210,7 @@ export default async function PropertyDetailPage({ params }: Props) {
             <CardContent>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 <div className="rounded-lg bg-gray-50 p-4 text-center">
-                  <Users className="mx-auto h-6 w-6 text-[#c41e3a]" />
+                  <Users className="mx-auto h-6 w-6 text-[#F15A29]" />
                   <p className="mt-2 text-2xl font-bold text-gray-900">
                     {property.total_capacity}
                   </p>
@@ -219,8 +219,8 @@ export default async function PropertyDetailPage({ params }: Props) {
                   </p>
                 </div>
                 <div className="rounded-lg bg-gray-50 p-4 text-center">
-                  <Users className="mx-auto h-6 w-6 text-[#c41e3a]" />
-                  <p className="mt-2 text-2xl font-bold text-[#c41e3a]">
+                  <Users className="mx-auto h-6 w-6 text-[#F15A29]" />
+                  <p className="mt-2 text-2xl font-bold text-[#F15A29]">
                     {property.available_capacity}
                   </p>
                   <p className="text-xs text-gray-500">
@@ -228,7 +228,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                   </p>
                 </div>
                 <div className="rounded-lg bg-gray-50 p-4 text-center">
-                  <DoorOpen className="mx-auto h-6 w-6 text-[#c41e3a]" />
+                  <DoorOpen className="mx-auto h-6 w-6 text-[#F15A29]" />
                   <p className="mt-2 text-2xl font-bold text-gray-900">
                     {property.total_rooms}
                   </p>
@@ -237,7 +237,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                   </p>
                 </div>
                 <div className="rounded-lg bg-gray-50 p-4 text-center">
-                  <BedDouble className="mx-auto h-6 w-6 text-[#c41e3a]" />
+                  <BedDouble className="mx-auto h-6 w-6 text-[#F15A29]" />
                   <p className="mt-2 text-2xl font-bold text-gray-900">
                     {property.workers_per_room}
                   </p>
@@ -264,8 +264,8 @@ export default async function PropertyDetailPage({ params }: Props) {
                     className="flex items-center justify-between py-3 first:pt-0 last:pb-0"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#fef2f2]">
-                        <rt.icon className="h-5 w-5 text-[#c41e3a]" />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#FEF0E8]">
+                        <rt.icon className="h-5 w-5 text-[#F15A29]" />
                       </div>
                       <span className="font-medium text-gray-900">
                         {rt.label}
@@ -297,7 +297,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                     key={svc.key}
                     className={`flex items-center gap-3 rounded-lg border p-4 ${
                       svc.available
-                        ? 'border-red-200 bg-[#fef2f2]/50'
+                        ? 'border-red-200 bg-[#FEF0E8]/50'
                         : 'border-gray-200 bg-gray-50 opacity-50'
                     }`}
                   >
@@ -308,14 +308,14 @@ export default async function PropertyDetailPage({ params }: Props) {
                     >
                       <svc.icon
                         className={`h-5 w-5 ${
-                          svc.available ? 'text-[#c41e3a]' : 'text-gray-400'
+                          svc.available ? 'text-[#F15A29]' : 'text-gray-400'
                         }`}
                       />
                     </div>
                     <div className="min-w-0">
                       <p className="font-medium text-gray-900">{svc.label}</p>
                       {svc.available ? (
-                        <p className="text-sm text-[#a91b32]">
+                        <p className="text-sm text-[#D94C1E]">
                           {formatPrice(svc.price, locale)} / {tc('perWorker')} / {tc('perMonth')}
                         </p>
                       ) : (
@@ -355,7 +355,7 @@ export default async function PropertyDetailPage({ params }: Props) {
             <CardContent>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 <div className="rounded-lg bg-[#1a1a1a] p-4 text-center text-white">
-                  <p className="text-3xl font-bold text-[#c41e3a]">20,640</p>
+                  <p className="text-3xl font-bold text-[#F15A29]">20,640</p>
                   <p className="mt-1 text-xs text-gray-300">
                     {locale === 'ar' ? 'متر مربع' : 'Square Meters'}
                   </p>
@@ -364,7 +364,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                   </p>
                 </div>
                 <div className="rounded-lg bg-[#1a1a1a] p-4 text-center text-white">
-                  <p className="text-3xl font-bold text-[#c41e3a]">20</p>
+                  <p className="text-3xl font-bold text-[#F15A29]">20</p>
                   <p className="mt-1 text-xs text-gray-300">
                     {locale === 'ar' ? 'دورين' : '2 Floors'}
                   </p>
@@ -373,7 +373,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                   </p>
                 </div>
                 <div className="rounded-lg bg-[#1a1a1a] p-4 text-center text-white">
-                  <p className="text-3xl font-bold text-[#c41e3a]">592</p>
+                  <p className="text-3xl font-bold text-[#F15A29]">592</p>
                   <p className="mt-1 text-xs text-gray-300">
                     {locale === 'ar' ? '24 م² للغرفة' : '24 m² per room'}
                   </p>
@@ -382,7 +382,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                   </p>
                 </div>
                 <div className="rounded-lg bg-[#1a1a1a] p-4 text-center text-white">
-                  <p className="text-3xl font-bold text-[#c41e3a]">3,500</p>
+                  <p className="text-3xl font-bold text-[#F15A29]">3,500</p>
                   <p className="mt-1 text-xs text-gray-300">
                     {locale === 'ar' ? 'سرير' : 'Beds'}
                   </p>
@@ -418,7 +418,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                     ]
                 ).map((item, i) => (
                   <div key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                    <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#c41e3a]" />
+                    <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#F15A29]" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -436,8 +436,8 @@ export default async function PropertyDetailPage({ params }: Props) {
             <CardContent>
               <div className="space-y-4">
                 <div className="flex gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#fef2f2]">
-                    <ShieldCheck className="h-5 w-5 text-[#c41e3a]" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#FEF0E8]">
+                    <ShieldCheck className="h-5 w-5 text-[#F15A29]" />
                   </div>
                   <div>
                     <p className="font-medium text-gray-900">
@@ -451,8 +451,8 @@ export default async function PropertyDetailPage({ params }: Props) {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#fef2f2]">
-                    <ShieldCheck className="h-5 w-5 text-[#c41e3a]" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#FEF0E8]">
+                    <ShieldCheck className="h-5 w-5 text-[#F15A29]" />
                   </div>
                   <div>
                     <p className="font-medium text-gray-900">
@@ -466,8 +466,8 @@ export default async function PropertyDetailPage({ params }: Props) {
                   </div>
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#fef2f2]">
-                    <ShieldCheck className="h-5 w-5 text-[#c41e3a]" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#FEF0E8]">
+                    <ShieldCheck className="h-5 w-5 text-[#F15A29]" />
                   </div>
                   <div>
                     <p className="font-medium text-gray-900">
@@ -574,7 +574,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                       href={`https://www.google.com/maps?q=${property.latitude},${property.longitude}&z=17`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-2 flex items-center gap-1.5 text-sm text-[#c41e3a] hover:underline"
+                      className="mt-2 flex items-center gap-1.5 text-sm text-[#F15A29] hover:underline"
                     >
                       <MapPin className="h-3.5 w-3.5" />
                       {locale === 'ar' ? 'افتح في خرائط قوقل' : 'Open in Google Maps'}

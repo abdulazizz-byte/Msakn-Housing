@@ -207,9 +207,9 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
                     <div
                       className={`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold transition-all ${
                         isActive
-                          ? 'bg-[#c41e3a] text-white shadow-lg shadow-[#c41e3a]/30 scale-110'
+                          ? 'bg-[#F15A29] text-white shadow-lg shadow-[#F15A29]/30 scale-110'
                           : isDone
-                          ? 'bg-[#c41e3a]/90 text-white'
+                          ? 'bg-[#F15A29]/90 text-white'
                           : 'bg-[#f5f5f5] text-[#a3a3a3]'
                       }`}
                     >
@@ -217,7 +217,7 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
                     </div>
                     <span
                       className={`mt-1.5 text-[10px] font-medium uppercase tracking-wide ${
-                        isActive ? 'text-[#c41e3a]' : isDone ? 'text-[#525252]' : 'text-[#a3a3a3]'
+                        isActive ? 'text-[#F15A29]' : isDone ? 'text-[#525252]' : 'text-[#a3a3a3]'
                       }`}
                     >
                       {isAr ? s.labelAr : s.labelEn}
@@ -226,7 +226,7 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
                   {idx < steps.length - 1 && (
                     <div
                       className={`mx-2 h-px flex-1 transition-colors ${
-                        step > s.n ? 'bg-[#c41e3a]' : 'bg-[#e5e5e5]'
+                        step > s.n ? 'bg-[#F15A29]' : 'bg-[#e5e5e5]'
                       }`}
                     />
                   )}
@@ -266,7 +266,7 @@ export function RequestWizard({ open, onClose, locale }: RequestWizardProps) {
               type="button"
               onClick={handleNext}
               disabled={!canProceed()}
-              className="inline-flex items-center gap-1.5 rounded-full bg-[#c41e3a] px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#c41e3a]/20 transition-all hover:bg-[#a91b32] hover:shadow-xl hover:shadow-[#c41e3a]/30 disabled:cursor-not-allowed disabled:bg-[#d4d4d4] disabled:text-[#a3a3a3] disabled:shadow-none"
+              className="inline-flex items-center gap-1.5 rounded-full bg-[#F15A29] px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#F15A29]/20 transition-all hover:bg-[#D94C1E] hover:shadow-xl hover:shadow-[#F15A29]/30 disabled:cursor-not-allowed disabled:bg-[#d4d4d4] disabled:text-[#a3a3a3] disabled:shadow-none"
             >
               {step === 4
                 ? isAr ? 'إرسال الطلب' : 'Submit Request'
@@ -362,7 +362,7 @@ function Step1Needs({
               onClick={() => update('roomType', r.key)}
               className={`flex items-center justify-center gap-1.5 rounded-xl border px-3 py-2.5 text-sm transition-all ${
                 state.roomType === r.key
-                  ? 'border-[#c41e3a] bg-[#fef2f2] text-[#c41e3a] font-semibold'
+                  ? 'border-[#F15A29] bg-[#FEF0E8] text-[#F15A29] font-semibold'
                   : 'border-black/5 bg-white text-[#525252] hover:border-black/10'
               }`}
             >
@@ -389,19 +389,19 @@ function Step1Needs({
                 onClick={() => update('servicePackage', p.key)}
                 className={`flex w-full items-center gap-3 rounded-xl border px-3 py-3 text-start transition-all ${
                   active
-                    ? 'border-[#c41e3a] bg-[#fef2f2]'
+                    ? 'border-[#F15A29] bg-[#FEF0E8]'
                     : 'border-black/5 bg-white hover:border-black/10'
                 }`}
               >
                 <div
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors ${
-                    active ? 'bg-[#c41e3a] text-white' : 'bg-[#f5f5f5] text-[#737373]'
+                    active ? 'bg-[#F15A29] text-white' : 'bg-[#f5f5f5] text-[#737373]'
                   }`}
                 >
                   <Icon className="h-4 w-4" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className={`text-sm font-semibold leading-tight ${active ? 'text-[#c41e3a]' : 'text-[#0a0a0a]'}`}>
+                  <p className={`text-sm font-semibold leading-tight ${active ? 'text-[#F15A29]' : 'text-[#0a0a0a]'}`}>
                     {isAr ? p.ar : p.en}
                   </p>
                   <p className="mt-0.5 text-[11px] text-[#737373]">
@@ -410,7 +410,7 @@ function Step1Needs({
                 </div>
                 <div
                   className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all ${
-                    active ? 'border-[#c41e3a] bg-[#c41e3a]' : 'border-[#d4d4d4] bg-white'
+                    active ? 'border-[#F15A29] bg-[#F15A29]' : 'border-[#d4d4d4] bg-white'
                   }`}
                 >
                   {active && <Check className="h-3 w-3 text-white" />}
@@ -454,10 +454,10 @@ function Step2Location({
         <label className="mb-2 block text-sm font-medium text-[#404040]">
           {isAr ? 'المدينة' : 'City'}
         </label>
-        <div className="flex items-center gap-2 rounded-xl border border-[#c41e3a]/20 bg-[#fef2f2] px-4 py-3">
-          <MapPin className="h-4 w-4 text-[#c41e3a]" />
-          <span className="font-medium text-[#c41e3a]">{isAr ? 'الرياض' : 'Riyadh'}</span>
-          <span className="ms-auto text-[10px] text-[#c41e3a]/70">{isAr ? 'متاح حالياً' : 'Available now'}</span>
+        <div className="flex items-center gap-2 rounded-xl border border-[#F15A29]/20 bg-[#FEF0E8] px-4 py-3">
+          <MapPin className="h-4 w-4 text-[#F15A29]" />
+          <span className="font-medium text-[#F15A29]">{isAr ? 'الرياض' : 'Riyadh'}</span>
+          <span className="ms-auto text-[10px] text-[#F15A29]/70">{isAr ? 'متاح حالياً' : 'Available now'}</span>
         </div>
       </div>
 
@@ -474,7 +474,7 @@ function Step2Location({
               onClick={() => update('areaDirection', a.key)}
               className={`rounded-xl border px-2 py-3 text-sm transition-all ${
                 state.areaDirection === a.key
-                  ? 'border-[#c41e3a] bg-[#fef2f2] text-[#c41e3a] font-semibold'
+                  ? 'border-[#F15A29] bg-[#FEF0E8] text-[#F15A29] font-semibold'
                   : 'border-black/5 bg-white text-[#525252] hover:border-black/10'
               }`}
             >
@@ -605,8 +605,8 @@ function Step4Review({
 function SuccessStep({ isAr }: { isAr: boolean }) {
   return (
     <div className="flex flex-col items-center gap-4 py-10 text-center">
-      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#fef2f2]">
-        <ClipboardCheck className="h-8 w-8 text-[#c41e3a]" />
+      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FEF0E8]">
+        <ClipboardCheck className="h-8 w-8 text-[#F15A29]" />
       </div>
       <h3 className="text-xl font-bold text-[#0a0a0a]">
         {isAr ? 'تم استلام طلبك!' : 'Request Received!'}
@@ -640,20 +640,20 @@ function TypeCard({
       onClick={onClick}
       className={`group flex flex-col items-center justify-center gap-2 rounded-2xl border-2 p-5 transition-all ${
         active
-          ? 'border-[#c41e3a] bg-[#fef2f2]'
+          ? 'border-[#F15A29] bg-[#FEF0E8]'
           : 'border-black/5 bg-white hover:border-black/15'
       }`}
     >
       <div
         className={`flex h-11 w-11 items-center justify-center rounded-full transition-colors ${
-          active ? 'bg-[#c41e3a] text-white' : 'bg-[#f5f5f5] text-[#737373] group-hover:bg-[#e5e5e5]'
+          active ? 'bg-[#F15A29] text-white' : 'bg-[#f5f5f5] text-[#737373] group-hover:bg-[#e5e5e5]'
         }`}
       >
         <Icon className="h-5 w-5" />
       </div>
       <span
         className={`text-sm font-semibold ${
-          active ? 'text-[#c41e3a]' : 'text-[#0a0a0a]'
+          active ? 'text-[#F15A29]' : 'text-[#0a0a0a]'
         }`}
       >
         {label}
@@ -691,7 +691,7 @@ function FormField({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className="block w-full rounded-xl border border-black/5 bg-white py-3 ps-10 pe-3 text-sm text-[#0a0a0a] placeholder:text-[#a3a3a3] transition-colors focus:border-[#c41e3a] focus:outline-none focus:ring-2 focus:ring-[#c41e3a]/10"
+          className="block w-full rounded-xl border border-black/5 bg-white py-3 ps-10 pe-3 text-sm text-[#0a0a0a] placeholder:text-[#a3a3a3] transition-colors focus:border-[#F15A29] focus:outline-none focus:ring-2 focus:ring-[#F15A29]/10"
         />
       </div>
     </div>

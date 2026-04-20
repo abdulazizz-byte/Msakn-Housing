@@ -63,7 +63,7 @@ export function WorkerCategories({ locale }: Props) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-10 flex items-end justify-between">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#c41e3a]">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#F15A29]">
               {isAr ? 'من نخدم' : 'Who We Serve'}
             </span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
@@ -76,7 +76,7 @@ export function WorkerCategories({ locale }: Props) {
             </p>
           </div>
           <div className="hidden items-center gap-2 text-sm text-[#737373] sm:flex">
-            <Users2 className="h-4 w-4 text-[#c41e3a]" />
+            <Users2 className="h-4 w-4 text-[#F15A29]" />
             <span>8 {isAr ? 'فئات' : 'Categories'}</span>
           </div>
         </div>
@@ -101,13 +101,13 @@ export function WorkerCategories({ locale }: Props) {
                 <h3 className="text-lg font-bold text-white drop-shadow-lg sm:text-xl">
                   {isAr ? cat.ar : cat.en}
                 </h3>
-                <div className="mt-2 inline-flex h-8 items-center gap-1 rounded-full border border-white/20 bg-white/10 px-3 text-xs font-medium text-white backdrop-blur-sm transition-all group-hover:bg-[#c41e3a] group-hover:border-[#c41e3a]">
+                <div className="mt-2 inline-flex h-8 items-center gap-1 rounded-full border border-white/20 bg-white/10 px-3 text-xs font-medium text-white backdrop-blur-sm transition-all group-hover:bg-[#F15A29] group-hover:border-[#F15A29]">
                   {isAr ? 'احجز الآن' : 'Book Now'}
                 </div>
               </div>
 
               {/* Corner accent on hover */}
-              <div className="absolute top-3 end-3 h-2 w-2 rounded-full bg-[#c41e3a] opacity-0 shadow-lg shadow-[#c41e3a]/50 transition-opacity group-hover:opacity-100" />
+              <div className="absolute top-3 end-3 h-2 w-2 rounded-full bg-[#F15A29] opacity-0 shadow-lg shadow-[#F15A29]/50 transition-opacity group-hover:opacity-100" />
             </div>
           ))}
         </div>

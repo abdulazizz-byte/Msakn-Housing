@@ -52,7 +52,7 @@ export default function Header() {
                 className={cn(
                   'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                   isActive
-                    ? 'bg-[#fef2f2] text-[#c41e3a]'
+                    ? 'bg-[#FEF0E8] text-[#F15A29]'
                     : 'text-[#666] hover:bg-[#faf8f5] hover:text-[#1a1a1a]'
                 )}
               >
@@ -107,7 +107,7 @@ export default function Header() {
                   className={cn(
                     'rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                     isActive
-                      ? 'bg-[#fef2f2] text-[#c41e3a]'
+                      ? 'bg-[#FEF0E8] text-[#F15A29]'
                       : 'text-[#666] hover:bg-[#faf8f5] hover:text-[#1a1a1a]'
                   )}
                 >

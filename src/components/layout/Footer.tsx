@@ -33,7 +33,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center justify-center gap-5 text-sm text-[#666]">
             <a
               href="tel:+966503755446"
-              className="flex items-center gap-1.5 transition-colors hover:text-[#c41e3a]"
+              className="flex items-center gap-1.5 transition-colors hover:text-[#F15A29]"
               dir="ltr"
             >
               <Phone className="h-3.5 w-3.5" />
@@ -43,7 +43,7 @@ export default function Footer() {
               href="https://www.msakn.sa"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 transition-colors hover:text-[#c41e3a]"
+              className="flex items-center gap-1.5 transition-colors hover:text-[#F15A29]"
             >
               <Globe className="h-3.5 w-3.5" />
               www.msakn.sa

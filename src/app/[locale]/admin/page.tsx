@@ -98,10 +98,10 @@ export default function AdminPage() {
 
   const activityIcon = (type: string) => {
     switch (type) {
-      case 'request': return <ClipboardList className="h-4 w-4 text-[#c41e3a]" />;
-      case 'verify': return <CheckCircle className="h-4 w-4 text-[#c41e3a]" />;
+      case 'request': return <ClipboardList className="h-4 w-4 text-[#F15A29]" />;
+      case 'verify': return <CheckCircle className="h-4 w-4 text-[#F15A29]" />;
       case 'user': return <Users className="h-4 w-4 text-purple-500" />;
-      case 'booking': return <ShieldCheck className="h-4 w-4 text-[#c41e3a]" />;
+      case 'booking': return <ShieldCheck className="h-4 w-4 text-[#F15A29]" />;
       case 'expired': return <Clock className="h-4 w-4 text-gray-400" />;
       default: return <Activity className="h-4 w-4 text-gray-400" />;
     }
@@ -123,7 +123,7 @@ export default function AdminPage() {
         {kpis.map((kpi) => (
           <Card key={kpi.label}>
             <CardContent className="flex items-center gap-4 py-5">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-red-100 text-[#c41e3a]">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-red-100 text-[#F15A29]">
                 <kpi.icon className="h-6 w-6" />
               </div>
               <div>
@@ -196,7 +196,7 @@ export default function AdminPage() {
                 {chartBars.map((height, i) => (
                   <div key={i} className="flex flex-1 flex-col items-center gap-1">
                     <div
-                      className="w-full rounded-t bg-[#c41e3a] transition-all hover:bg-[#c41e3a]"
+                      className="w-full rounded-t bg-[#F15A29] transition-all hover:bg-[#F15A29]"
                       style={{ height: `${height}%` }}
                     />
                     <span className="text-[10px] text-gray-400">

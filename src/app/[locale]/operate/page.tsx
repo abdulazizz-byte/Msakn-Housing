@@ -167,7 +167,7 @@ export default async function OperatePage({ params }: Props) {
           ══════════════════════════════════════ */}
       <section className="relative z-10 px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
         <div className="mx-auto max-w-5xl text-center">
-          <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-[#c41e3a]/20 bg-[#c41e3a]/5 px-3 py-1 text-[11px] font-medium text-[#c41e3a] backdrop-blur-sm">
+          <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-[#F15A29]/20 bg-[#F15A29]/5 px-3 py-1 text-[11px] font-medium text-[#F15A29] backdrop-blur-sm">
             <Sparkles className="h-3 w-3" />
             {isAr ? 'خدمة جديدة لأصحاب العقارات' : 'New service for property owners'}
           </div>
@@ -195,14 +195,14 @@ export default async function OperatePage({ params }: Props) {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               href="#pricing"
-              className="inline-flex items-center gap-2 rounded-full bg-[#c41e3a] px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-[#c41e3a]/30 transition-all hover:bg-[#a91b32] hover:shadow-2xl"
+              className="inline-flex items-center gap-2 rounded-full bg-[#F15A29] px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-[#F15A29]/30 transition-all hover:bg-[#D94C1E] hover:shadow-2xl"
             >
               {isAr ? 'عرض الباقات' : 'View Pricing'}
               <ArrowUpRight className="h-4 w-4" />
             </Link>
             <Link
               href={`/${locale}/properties/new`}
-              className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-[#0a0a0a] transition-all hover:border-[#c41e3a]/30 hover:text-[#c41e3a]"
+              className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-[#0a0a0a] transition-all hover:border-[#F15A29]/30 hover:text-[#F15A29]"
             >
               {isAr ? 'سجّل عقارك' : 'Register Property'}
               <ArrowUpRight className="h-4 w-4" />
@@ -217,7 +217,7 @@ export default async function OperatePage({ params }: Props) {
       <section className="relative z-10 border-y border-black/5 bg-white py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#c41e3a]">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#F15A29]">
               {isAr ? 'كيف نعمل' : 'How It Works'}
             </span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
@@ -229,13 +229,13 @@ export default async function OperatePage({ params }: Props) {
             {steps.map(({ n, icon: Icon, titleAr, titleEn, descAr, descEn }) => (
               <div
                 key={n}
-                className="group relative overflow-hidden rounded-3xl border border-black/5 bg-[#fafafa] p-8 transition-all hover:border-[#c41e3a]/20 hover:bg-white hover:shadow-xl"
+                className="group relative overflow-hidden rounded-3xl border border-black/5 bg-[#fafafa] p-8 transition-all hover:border-[#F15A29]/20 hover:bg-white hover:shadow-xl"
               >
                 <div className="mb-4 flex items-start justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#c41e3a] text-white shadow-lg shadow-[#c41e3a]/30">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F15A29] text-white shadow-lg shadow-[#F15A29]/30">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <span className="text-4xl font-black text-[#c41e3a]/10">{n}</span>
+                  <span className="text-4xl font-black text-[#F15A29]/10">{n}</span>
                 </div>
                 <h3 className="mb-2 text-xl font-bold text-[#0a0a0a]">
                   {isAr ? titleAr : titleEn}
@@ -255,7 +255,7 @@ export default async function OperatePage({ params }: Props) {
       <section id="pricing" className="relative z-10 py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#c41e3a]">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#F15A29]">
               {isAr ? 'الباقات' : 'Pricing Tiers'}
             </span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
@@ -274,12 +274,12 @@ export default async function OperatePage({ params }: Props) {
                 key={tier.key}
                 className={`relative overflow-hidden rounded-3xl border p-6 lg:p-8 transition-all ${
                   tier.popular
-                    ? 'border-[#c41e3a] bg-white shadow-[0_30px_60px_-15px_rgba(196,30,58,0.25)]'
+                    ? 'border-[#F15A29] bg-white shadow-[0_30px_60px_-15px_rgba(196,30,58,0.25)]'
                     : 'border-black/5 bg-white hover:shadow-xl'
                 }`}
               >
                 {tier.popular && (
-                  <div className="absolute top-0 end-0 rounded-bl-2xl bg-[#c41e3a] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white">
+                  <div className="absolute top-0 end-0 rounded-bl-2xl bg-[#F15A29] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white">
                     {isAr ? 'الأكثر طلباً' : 'Most Popular'}
                   </div>
                 )}
@@ -295,7 +295,7 @@ export default async function OperatePage({ params }: Props) {
                   <span className="text-5xl font-black tracking-tight text-[#0a0a0a]">
                     {tier.price}
                   </span>
-                  <span className="text-sm font-semibold text-[#c41e3a]">
+                  <span className="text-sm font-semibold text-[#F15A29]">
                     {isAr ? 'ر.س' : 'SAR'}
                   </span>
                 </div>
@@ -311,7 +311,7 @@ export default async function OperatePage({ params }: Props) {
                         <div
                           className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full ${
                             f.included === true
-                              ? 'bg-[#c41e3a]/10 text-[#c41e3a]'
+                              ? 'bg-[#F15A29]/10 text-[#F15A29]'
                               : f.included === 'partial'
                               ? 'bg-[#fef3c7] text-[#b45309]'
                               : 'bg-[#f5f5f5] text-[#a3a3a3]'
@@ -350,7 +350,7 @@ export default async function OperatePage({ params }: Props) {
       <section className="relative z-10 border-y border-black/5 bg-white py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#c41e3a]">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#F15A29]">
               {isAr ? 'لماذا مساكن' : 'Why Msakn'}
             </span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#0a0a0a] sm:text-4xl">
@@ -361,8 +361,8 @@ export default async function OperatePage({ params }: Props) {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {pillars.map(({ icon: Icon, titleAr, titleEn, descAr, descEn }) => (
               <div key={titleEn} className="text-center">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fef2f2]">
-                  <Icon className="h-7 w-7 text-[#c41e3a]" />
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FEF0E8]">
+                  <Icon className="h-7 w-7 text-[#F15A29]" />
                 </div>
                 <h3 className="mb-1.5 text-base font-bold text-[#0a0a0a]">
                   {isAr ? titleAr : titleEn}
@@ -380,8 +380,8 @@ export default async function OperatePage({ params }: Props) {
           FINAL CTA
           ══════════════════════════════════════ */}
       <section className="relative z-10 overflow-hidden bg-[#0a0a0a] py-16 lg:py-24">
-        <div className="absolute top-0 end-0 h-96 w-96 -translate-y-1/3 translate-x-1/3 rounded-full bg-[#c41e3a] opacity-20 blur-3xl" />
-        <div className="absolute bottom-0 start-0 h-96 w-96 translate-y-1/3 -translate-x-1/3 rounded-full bg-[#14b8a6] opacity-10 blur-3xl" />
+        <div className="absolute top-0 end-0 h-96 w-96 -translate-y-1/3 translate-x-1/3 rounded-full bg-[#F15A29] opacity-20 blur-3xl" />
+        <div className="absolute bottom-0 start-0 h-96 w-96 translate-y-1/3 -translate-x-1/3 rounded-full bg-[#91D5FA] opacity-10 blur-3xl" />
 
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
@@ -395,7 +395,7 @@ export default async function OperatePage({ params }: Props) {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               href={`/${locale}/properties/new`}
-              className="inline-flex items-center gap-2 rounded-full bg-[#c41e3a] px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-[#c41e3a]/30 transition-all hover:bg-[#a91b32]"
+              className="inline-flex items-center gap-2 rounded-full bg-[#F15A29] px-6 py-3 text-sm font-semibold text-white shadow-xl shadow-[#F15A29]/30 transition-all hover:bg-[#D94C1E]"
             >
               {isAr ? 'سجّل عقارك الآن' : 'Register Your Property'}
               <ArrowUpRight className="h-4 w-4" />
