@@ -21,8 +21,6 @@ const TIERS: {
   en: string;
   descAr: string;
   descEn: string;
-  priceAr: string;
-  priceEn: string;
   img: string;
 }[] = [
   {
@@ -31,8 +29,6 @@ const TIERS: {
     en: 'Shared',
     descAr: 'غرف جماعية بأسرّة طابقية لجميع فئات العمالة',
     descEn: 'Shared bunk-bed rooms for every workforce category',
-    priceAr: 'يبدأ من ٥٠٠ ر.س / شهر',
-    priceEn: 'From 500 SAR / month',
     img: '/Msakn%20pics/beds.jpg',
   },
   {
@@ -41,8 +37,6 @@ const TIERS: {
     en: 'Comfortable',
     descAr: 'ستديو خاص أو غرفة مفردة لمن يفضّل الخصوصية',
     descEn: 'Private studio or single room — for those who prefer privacy',
-    priceAr: 'يبدأ من ١٢٠٠ ر.س / شهر',
-    priceEn: 'From 1,200 SAR / month',
     img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=85&auto=format&fit=crop',
   },
   {
@@ -51,8 +45,6 @@ const TIERS: {
     en: 'Premium',
     descAr: 'وحدات راقية مع تشطيبات وخدمات حصرية',
     descEn: 'High-end units with premium finishes and exclusive services',
-    priceAr: 'يبدأ من ٢٥٠٠ ر.س / شهر',
-    priceEn: 'From 2,500 SAR / month',
     img: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1200&q=85&auto=format&fit=crop',
   },
 ];
@@ -109,9 +101,6 @@ export function WorkerCategories({ locale }: Props) {
                   <h3 className="text-2xl font-bold tracking-tight text-white drop-shadow-lg">
                     {isAr ? tier.ar : tier.en}
                   </h3>
-                  <p className="mt-1 text-xs font-semibold text-white/90">
-                    {isAr ? tier.priceAr : tier.priceEn}
-                  </p>
                 </div>
               </div>
 
