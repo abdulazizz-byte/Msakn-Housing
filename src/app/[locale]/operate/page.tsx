@@ -153,7 +153,7 @@ export default async function OperatePage({ params }: Props) {
   ];
 
   return (
-    <main className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-[#fafafa]">
+    <main className="relative min-h-[calc(100vh-5rem)] overflow-hidden bg-[#fafafa]">
       {/* Animated orb background */}
       <div className="orb-bg">
         <div className="orb orb-1" />

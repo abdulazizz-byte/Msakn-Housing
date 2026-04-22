@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-white shadow-sm">
-      <div className="mx-auto flex h-16 w-full items-center justify-between px-6 sm:px-8 lg:px-12 xl:px-16">
+      <div className="mx-auto flex h-20 w-full items-center justify-between px-6 sm:px-8 lg:px-12 xl:px-16">
         {/* Logo */}
         <Link
           href={`/${locale}`}
@@ -34,7 +34,7 @@ export default function Header() {
           <img
             src="/logo.webp"
             alt="Msakn"
-            className="h-10 w-auto object-contain"
+            className="h-14 w-auto object-contain"
           />
         </Link>
 
