@@ -24,17 +24,17 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#58595B] shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-black/5 bg-white shadow-sm">
       <div className="mx-auto flex h-16 w-full items-center justify-between px-6 sm:px-8 lg:px-12 xl:px-16">
-        {/* Logo lockup — white on red */}
+        {/* Logo */}
         <Link
           href={`/${locale}`}
           className="flex items-center transition-opacity hover:opacity-90"
         >
           <img
-            src="/logo-mono.webp"
+            src="/logo.webp"
             alt="Msakn"
-            className="h-12 w-auto object-contain"
+            className="h-10 w-auto object-contain"
           />
         </Link>
 
@@ -53,8 +53,8 @@ export default function Header() {
                 className={cn(
                   'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                   isActive
-                    ? 'bg-white text-[#58595B]'
-                    : 'text-white/85 hover:bg-white/10 hover:text-white'
+                    ? 'bg-[#FEF0E8] text-[#F15A29]'
+                    : 'text-[#525252] hover:bg-[#fafafa] hover:text-[#0a0a0a]'
                 )}
               >
                 {link.label}
@@ -67,7 +67,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <Link
             href={switchLocalePath}
-            className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-white/85 transition-colors hover:bg-white/10 hover:text-white"
+            className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-[#525252] transition-colors hover:bg-[#fafafa] hover:text-[#0a0a0a]"
             title={t('common.language')}
           >
             <Globe className="h-4 w-4" />
@@ -76,7 +76,7 @@ export default function Header() {
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-lg p-2 text-white/85 transition-colors hover:bg-white/10 hover:text-white md:hidden"
+            className="inline-flex items-center justify-center rounded-lg p-2 text-[#525252] transition-colors hover:bg-[#fafafa] hover:text-[#0a0a0a] md:hidden"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle menu"
@@ -92,7 +92,7 @@ export default function Header() {
 
       {/* Mobile navigation */}
       {mobileMenuOpen && (
-        <nav className="border-t border-white/10 bg-[#58595B] px-4 pb-4 pt-2 md:hidden">
+        <nav className="border-t border-black/5 bg-white px-4 pb-4 pt-2 md:hidden">
           <div className="flex flex-col gap-1">
             {navLinks.map((link) => {
               const isActive =
@@ -108,8 +108,8 @@ export default function Header() {
                   className={cn(
                     'rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                     isActive
-                      ? 'bg-white text-[#58595B]'
-                      : 'text-white/85 hover:bg-white/10 hover:text-white'
+                      ? 'bg-[#FEF0E8] text-[#F15A29]'
+                      : 'text-[#525252] hover:bg-[#fafafa] hover:text-[#0a0a0a]'
                   )}
                 >
                   {link.label}
